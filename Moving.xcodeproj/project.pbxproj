@@ -18,6 +18,8 @@
 		FDBB848424A33ED000589F64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDBB848224A33ED000589F64 /* LaunchScreen.storyboard */; };
 		FDBB848C24A344D500589F64 /* RoomTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB848B24A344D500589F64 /* RoomTypeView.swift */; };
 		FDBB848E24A3455C00589F64 /* RoomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB848D24A3455C00589F64 /* RoomListView.swift */; };
+		FDBB849024A35AF800589F64 /* RoomDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB848F24A35AF800589F64 /* RoomDetailsView.swift */; };
+		FDBB849224A3613C00589F64 /* AddRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB849124A3613C00589F64 /* AddRoomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		FDBB848524A33ED000589F64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDBB848B24A344D500589F64 /* RoomTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTypeView.swift; sourceTree = "<group>"; };
 		FDBB848D24A3455C00589F64 /* RoomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListView.swift; sourceTree = "<group>"; };
+		FDBB848F24A35AF800589F64 /* RoomDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailsView.swift; sourceTree = "<group>"; };
+		FDBB849124A3613C00589F64 /* AddRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			children = (
 				FDBB848B24A344D500589F64 /* RoomTypeView.swift */,
 				FDBB848D24A3455C00589F64 /* RoomListView.swift */,
+				FDBB848F24A35AF800589F64 /* RoomDetailsView.swift */,
+				FDBB849124A3613C00589F64 /* AddRoomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,6 +196,8 @@
 				FDBB848C24A344D500589F64 /* RoomTypeView.swift in Sources */,
 				FDBB847A24A33ECF00589F64 /* SceneDelegate.swift in Sources */,
 				60522A85EE50E5A2F85C1F50 /* Room.swift in Sources */,
+				FDBB849224A3613C00589F64 /* AddRoomView.swift in Sources */,
+				FDBB849024A35AF800589F64 /* RoomDetailsView.swift in Sources */,
 				605223E9CAF6F189AAA33917 /* Item.swift in Sources */,
 				6052264E62255D3C2A34C6DC /* Listable.swift in Sources */,
 				60522EDFDBA6149ED9DD583C /* RoomStore.swift in Sources */,

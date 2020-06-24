@@ -9,26 +9,26 @@
 import SwiftUI
 
 struct RoomListView: View {
-    // TODO: Make dynamic with Cobine
-    @State var rooms: [Room] = TestRooms().rooms
+    @ObservedObject var roomStore : RoomStore = RoomStore()
     
     @State private var isEditMode: EditMode = .inactive
     
     var body: some View {
         NavigationView {
             List  {
-                ForEach(rooms) { room in
-                    HStack {
-                        Text(room.name)
-                        Text("(\(room.type.name))")
-                            .font(.footnote)
-                        room.type.icon
-                    }
+                ForEach(roomStore.rooms) { room in
+                    RoomListCell(room: room)
                 }
             }
+            .navigationBarTitle("Rooms")
+            .environment(\.editMode, self.$isEditMode)
+            .navigationBarItems(
+                trailing:
+                NavigationLink(destination: AddRoomView(roomStore: roomStore)) {
+                    Image(systemName: "pencil.tip.crop.circle.badge.plus")
+                }
+            )
         }
-        .navigationBarTitle("Rooms")
-        .environment(\.editMode, self.$isEditMode)
     }
 }
 
@@ -38,11 +38,16 @@ struct RoomListView_Previews: PreviewProvider {
     }
 }
 
-struct TestRooms {
-    let rooms: [Room] = [
-        Room(name: "Bedroom", order: 1, type: .bedroom),
-        Room(name: "Bathroom", order: 2, type: .bathroom),
-        Room(name: "TV Room", order: 3, type: .livingRoom)
-    ]
-}
 
+struct RoomListCell: View {
+    var room: Room
+    var body: some View {
+        HStack {
+            room.type.icon
+                .aspectRatio(contentMode: .fit)
+            Text(room.name)
+            Text("(\(room.type.name))")
+                .font(.footnote)
+        }
+    }
+}
