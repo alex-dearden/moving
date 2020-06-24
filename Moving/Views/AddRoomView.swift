@@ -78,7 +78,6 @@ struct AddRoomView_Previews: PreviewProvider {
 }
 
 struct DataInput: View {
-
     var title: String
     @Binding var userInput: String
 

@@ -46,4 +46,5 @@ struct Room: Identifiable {
     var name: String
     var order: Int
     var type: RoomType
+    var items: [Item] = []
 }

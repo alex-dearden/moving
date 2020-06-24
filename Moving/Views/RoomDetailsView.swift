@@ -9,21 +9,47 @@
 import SwiftUI
 
 struct RoomDetailsView: View {
+    let roomStore: RoomStore
     let selectedRoom: Room
+    @State var items: [Item] = []
     
     var body: some View {
-        VStack {
+        NavigationView {
+            List {
+                ForEach(items) { item in
+                    ItemView(item: item)
+                }
+                .navigationBarTitle(selectedRoom.name)
+                .navigationBarItems(
+//                    leading: EditButton(),
+                    trailing:
+                    NavigationLink(destination: AddRoomView(roomStore: roomStore)) {
+                        Text("Add")
+                    }
+                )
+            }
+        }
+
+/*        VStack {
             Text(selectedRoom.name)
                 .font(.title)
             Text("[\(selectedRoom.type.name)]")
                 .font(.footnote)
             selectedRoom.type.icon
-        }
+        }*/
     }
 }
 
 struct RoomDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomDetailsView(selectedRoom: TestRooms().rooms[0])
+        RoomDetailsView(roomStore: TestRooms(), selectedRoom: TestRooms().rooms[0])
+    }
+}
+
+struct ItemView: View {
+    let item: Item
+
+    var body: some View {
+        Text(item.name)
     }
 }

@@ -17,7 +17,7 @@ struct RoomListView: View {
         NavigationView {
             List  {
                 ForEach(roomStore.rooms) { room in
-                    RoomListCell(room: room)
+                    RoomListCell(roomStore: self.roomStore, room: room)
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: moveItems)
@@ -33,6 +33,7 @@ struct RoomListView: View {
             )
         }
     }
+    
     func deleteItems(at offets: IndexSet) {
         roomStore.rooms.remove(atOffsets: offets)
     }
@@ -45,16 +46,18 @@ struct RoomListView: View {
 
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomListView()
+        RoomListView(roomStore: TestRooms())
     }
 }
 
 
 struct RoomListCell: View {
+    let roomStore: RoomStore
     var room: Room
 
     var body: some View {
-        NavigationLink(destination: RoomDetailsView(selectedRoom: room)) {
+        // TODO: We only have a singl RoomStore, why pass it? Set it wherever it's needed
+        NavigationLink(destination: AddRoomView(room: room, forStore: roomStore)) {
             HStack {
                 room.type.icon
                     .aspectRatio(contentMode: .fit)

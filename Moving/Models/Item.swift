@@ -9,5 +9,4 @@ struct Item: Identifiable {
     let id: UUID = UUID()
     var name: String
     var order: Int
-    var room: Room
 }
