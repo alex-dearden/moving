@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		605223E9CAF6F189AAA33917 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6052278B6E610439D3BCE2B0 /* Item.swift */; };
+		6052264E62255D3C2A34C6DC /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605226B8DAB4475BD0E643C2 /* Listable.swift */; };
+		60522A85EE50E5A2F85C1F50 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605227EFE5AD7E301903D6AD /* Room.swift */; };
+		60522EDFDBA6149ED9DD583C /* RoomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605228058E9A483E17A958B1 /* RoomStore.swift */; };
 		FDBB847824A33ECF00589F64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB847724A33ECF00589F64 /* AppDelegate.swift */; };
 		FDBB847A24A33ECF00589F64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB847924A33ECF00589F64 /* SceneDelegate.swift */; };
-		FDBB847C24A33ECF00589F64 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB847B24A33ECF00589F64 /* ContentView.swift */; };
 		FDBB847E24A33ED000589F64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDBB847D24A33ED000589F64 /* Assets.xcassets */; };
 		FDBB848124A33ED000589F64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDBB848024A33ED000589F64 /* Preview Assets.xcassets */; };
 		FDBB848424A33ED000589F64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDBB848224A33ED000589F64 /* LaunchScreen.storyboard */; };
+		FDBB848C24A344D500589F64 /* RoomTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB848B24A344D500589F64 /* RoomTypeView.swift */; };
+		FDBB848E24A3455C00589F64 /* RoomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB848D24A3455C00589F64 /* RoomListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		605226B8DAB4475BD0E643C2 /* Listable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = "<group>"; };
+		6052278B6E610439D3BCE2B0 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		605227EFE5AD7E301903D6AD /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		605228058E9A483E17A958B1 /* RoomStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomStore.swift; sourceTree = "<group>"; };
 		FDBB847424A33ECF00589F64 /* Moving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDBB847724A33ECF00589F64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDBB847924A33ECF00589F64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FDBB847B24A33ECF00589F64 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FDBB847D24A33ED000589F64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDBB848024A33ED000589F64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FDBB848324A33ED000589F64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FDBB848524A33ED000589F64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDBB848B24A344D500589F64 /* RoomTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTypeView.swift; sourceTree = "<group>"; };
+		FDBB848D24A3455C00589F64 /* RoomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +47,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60522901C357D7965BECBDCC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				605227EFE5AD7E301903D6AD /* Room.swift */,
+				6052278B6E610439D3BCE2B0 /* Item.swift */,
+				605228058E9A483E17A958B1 /* RoomStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60522B6925F53D4C1CD5FB76 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				605226B8DAB4475BD0E643C2 /* Listable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		60522BD0B66FB328639E09F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FDBB848B24A344D500589F64 /* RoomTypeView.swift */,
+				FDBB848D24A3455C00589F64 /* RoomListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FDBB846B24A33ECF00589F64 = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +95,13 @@
 			children = (
 				FDBB847724A33ECF00589F64 /* AppDelegate.swift */,
 				FDBB847924A33ECF00589F64 /* SceneDelegate.swift */,
-				FDBB847B24A33ECF00589F64 /* ContentView.swift */,
 				FDBB847D24A33ED000589F64 /* Assets.xcassets */,
 				FDBB848224A33ED000589F64 /* LaunchScreen.storyboard */,
 				FDBB848524A33ED000589F64 /* Info.plist */,
 				FDBB847F24A33ED000589F64 /* Preview Content */,
+				60522901C357D7965BECBDCC /* Models */,
+				60522BD0B66FB328639E09F9 /* Views */,
+				60522B6925F53D4C1CD5FB76 /* Protocols */,
 			);
 			path = Moving;
 			sourceTree = "<group>";
@@ -147,8 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDBB847824A33ECF00589F64 /* AppDelegate.swift in Sources */,
+				FDBB848E24A3455C00589F64 /* RoomListView.swift in Sources */,
+				FDBB848C24A344D500589F64 /* RoomTypeView.swift in Sources */,
 				FDBB847A24A33ECF00589F64 /* SceneDelegate.swift in Sources */,
-				FDBB847C24A33ECF00589F64 /* ContentView.swift in Sources */,
+				60522A85EE50E5A2F85C1F50 /* Room.swift in Sources */,
+				605223E9CAF6F189AAA33917 /* Item.swift in Sources */,
+				6052264E62255D3C2A34C6DC /* Listable.swift in Sources */,
+				60522EDFDBA6149ED9DD583C /* RoomStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

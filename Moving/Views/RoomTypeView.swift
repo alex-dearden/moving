@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RoomTypeView.swift
 //  Moving
 //
 //  Created by Alex Dearden on 24/06/2020.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RoomTypeView: View {
     var body: some View {
-        Text("Hello, World!")
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct RoomTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RoomTypeView()
     }
 }
