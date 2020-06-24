@@ -12,15 +12,34 @@ import Combine
 struct AddRoomView: View {
     @ObservedObject var roomStore: RoomStore
 
-    @State private var name: String = ""
-    @State private var type: RoomType = .other
-    @State private var order: Int = 0
+    @State var room: Room?
+
+    @State var icon: Image = Image(systemName: "bed.double.fill")
+    @State var name: String = ""
+    @State var type: RoomType = .other
+    @State var order: Int = 0
+
+    init?(room: Room, forStore store: RoomStore) {
+        self.roomStore = store
+        self.icon = room.type.icon
+        self.name = room.name
+        self.type = room.type
+        self.order = room.order
+    }
+
+    init(roomStore: RoomStore) {
+        self.roomStore = roomStore
+    }
+
+    private func setButtonText() -> String {
+        return self.room != nil ? "Edit room" : "Add room"
+    }
 
     var body: some View {
 
         Form {
             Section(header: Text("Room Details")) {
-                Image(systemName: "bed.double.fill")
+                self.icon
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding()
@@ -34,7 +53,7 @@ struct AddRoomView: View {
             }
 
             Button(action: addRoom) {
-                Text("Add Room")
+                Text(self.setButtonText())
             }
         }
     }

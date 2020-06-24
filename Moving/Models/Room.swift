@@ -29,7 +29,7 @@ enum RoomType: CaseIterable {
     var icon: Image {
         switch self {
         case .livingRoom:
-            return Image(systemName: "airpods")
+            return Image(systemName: "film")
         case .bedroom:
             return Image(systemName: "xmark.icloud")
         case .kitchen:
