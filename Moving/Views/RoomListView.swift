@@ -19,18 +19,29 @@ struct RoomListView: View {
                 ForEach(roomStore.rooms) { room in
                     RoomListCell(room: room)
                 }
+                .onDelete(perform: deleteItems)
+                .onMove(perform: moveItems)
             }
             .navigationBarTitle("Rooms")
             .environment(\.editMode, self.$isEditMode)
             .navigationBarItems(
+                leading: EditButton(),
                 trailing:
                 NavigationLink(destination: AddRoomView(roomStore: roomStore)) {
-                    Image(systemName: "pencil.tip.crop.circle.badge.plus")
+                    Text("Add")
                 }
             )
         }
     }
+    func deleteItems(at offets: IndexSet) {
+        roomStore.rooms.remove(atOffsets: offets)
+    }
+    
+    func moveItems(from source: IndexSet, to destination: Int) {
+        roomStore.rooms.move(fromOffsets: source, toOffset: destination)
+    }
 }
+    
 
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
@@ -41,13 +52,16 @@ struct RoomListView_Previews: PreviewProvider {
 
 struct RoomListCell: View {
     var room: Room
+
     var body: some View {
-        HStack {
-            room.type.icon
-                .aspectRatio(contentMode: .fit)
-            Text(room.name)
-            Text("(\(room.type.name))")
-                .font(.footnote)
+        NavigationLink(destination: RoomDetailsView(selectedRoom: room)) {
+            HStack {
+                room.type.icon
+                    .aspectRatio(contentMode: .fit)
+                Text(room.name)
+                Text("(\(room.type.name))")
+                    .font(.footnote)
+            }
         }
     }
 }
