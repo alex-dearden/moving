@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct Item: Identifiable {
+struct Item: Identifiable, Codable {
     let id: UUID = UUID()
     var name: String
     var order: Int

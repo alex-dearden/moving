@@ -46,8 +46,8 @@ struct AddRoomView: View {
 
                 DataInput(title: "Name", userInput: $name)
                 Picker(selection: $type, label: Text("Room type")) {
-                    ForEach(RoomType.allCases, id: \.self) {
-                        Text($0.name)
+                    ForEach(RoomType.allCases, id: \.self) { room in
+                        Text(room.name)
                     }
                 }
             }

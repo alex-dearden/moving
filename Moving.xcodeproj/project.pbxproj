@@ -10,6 +10,7 @@
 		605223E9CAF6F189AAA33917 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6052278B6E610439D3BCE2B0 /* Item.swift */; };
 		6052264E62255D3C2A34C6DC /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605226B8DAB4475BD0E643C2 /* Listable.swift */; };
 		60522A85EE50E5A2F85C1F50 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605227EFE5AD7E301903D6AD /* Room.swift */; };
+		60522C120921CDB94428F04F /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605229B74E0ABC487E87D514 /* PersistenceManager.swift */; };
 		60522EDFDBA6149ED9DD583C /* RoomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605228058E9A483E17A958B1 /* RoomStore.swift */; };
 		FDBB847824A33ECF00589F64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB847724A33ECF00589F64 /* AppDelegate.swift */; };
 		FDBB847A24A33ECF00589F64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB847924A33ECF00589F64 /* SceneDelegate.swift */; };
@@ -28,6 +29,7 @@
 		6052278B6E610439D3BCE2B0 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		605227EFE5AD7E301903D6AD /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		605228058E9A483E17A958B1 /* RoomStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomStore.swift; sourceTree = "<group>"; };
+		605229B74E0ABC487E87D514 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		FDBB847424A33ECF00589F64 /* Moving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDBB847724A33ECF00589F64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDBB847924A33ECF00589F64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				605227EFE5AD7E301903D6AD /* Room.swift */,
 				6052278B6E610439D3BCE2B0 /* Item.swift */,
 				605228058E9A483E17A958B1 /* RoomStore.swift */,
+				605229B74E0ABC487E87D514 /* PersistenceManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				FDBB849424A3B12600589F64 /* AddItemView.swift in Sources */,
 				6052264E62255D3C2A34C6DC /* Listable.swift in Sources */,
 				60522EDFDBA6149ED9DD583C /* RoomStore.swift in Sources */,
+				60522C120921CDB94428F04F /* PersistenceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
