@@ -9,11 +9,18 @@ import Combine
 class RoomStore: ObservableObject {
     @Published var rooms: [Room] = []
 
-/*
+    private let persistenceManager: Persistenceable = PersistenceManager()
+
     init() {
-        self.rooms = TestRooms().rooms
+        rooms = persistenceManager.retrieveRooms()
     }
-*/
+
+    func saveRoom(_ room: Room) {
+        rooms.append(room)
+
+        persistenceManager.storeRooms(rooms: rooms)
+    }
+
 }
 
 class TestRooms: RoomStore {

@@ -6,11 +6,10 @@
 import Foundation
 
 protocol Persistenceable {
-    func storeRoom(room: Room)
     func storeRooms(rooms: [Room])
     func retrieveRooms() -> [Room]
     func storeItem(item: Item, for room: Room)
-    func storeItem(items: [Item], for room: Room)
+    func storeItems(items: [Item], for room: Room)
     func retrieveItems(for room: Room) -> [Item]
 }
 
@@ -19,11 +18,13 @@ class PersistenceManager: Persistenceable {
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
 
+/*
     func storeRoom(room: Room) {
         if let encoded = try? encoder.encode(room) {
             defaults.set(encoded, forKey: Key.room)
         }
     }
+*/
 
     func storeRooms(rooms: [Room]) {
         if let encoded = try? encoder.encode(rooms) {
@@ -37,7 +38,7 @@ class PersistenceManager: Persistenceable {
         }
     }
 
-    func storeItem(items: [Item], for room: Room) {
+    func storeItems(items: [Item], for room: Room) {
         if let encoded = try? encoder.encode(items) {
             defaults.set(encoded, forKey: Key.items)
         }
@@ -65,7 +66,6 @@ class PersistenceManager: Persistenceable {
     }
 
     private enum Key {
-        static let room = "savedRoom"
         static let item = "savedItem"
         static let rooms = "savedRooms"
         static let items = "savedItems"

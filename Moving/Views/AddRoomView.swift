@@ -19,6 +19,8 @@ struct AddRoomView: View {
     @State var type: RoomType = .other
     @State var order: Int = 0
 
+    private let persistenceManager: Persistenceable = PersistenceManager()
+
     init?(room: Room, forStore store: RoomStore) {
         self.roomStore = store
         self.icon = room.type.icon
@@ -66,7 +68,8 @@ struct AddRoomView: View {
 
         let newOrder = roomStore.rooms.count + 1
         let newRoom = Room(name: name, order: newOrder, type: type)
-        roomStore.rooms.append(newRoom)
+        roomStore.saveRoom(newRoom)
+
     }
 
 }
