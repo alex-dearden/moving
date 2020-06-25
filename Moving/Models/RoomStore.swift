@@ -43,6 +43,8 @@ class RoomStore: ObservableObject, Storable {
     func moveRoom(from source: IndexSet, to destination: Int) {
         // TODO: We need to implement this on this class' array
 //        rooms.move(fromOffsets: source, toOffset: destination)
+
+        persistRooms()
     }
 
     func addItem(_ item: Item, in room: Room) {
@@ -61,6 +63,8 @@ class RoomStore: ObservableObject, Storable {
         }
 
         rooms[roomIndex].items.remove(atOffsets: offset)
+
+        persistRooms()
     }
 }
 
