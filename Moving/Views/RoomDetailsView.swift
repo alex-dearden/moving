@@ -9,15 +9,14 @@
 import SwiftUI
 
 struct RoomDetailsView: View {
-    let roomStore: RoomStore
+    @ObservedObject var roomStore: RoomStore
     let selectedRoom: Room
-    @State var items: [Item] = []
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
-                    ItemView(item: item)
+                ForEach(selectedRoom.items) { item in
+                    ItemCell(roomStore: self.roomStore, room: self.selectedRoom, item: item)
                 }
                 .navigationBarTitle(selectedRoom.name)
                 .navigationBarItems(
@@ -29,14 +28,6 @@ struct RoomDetailsView: View {
                 )
             }
         }
-
-/*        VStack {
-            Text(selectedRoom.name)
-                .font(.title)
-            Text("[\(selectedRoom.type.name)]")
-                .font(.footnote)
-            selectedRoom.type.icon
-        }*/
     }
 }
 
@@ -46,10 +37,17 @@ struct RoomDetailsView_Previews: PreviewProvider {
     }
 }
 
-struct ItemView: View {
+struct ItemCell: View {
+    let roomStore: Storable
+    let room: Room
     let item: Item
 
     var body: some View {
-        Text(item.name)
+        NavigationLink(destination: AddItemView(roomStore: roomStore, room: room)) {
+            HStack {
+                Text(item.name)
+            }
+        }
+
     }
 }

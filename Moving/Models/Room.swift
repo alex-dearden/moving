@@ -104,11 +104,15 @@ extension RoomType: Decodable {
 struct Room: Identifiable, Codable {
     let id: UUID = UUID()
     var name: String
-    private var order: Int
+    var order: Int
     var type: RoomType
     var items: [Item] = []
 
+    // In order to use this, we would need to delete the room from roomstore.rooms, modify it and readd it
+    // And that would fuck the order up, unless we preserve it
+/*
     mutating func add(item: Item) {
         items.append(item)
     }
+*/
 }

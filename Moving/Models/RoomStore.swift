@@ -42,17 +42,21 @@ class RoomStore: ObservableObject, Storable {
     }
 
     func addItem(_ item: Item, in room: Room) {
-        var itemRoom = try? findRoom(with: room.id)
-        // TODO: edit room object inside the array!
-        // remove and re-add??? I guess there's no other way
-        itemRoom?.add(item: item)
+        guard let roomIndex = try? findRoom(with: room.id) else {
+            return
+        }
+
+        rooms[roomIndex].items.append(item)
 
         persistRooms()
     }
 
     func deleteItem(_ item: Item, in room: Room) {
-        var itemRoom = try? findRoom(with: room.id)
-        itemRoom?.items.removeAll { foundItem in
+        guard var roomIndex = try? findRoom(with: room.id) else {
+            return
+        }
+
+        rooms[roomIndex].items.removeAll { foundItem in
             foundItem.id == item.id
         }
     }
@@ -62,15 +66,15 @@ class RoomStore: ObservableObject, Storable {
 // MARK: Private methods
 
 private extension RoomStore {
-    func findRoom(with id: UUID) throws -> Room {
-        guard let itemRoom = (rooms.first { foundRoom in
+    func findRoom(with id: UUID) throws -> Int {
+        guard let roomIndex = (rooms.firstIndex { foundRoom in
             return foundRoom.id == id
         }) else {
             assertionFailure("Room with id not found!")
             throw StoreError.roomNotFoundById
         }
 
-        return itemRoom
+        return roomIndex
     }
 
     func persistRooms() {
