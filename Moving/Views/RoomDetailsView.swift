@@ -18,6 +18,8 @@ struct RoomDetailsView: View {
                 ForEach(selectedRoom.items) { item in
                     ItemCell(roomStore: self.roomStore, room: self.selectedRoom, item: item)
                 }
+                    .onDelete(perform: deleteItem)
+                    .onMove(perform: moveItem)
                 .navigationBarTitle(selectedRoom.name)
                 .navigationBarItems(
 //                    leading: EditButton(),
@@ -28,6 +30,14 @@ struct RoomDetailsView: View {
                 )
             }
         }
+    }
+
+    private func deleteItem(at offsets: IndexSet) {
+
+    }
+
+    private func moveItem(from: IndexSet, to: Int) {
+
     }
 }
 

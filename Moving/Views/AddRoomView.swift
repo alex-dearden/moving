@@ -69,7 +69,6 @@ struct AddRoomView: View {
         let newOrder = roomStore.rooms.count + 1
         let newRoom = Room(name: name, order: newOrder, type: type)
         roomStore.save(room: newRoom)
-
     }
 
 }

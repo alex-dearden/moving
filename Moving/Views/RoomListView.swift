@@ -19,8 +19,8 @@ struct RoomListView: View {
                 ForEach(roomStore.rooms) { room in
                     RoomListCell(roomStore: self.roomStore, room: room)
                 }
-                .onDelete(perform: deleteItems)
-                .onMove(perform: moveItems)
+                .onDelete(perform: deleteRoom)
+                .onMove(perform: moveRooms)
             }
             .navigationBarTitle("Rooms")
             .environment(\.editMode, self.$isEditMode)
@@ -34,12 +34,12 @@ struct RoomListView: View {
         }
     }
     
-    func deleteItems(at offets: IndexSet) {
-        roomStore.rooms.remove(atOffsets: offets)
+    func deleteRoom(at offsets: IndexSet) {
+        roomStore.deleteRoom(at: offsets)
     }
     
-    func moveItems(from source: IndexSet, to destination: Int) {
-        roomStore.rooms.move(fromOffsets: source, toOffset: destination)
+    func moveRooms(from source: IndexSet, to destination: Int) {
+        roomStore.moveRoom(from: source, to: destination)
     }
 }
     
