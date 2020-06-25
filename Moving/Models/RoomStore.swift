@@ -6,7 +6,15 @@
 import Foundation
 import Combine
 
-class RoomStore: ObservableObject {
+protocol Storable {
+    var rooms: [Room] { get set }
+    func save(room: Room)
+    func delete(room: Room)
+    func saveItem(_ item: Item, in room: Room)
+    func deleteItem(_ item: Item, in room: Room)
+}
+
+class RoomStore: ObservableObject, Storable {
     @Published var rooms: [Room] = []
 
     private let persistenceManager: Persistenceable = PersistenceManager()
@@ -15,12 +23,53 @@ class RoomStore: ObservableObject {
         rooms = persistenceManager.retrieveRooms()
     }
 
-    func saveRoom(_ room: Room) {
+    func save(room: Room) {
         rooms.append(room)
-
-        persistenceManager.storeRooms(rooms: rooms)
+        persistRooms()
     }
 
+    func delete(room: Room) {
+        rooms.removeAll { foundRoom in
+            foundRoom.name == room.name
+        }
+
+        persistRooms()
+    }
+
+    func saveItem(_ item: Item, in room: Room) {
+        guard var itemRoom = findRoom(with: room.id) else {
+            return
+        }
+        itemRoom.items.append(item)
+
+        persistRooms()
+    }
+
+    func deleteItem(_ item: Item, in room: Room) {
+        guard var itemRoom = findRoom(with: room.id) else {
+            return
+        }
+
+        itemRoom.items.removeAll { foundItem in
+            foundItem.id == item.id
+        }
+    }
+
+    // MARK: Private methods
+
+    private func findRoom(with id: UUID) -> Room? {
+        guard var itemRoom = (rooms.filter { foundRoom in
+            return foundRoom.id == id
+        }.first) else {
+            return nil
+        }
+
+        return itemRoom
+    }
+
+    private func persistRooms() {
+        persistenceManager.storeRooms(rooms: rooms)
+    }
 }
 
 class TestRooms: RoomStore {

@@ -56,8 +56,7 @@ struct RoomListCell: View {
     var room: Room
 
     var body: some View {
-        // TODO: We only have a singl RoomStore, why pass it? Set it wherever it's needed
-        NavigationLink(destination: AddRoomView(room: room, forStore: roomStore)) {
+        NavigationLink(destination: RoomDetailsView(roomStore: roomStore, selectedRoom: room)) {
             HStack {
                 room.type.icon
                     .aspectRatio(contentMode: .fit)
