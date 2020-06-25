@@ -19,6 +19,11 @@ class RoomStore: ObservableObject, Storable {
 
     private let persistenceManager: Persistenceable = PersistenceManager()
 
+    enum StoreError: Error {
+        case roomNotFoundById
+        case itemNotFoundById
+    }
+
     init() {
         rooms = persistenceManager.retrieveRooms()
     }
@@ -37,37 +42,36 @@ class RoomStore: ObservableObject, Storable {
     }
 
     func saveItem(_ item: Item, in room: Room) {
-        guard var itemRoom = findRoom(with: room.id) else {
-            return
-        }
-        itemRoom.items.append(item)
+        var itemRoom = try? findRoom(with: room.id)
+        itemRoom?.items.append(item)
 
         persistRooms()
     }
 
     func deleteItem(_ item: Item, in room: Room) {
-        guard var itemRoom = findRoom(with: room.id) else {
-            return
-        }
-
-        itemRoom.items.removeAll { foundItem in
+        var itemRoom = try? findRoom(with: room.id)
+        itemRoom?.items.removeAll { foundItem in
             foundItem.id == item.id
         }
     }
 
-    // MARK: Private methods
+}
 
-    private func findRoom(with id: UUID) -> Room? {
-        guard var itemRoom = (rooms.filter { foundRoom in
+// MARK: Private methods
+
+private extension RoomStore {
+    func findRoom(with id: UUID) throws -> Room {
+        guard let itemRoom = (rooms.filter { foundRoom in
             return foundRoom.id == id
         }.first) else {
-            return nil
+            fatalError("Room with id not found!")
+            throw StoreError.roomNotFoundById
         }
 
         return itemRoom
     }
 
-    private func persistRooms() {
+    func persistRooms() {
         persistenceManager.storeRooms(rooms: rooms)
     }
 }
