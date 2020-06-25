@@ -23,7 +23,7 @@ struct RoomDetailsView: View {
                 .navigationBarItems(
 //                    leading: EditButton(),
                     trailing:
-                    NavigationLink(destination: AddRoomView(roomStore: roomStore)) {
+                    NavigationLink(destination: AddItemView(roomStore: roomStore , room: selectedRoom)) {
                         Text("Add")
                     }
                 )

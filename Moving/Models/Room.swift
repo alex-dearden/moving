@@ -33,7 +33,7 @@ enum RoomType: CaseIterable {
         case .bedroom:
             return Image(systemName: "xmark.icloud")
         case .kitchen:
-            return Image(systemName: "macpro.gen3.server")
+            return Image(systemName: "gauge")
         default:
             return Image(systemName: "livephoto")
         }
@@ -104,7 +104,11 @@ extension RoomType: Decodable {
 struct Room: Identifiable, Codable {
     let id: UUID = UUID()
     var name: String
-    var order: Int
+    private var order: Int
     var type: RoomType
     var items: [Item] = []
+
+    mutating func add(item: Item) {
+        items.append(item)
+    }
 }

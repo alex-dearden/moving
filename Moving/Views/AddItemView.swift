@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct AddItemView: View {
+    let roomStore: Storable
     let room: Room
     @State var name: String = ""
 
@@ -23,12 +24,15 @@ struct AddItemView: View {
     }
 
     private func addItem() {
-
+        let foundRoom = roomStore.rooms.first { $0.id == room.id }
+        let newOrder = foundRoom?.items.count ?? 0
+        let newItem = Item(name: name, order: newOrder)
+        roomStore.addItem(newItem, in: room)
     }
 }
 
 struct AddItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AddItemView(room: TestRooms().rooms[0])
+        AddItemView(roomStore: TestRooms(), room: TestRooms().rooms[0])
     }
 }

@@ -10,7 +10,7 @@ protocol Storable {
     var rooms: [Room] { get set }
     func save(room: Room)
     func delete(room: Room)
-    func saveItem(_ item: Item, in room: Room)
+    func addItem(_ item: Item, in room: Room)
     func deleteItem(_ item: Item, in room: Room)
 }
 
@@ -41,9 +41,11 @@ class RoomStore: ObservableObject, Storable {
         persistRooms()
     }
 
-    func saveItem(_ item: Item, in room: Room) {
+    func addItem(_ item: Item, in room: Room) {
         var itemRoom = try? findRoom(with: room.id)
-        itemRoom?.items.append(item)
+        // TODO: edit room object inside the array!
+        // remove and re-add??? I guess there's no other way
+        itemRoom?.add(item: item)
 
         persistRooms()
     }
@@ -61,10 +63,10 @@ class RoomStore: ObservableObject, Storable {
 
 private extension RoomStore {
     func findRoom(with id: UUID) throws -> Room {
-        guard let itemRoom = (rooms.filter { foundRoom in
+        guard let itemRoom = (rooms.first { foundRoom in
             return foundRoom.id == id
-        }.first) else {
-            fatalError("Room with id not found!")
+        }) else {
+            assertionFailure("Room with id not found!")
             throw StoreError.roomNotFoundById
         }
 
