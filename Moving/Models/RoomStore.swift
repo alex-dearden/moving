@@ -12,7 +12,7 @@ protocol Storable {
     func deleteRoom(at offsets: IndexSet)
     func moveRoom(from source: IndexSet, to destination: Int)
     func addItem(_ item: Item, in room: Room)
-    func deleteItem(_ item: Item, in room: Room)
+    func deleteItem(at offset: IndexSet, in room: Room)
 }
 
 class RoomStore: ObservableObject, Storable {
@@ -41,7 +41,8 @@ class RoomStore: ObservableObject, Storable {
     }
 
     func moveRoom(from source: IndexSet, to destination: Int) {
-        rooms.move(fromOffsets: source, toOffset: destination)
+        // TODO: We need to implement this on this class' array
+//        rooms.move(fromOffsets: source, toOffset: destination)
     }
 
     func addItem(_ item: Item, in room: Room) {
@@ -54,16 +55,13 @@ class RoomStore: ObservableObject, Storable {
         persistRooms()
     }
 
-    func deleteItem(_ item: Item, in room: Room) {
+    func deleteItem(at offset: IndexSet, in room: Room) {
         guard var roomIndex = try? findRoom(with: room.id) else {
             return
         }
 
-        rooms[roomIndex].items.removeAll { foundItem in
-            foundItem.id == item.id
-        }
+        rooms[roomIndex].items.remove(atOffsets: offset)
     }
-
 }
 
 // MARK: Private methods
@@ -85,6 +83,7 @@ private extension RoomStore {
     }
 }
 
+// Only used for SwiftUI previews
 class TestRooms: RoomStore {
     override init() {
         super.init()

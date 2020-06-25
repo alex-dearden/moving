@@ -33,7 +33,7 @@ struct RoomDetailsView: View {
     }
 
     private func deleteItem(at offsets: IndexSet) {
-
+        roomStore.deleteItem(at: offsets, in: selectedRoom)
     }
 
     private func moveItem(from: IndexSet, to: Int) {
