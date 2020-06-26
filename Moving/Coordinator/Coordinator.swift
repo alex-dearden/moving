@@ -1,0 +1,14 @@
+//
+// Created by Alex Dearden on 26/06/2020.
+// Copyright (c) 2020 Alex Dearden. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+protocol Coordinator {
+    var childCoordinators: [Coordinator] { get set }
+    var navigationController: UINavigationController { get set }
+
+    func start()
+}

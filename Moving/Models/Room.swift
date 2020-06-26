@@ -26,16 +26,16 @@ enum RoomType: CaseIterable {
         }
     }
 
-    var icon: Image {
+    var icon: UIImage {
         switch self {
         case .livingRoom:
-            return Image(systemName: "film")
+            return UIImage(imageLiteralResourceName: "film")
         case .bedroom:
-            return Image(systemName: "xmark.icloud")
+            return UIImage(imageLiteralResourceName: "xmark.icloud")
         case .kitchen:
-            return Image(systemName: "gauge")
+            return UIImage(imageLiteralResourceName: "gauge")
         default:
-            return Image(systemName: "livephoto")
+            return UIImage(imageLiteralResourceName: "livephoto")
         }
     }
 }

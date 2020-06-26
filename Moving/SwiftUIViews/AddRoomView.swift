@@ -23,7 +23,7 @@ struct AddRoomView: View {
 
     init?(room: Room, forStore store: RoomStore) {
         self.roomStore = store
-        self.icon = room.type.icon
+//        self.icon = room.type.icon
         self.name = room.name
         self.type = room.type
         self.order = room.order
