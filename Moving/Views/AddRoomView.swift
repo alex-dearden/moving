@@ -46,7 +46,7 @@ struct AddRoomView: View {
                     .aspectRatio(contentMode: .fit)
                     .padding()
 
-                DataInput(title: "Name", userInput: $name)
+                DataInputView(title: "Name", userInput: $name)
                 Picker(selection: $type, label: Text("Room type")) {
                     ForEach(RoomType.allCases, id: \.self) { room in
                         Text(room.name)
@@ -79,17 +79,3 @@ struct AddRoomView_Previews: PreviewProvider {
     }
 }
 
-struct DataInput: View {
-    var title: String
-    @Binding var userInput: String
-
-    var body: some View {
-        VStack(alignment: HorizontalAlignment.leading) {
-            Text(title)
-                .font(.headline)
-            TextField("Enter \(title)", text: $userInput)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-        }
-            .padding()
-    }
-}

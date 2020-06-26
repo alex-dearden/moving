@@ -25,6 +25,7 @@
 		FDBB849624A4988D00589F64 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB849524A4988D00589F64 /* StoreTests.swift */; };
 		FDBB84A124A49AE000589F64 /* MovingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB84A024A49AE000589F64 /* MovingUITests.swift */; };
 		FDBB84A824A49B0400589F64 /* StoreTests.swift in Resources */ = {isa = PBXBuildFile; fileRef = FDBB849524A4988D00589F64 /* StoreTests.swift */; };
+		FDBB84AA24A6234800589F64 /* DataInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB84A924A6234800589F64 /* DataInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		FDBB849E24A49AE000589F64 /* MovingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDBB84A024A49AE000589F64 /* MovingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingUITests.swift; sourceTree = "<group>"; };
 		FDBB84A224A49AE000589F64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDBB84A924A6234800589F64 /* DataInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				FDBB848F24A35AF800589F64 /* RoomDetailsView.swift */,
 				FDBB849124A3613C00589F64 /* AddRoomView.swift */,
 				FDBB849324A3B12600589F64 /* AddItemView.swift */,
+				FDBB84A924A6234800589F64 /* DataInputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				FDBB849624A4988D00589F64 /* StoreTests.swift in Sources */,
 				FDBB847824A33ECF00589F64 /* AppDelegate.swift in Sources */,
 				FDBB848E24A3455C00589F64 /* RoomListView.swift in Sources */,
+				FDBB84AA24A6234800589F64 /* DataInputView.swift in Sources */,
 				FDBB848C24A344D500589F64 /* RoomTypeView.swift in Sources */,
 				FDBB847A24A33ECF00589F64 /* SceneDelegate.swift in Sources */,
 				60522A85EE50E5A2F85C1F50 /* Room.swift in Sources */,

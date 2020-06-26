@@ -11,23 +11,43 @@ import SwiftUI
 struct AddItemView: View {
     let roomStore: Storable
     let room: Room
-    @State var name: String = ""
+
+    @State private var name: String = ""
+
+    let existingItem: Item?
+
+    init(roomStore: Storable, room: Room) {
+        self.roomStore = roomStore
+        self.room = room
+        existingItem = nil
+    }
+
+    init(roomStore: Storable, room: Room, for item: Item) {
+        self.roomStore = roomStore
+        self.room = room
+        existingItem = item
+        self.name = item.name
+    }
 
     var body: some View {
         Form {
-            DataInput(title: "Name", userInput: $name)
+            DataInputView(title: "Name", userInput: $name)
 
-            Button(action: addItem) {
-                Text("Add item")
+            Button(action: addOrEditItem) {
+                Text(buttonTitle())
             }
         }
     }
 
-    private func addItem() {
+    private func addOrEditItem() {
         let foundRoom = roomStore.rooms.first { $0.id == room.id }
         let newOrder = foundRoom?.items.count ?? 0
         let newItem = Item(name: name, order: newOrder)
         roomStore.addItem(newItem, in: room)
+    }
+
+    private func buttonTitle() -> String {
+        return existingItem != nil ? "Save item" : "Add item"
     }
 }
 

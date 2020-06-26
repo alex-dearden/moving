@@ -20,6 +20,7 @@ struct RoomDetailsView: View {
                 }
                     .onDelete(perform: deleteItem)
                     .onMove(perform: moveItem)
+            }
                 .navigationBarTitle(selectedRoom.name)
                 .navigationBarItems(
 //                    leading: EditButton(),
@@ -28,7 +29,6 @@ struct RoomDetailsView: View {
                         Text("Add")
                     }
                 )
-            }
         }
     }
 
@@ -53,7 +53,7 @@ struct ItemCell: View {
     let item: Item
 
     var body: some View {
-        NavigationLink(destination: AddItemView(roomStore: roomStore, room: room)) {
+        NavigationLink(destination: AddItemView(roomStore: roomStore, room: room, for: item)) {
             HStack {
                 Text(item.name)
             }
