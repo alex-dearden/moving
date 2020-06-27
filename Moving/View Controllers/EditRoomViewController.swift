@@ -169,9 +169,8 @@ extension EditRoomViewController: UIImagePickerControllerDelegate {
     }
 }
 
-extension EditRoomViewController: UINavigationControllerDelegate {
-
-}
+// Necessary for accessing photos or camera
+extension EditRoomViewController: UINavigationControllerDelegate { }
 
 private extension EditRoomViewController {
     enum Defaults {
