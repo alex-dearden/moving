@@ -17,20 +17,32 @@ class EditRoomViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
     var roomStore: RoomStore!
+    var room: Room?
 
     private var selectedRoomType: RoomType!
+    private var isEdit = false {
+        didSet {
+            setButtonTitle()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        update()
     }
 
-    func update(from room: Room) {
-        editRoomButton.setTitle(Defaults.editRoom, for: .normal)
+    private func update() {
+        guard let room = room else {
+            return
+        }
+
+        isEdit = true
+
         nameTextField.text = room.name
         let roomTypeIndex = RoomType.allCases.firstIndex { $0.name == room.type.name } ?? 0
-        roomTypePicker.selectedRow(inComponent: roomTypeIndex)
+        roomTypePicker.selectRow(roomTypeIndex, inComponent: 0, animated: false)
     }
 
     private func setupUI() {
@@ -39,6 +51,11 @@ class EditRoomViewController: UIViewController {
         roomTypePicker.delegate = self
         roomTypePicker.dataSource = self
         selectedRoomType = RoomType.allCases.first
+    }
+
+    private func setButtonTitle() {
+        let title = isEdit ? Defaults.editRoom : Defaults.addRoom
+        editRoomButton.setTitle(title, for: .normal)
     }
 
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -51,11 +68,30 @@ class EditRoomViewController: UIViewController {
             return
         }
 
-        let newOrder = roomStore.rooms.count
-        // TODO: Set selected picker value
-        let newRoom = Room(name: newName, order: newOrder, type: selectedRoomType)
-        roomStore.addRoom(newRoom)
+        if isEdit {
+            editRoom()
+        } else {
+            addRoom(name: newName)
+        }
+
         dismiss()
+    }
+
+    private func editRoom() {
+        // TODO: Error handling to show message saying room name cannot be empty
+        guard let validName = nameTextField.text,
+            var room = room else {
+            return
+        }
+        room.name = validName
+        room.type = selectedRoomType
+        roomStore.editRoom(room)
+    }
+
+    private func addRoom(name: String) {
+        let newOrder = roomStore.rooms.count
+        let newRoom = Room(name: name, order: newOrder, type: selectedRoomType)
+        roomStore.addRoom(newRoom)
     }
 }
 

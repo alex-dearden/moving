@@ -9,6 +9,7 @@ import Combine
 protocol Storable {
     var rooms: [Room] { get set }
     func addRoom(_ room: Room)
+    func editRoom(_ room: Room)
     func deleteRoom(at index: Int)
     func moveRoom(from source: IndexSet, to destination: Int)
     func addItem(_ item: Item, in room: Room)
@@ -31,6 +32,17 @@ class RoomStore: ObservableObject, Storable {
 
     func addRoom(_ room: Room) {
         rooms.append(room)
+        persistRooms()
+    }
+
+    func editRoom(_ room: Room) {
+        guard let roomIndex = try? findRoom(with: room.id) else {
+            return
+        }
+
+        rooms[roomIndex].name = room.name
+        rooms[roomIndex].type = room.type
+
         persistRooms()
     }
 

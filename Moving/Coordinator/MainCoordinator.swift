@@ -31,7 +31,7 @@ class MainCoordinator: Coordinator {
         let vc = EditRoomViewController.instantiate()
         vc.coordinator = self
         vc.roomStore = roomStore
-        vc.update(from: room)
+        vc.room = room
         navigationController.pushViewController(vc, animated: false)
     }
 

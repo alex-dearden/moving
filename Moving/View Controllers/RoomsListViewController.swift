@@ -58,14 +58,19 @@ extension RoomsListViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, _, completion) in
-            self.roomStore.deleteRoom(at: indexPath.row)
-            self.tableview.deleteRows(at: [indexPath], with: .fade)
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, _, completion) in
+            self?.roomStore.deleteRoom(at: indexPath.row)
+            self?.tableview.deleteRows(at: [indexPath], with: .fade)
             completion(true)
         }
 
-        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, _, completion) in
-            self.coordinator?.editRoom(room: self.roomStore.rooms[indexPath.row], in: self.roomStore)
+        let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
+            guard let self = self else {
+                assertionFailure("No valid room")
+                return
+            }
+            let room = self.roomStore.rooms[indexPath.row]
+            self.coordinator?.editRoom(room: room, in: self.roomStore)
             completion(true)
         }
 
