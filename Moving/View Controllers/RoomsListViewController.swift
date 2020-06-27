@@ -14,8 +14,7 @@ class RoomsListViewController: UIViewController {
     @IBOutlet private weak var tableview: UITableView!
 
     private var roomStore = RoomStore()
-    private var rooms: [Room] = []
-    
+
     private var cancellable: AnyCancellable?
 
     weak var coordinator: MainCoordinator?
@@ -24,7 +23,6 @@ class RoomsListViewController: UIViewController {
         super.viewDidLoad()
 
         cancellable = roomStore.$rooms.sink { [weak self] rooms in
-            self?.rooms = rooms
             self?.tableview.reloadData()
         }
     }
@@ -38,13 +36,13 @@ class RoomsListViewController: UIViewController {
 
 extension RoomsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rooms.count
+        roomStore.rooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell") as! RoomListCell
 
-        let room = rooms[indexPath.row]
+        let room = roomStore.rooms[indexPath.row]
 
         cell.configure(for: room)
 
@@ -53,22 +51,26 @@ extension RoomsListViewController: UITableViewDataSource {
 }
 
 extension RoomsListViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let room = rooms[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let room = roomStore.rooms[indexPath.row]
 
         coordinator?.listItems(for: room, in: roomStore)
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            rooms.remove(at: indexPath.row) // TODO: We want a single source of truth: the roomStore.rooms, not our local rooms instance var!
-            tableview.deleteRows(at: [indexPath], with: .fade)
-            roomStore.deleteRoom(at: indexPath.row)
-        } else if editingStyle == .insert {
-
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.roomStore.deleteRoom(at: indexPath.row)
+            self.tableview.deleteRows(at: [indexPath], with: .fade)
         }
-    }
 
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            self.coordinator?.editRoom(room: self.roomStore.rooms[indexPath.row], in: self.roomStore)
+        }
+
+        edit.backgroundColor = .systemBlue
+
+        return [delete, edit]
     }
+}
 
 extension RoomsListViewController: Storyboarded { }

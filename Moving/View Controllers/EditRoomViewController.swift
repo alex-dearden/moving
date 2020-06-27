@@ -18,6 +18,8 @@ class EditRoomViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     var roomStore: RoomStore!
 
+    private var selectedRoomType: RoomType!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,13 +29,16 @@ class EditRoomViewController: UIViewController {
     func update(from room: Room) {
         editRoomButton.setTitle(Defaults.editRoom, for: .normal)
         nameTextField.text = room.name
-        // TODO: Implement this picker selection
-        roomTypePicker.selectedRow(inComponent: 3)
+        let roomTypeIndex = RoomType.allCases.firstIndex { $0.name == room.type.name } ?? 0
+        roomTypePicker.selectedRow(inComponent: roomTypeIndex)
     }
 
     private func setupUI() {
         nameTextField.becomeFirstResponder()
         editRoomButton.setTitle(Defaults.addRoom, for: .normal)
+        roomTypePicker.delegate = self
+        roomTypePicker.dataSource = self
+        selectedRoomType = RoomType.allCases.first
     }
 
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -48,9 +53,29 @@ class EditRoomViewController: UIViewController {
 
         let newOrder = roomStore.rooms.count
         // TODO: Set selected picker value
-        let newRoom = Room(name: newName, order: newOrder, type: .other)
+        let newRoom = Room(name: newName, order: newOrder, type: selectedRoomType)
         roomStore.addRoom(newRoom)
         dismiss()
+    }
+}
+
+extension EditRoomViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return RoomType.allCases.count
+    }
+}
+
+extension EditRoomViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        RoomType.allCases[row].name
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedRoomType = RoomType.allCases[row]
     }
 }
 
