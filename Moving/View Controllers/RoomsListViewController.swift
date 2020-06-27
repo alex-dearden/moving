@@ -57,20 +57,23 @@ extension RoomsListViewController: UITableViewDelegate {
         coordinator?.listItems(for: room, in: roomStore)
     }
 
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, _, completion) in
             self.roomStore.deleteRoom(at: indexPath.row)
             self.tableview.deleteRows(at: [indexPath], with: .fade)
+            completion(true)
         }
 
-        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, _, completion) in
             self.coordinator?.editRoom(room: self.roomStore.rooms[indexPath.row], in: self.roomStore)
+            completion(true)
         }
 
         edit.backgroundColor = .systemBlue
 
-        return [delete, edit]
+        return UISwipeActionsConfiguration(actions: [delete, edit])
     }
+
 }
 
 extension RoomsListViewController: Storyboarded { }
