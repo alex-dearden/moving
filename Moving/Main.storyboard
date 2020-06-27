@@ -203,12 +203,6 @@
                                     <constraint firstAttribute="width" secondItem="hoD-Yj-ofY" secondAttribute="height" multiplier="4:3" id="4Cf-UJ-wSi"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to add image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-XF-GnL">
-                                <rect key="frame" x="48" y="179" width="318" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDD-Au-aRn">
                                 <rect key="frame" x="331" y="525.5" width="67" height="30"/>
                                 <state key="normal" title="Add room"/>
@@ -220,13 +214,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="mwg-XF-GnL" firstAttribute="trailing" secondItem="hoD-Yj-ofY" secondAttribute="trailing" constant="-24" id="0Cd-kX-aXU"/>
                             <constraint firstItem="aJ0-mD-IeL" firstAttribute="leading" secondItem="1zY-Fb-maN" secondAttribute="leading" id="1yk-eK-wRB"/>
                             <constraint firstItem="hoD-Yj-ofY" firstAttribute="leading" secondItem="Fo6-Jq-tBT" secondAttribute="leading" constant="24" id="BEn-Vt-ost"/>
                             <constraint firstItem="aJ0-mD-IeL" firstAttribute="centerY" secondItem="FDD-Au-aRn" secondAttribute="centerY" id="G6d-sJ-5es"/>
-                            <constraint firstItem="mwg-XF-GnL" firstAttribute="centerY" secondItem="hoD-Yj-ofY" secondAttribute="centerY" id="HHa-sn-JQX"/>
                             <constraint firstItem="hoD-Yj-ofY" firstAttribute="top" secondItem="Fo6-Jq-tBT" secondAttribute="top" constant="8" id="KwH-er-D7c"/>
-                            <constraint firstItem="mwg-XF-GnL" firstAttribute="leading" secondItem="hoD-Yj-ofY" secondAttribute="leading" constant="24" id="OZv-Zd-rjv"/>
                             <constraint firstItem="FDD-Au-aRn" firstAttribute="trailing" secondItem="1zY-Fb-maN" secondAttribute="trailing" id="PPd-LT-5Zz"/>
                             <constraint firstItem="1zY-Fb-maN" firstAttribute="trailing" secondItem="Dnp-2j-bUM" secondAttribute="trailing" id="Pys-Mr-hl2"/>
                             <constraint firstItem="1zY-Fb-maN" firstAttribute="top" secondItem="Dnp-2j-bUM" secondAttribute="bottom" constant="16" id="Sd2-Y0-mb3"/>
@@ -247,7 +238,6 @@
                         <outlet property="nameTextField" destination="Dnp-2j-bUM" id="0iw-lK-nfH"/>
                         <outlet property="newItemLabel" destination="bOu-Ri-Olf" id="a15-GQ-5vX"/>
                         <outlet property="roomTypePicker" destination="1zY-Fb-maN" id="E2e-zR-wvh"/>
-                        <outlet property="tapToAddLabel" destination="mwg-XF-GnL" id="cAs-K9-9UF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydQ-vI-39h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,7 +13,6 @@ class EditRoomViewController: UIViewController {
     // TODO: Create a single view for item and room and add them to their respective controllers
     
     @IBOutlet private weak var imageView: ImageContainer!
-    @IBOutlet private weak var tapToAddLabel: UILabel!
     @IBOutlet private weak var newItemLabel: UILabel!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var roomTypePicker: UIPickerView!
@@ -23,7 +22,6 @@ class EditRoomViewController: UIViewController {
     var roomStore: RoomStore!
     var room: Room?
 
-    private let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addImage))
     private var selectedRoomType: RoomType!
     private var isEdit = false {
         didSet {
@@ -57,10 +55,6 @@ class EditRoomViewController: UIViewController {
         dismiss()
     }
 
-    @objc private func addImage() {
-        debugPrint("Get access to camera and take picture")
-    }
-
     private func update() {
         guard let room = room else {
             return
@@ -79,8 +73,6 @@ class EditRoomViewController: UIViewController {
         roomTypePicker.delegate = self
         roomTypePicker.dataSource = self
         selectedRoomType = RoomType.allCases.first
-
-        [imageView, tapToAddLabel].forEach { $0.addGestureRecognizer(tapGesture) }
     }
 
     private func setButtonTitle() {
