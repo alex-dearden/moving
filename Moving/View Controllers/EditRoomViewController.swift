@@ -140,6 +140,7 @@ extension EditRoomViewController: UIPickerViewDelegate {
     }
 }
 
+// TODO: Create a separate object to deal with this so it can be reused
 extension EditRoomViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true)
@@ -148,7 +149,7 @@ extension EditRoomViewController: UIImagePickerControllerDelegate {
 
         // NOTE: Necessary to be able to test with simulator
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            guard let image = info[.editedImage] as? UIImage else {
+            guard let validImage = info[.editedImage] as? UIImage else {
                 assertionFailure("No image found")
                 return
             }
