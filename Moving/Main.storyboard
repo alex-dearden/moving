@@ -197,7 +197,7 @@
                                     <action selector="cancelButtonTapped:" destination="WQA-wt-Jk9" eventType="touchUpInside" id="zJT-Rz-tE5"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hoD-Yj-ofY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hoD-Yj-ofY" customClass="ImageContainer" customModule="Moving" customModuleProvider="target">
                                 <rect key="frame" x="24" y="52" width="366" height="274.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hoD-Yj-ofY" secondAttribute="height" multiplier="4:3" id="4Cf-UJ-wSi"/>

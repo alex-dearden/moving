@@ -12,7 +12,7 @@ class EditRoomViewController: UIViewController {
 
     // TODO: Create a single view for item and room and add them to their respective controllers
     
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: ImageContainer!
     @IBOutlet private weak var tapToAddLabel: UILabel!
     @IBOutlet private weak var newItemLabel: UILabel!
     @IBOutlet private weak var nameTextField: UITextField!
@@ -79,16 +79,8 @@ class EditRoomViewController: UIViewController {
         roomTypePicker.delegate = self
         roomTypePicker.dataSource = self
         selectedRoomType = RoomType.allCases.first
-        setImageBorder()
 
         [imageView, tapToAddLabel].forEach { $0.addGestureRecognizer(tapGesture) }
-    }
-
-    // TODO: Put this into a class for the imageView
-    private func setImageBorder() {
-        imageView.layer.cornerRadius = 7
-        imageView.layer.borderColor = UIColor.gray.cgColor
-        imageView.layer.borderWidth = 1
     }
 
     private func setButtonTitle() {
