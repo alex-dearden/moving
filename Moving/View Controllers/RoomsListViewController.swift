@@ -31,6 +31,7 @@ class RoomsListViewController: UIViewController {
     
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        coordinator?.addRoom(roomStore)
     }
     
 }
@@ -55,7 +56,7 @@ extension RoomsListViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let room = rooms[indexPath.row]
 
-        coordinator?.listItems(for: room)
+        coordinator?.listItems(for: room, in: roomStore)
     }
 }
 

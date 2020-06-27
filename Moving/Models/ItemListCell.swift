@@ -15,5 +15,7 @@ class ItemListCell: UITableViewCell {
         name.text = item.name
     }
 
-
+    func toggleSwitch(for item: Item) {
+        toggleSwitch.isOn = toggleSwitch.isOn ? false : true
+    }
 }

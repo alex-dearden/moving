@@ -8,7 +8,7 @@ import Combine
 
 protocol Storable {
     var rooms: [Room] { get set }
-    func save(room: Room)
+    func addRoom(_ room: Room)
     func deleteRoom(at offsets: IndexSet)
     func moveRoom(from source: IndexSet, to destination: Int)
     func addItem(_ item: Item, in room: Room)
@@ -29,7 +29,7 @@ class RoomStore: ObservableObject, Storable {
         rooms = persistenceManager.retrieveRooms()
     }
 
-    func save(room: Room) {
+    func addRoom(_ room: Room) {
         rooms.append(room)
         persistRooms()
     }

@@ -20,17 +20,34 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: false)
     }
 
-    func editRoom(_ room: Room) {
+    func addRoom(_ roomStore: RoomStore) {
         let vc = EditRoomViewController.instantiate()
         vc.coordinator = self
-        vc.room = room
+        vc.roomStore = roomStore
         navigationController.pushViewController(vc, animated: false)
     }
 
-    func listItems(for room: Room) {
+    func editRoom(room: Room, in roomStore: RoomStore) {
+        let vc = EditRoomViewController.instantiate()
+        vc.coordinator = self
+        vc.roomStore = roomStore
+        vc.update(from: room)
+        navigationController.pushViewController(vc, animated: false)
+    }
+
+    func listItems(for room: Room, in roomStore: RoomStore) {
         let vc = ItemsListViewController.instantiate()
         vc.coordinator = self
         vc.room = room
+        vc.roomStore = roomStore
+        navigationController.pushViewController(vc, animated: false)
+    }
+
+    func editItem(item: Item, in roomStore: RoomStore) {
+        let vc = EditItemViewController.instantiate()
+        vc.coordinator = self
+        vc.roomStore = roomStore
+        vc.item = item
         navigationController.pushViewController(vc, animated: false)
     }
 }

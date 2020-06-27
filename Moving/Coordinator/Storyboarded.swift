@@ -8,6 +8,7 @@ import UIKit
 
 protocol Storyboarded {
     static func instantiate() -> Self
+    func dismiss()
 }
 
 extension Storyboarded where Self: UIViewController {
@@ -23,5 +24,9 @@ extension Storyboarded where Self: UIViewController {
 
         // instantiate a view controller with that identifier, and force cast as the type that was requested
         return storyboard.instantiateViewController(withIdentifier: className) as! Self
+    }
+
+    func dismiss() {
+        navigationController?.popViewController(animated: true)
     }
 }
