@@ -55,8 +55,7 @@ class EditRoomViewController: UIViewController {
         dismiss()
     }
 
-    @objc private func addImage() {
-        debugPrint("Get access to camera and take picture")
+    private func addImage() {
         let vc = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             vc.sourceType = .camera
@@ -88,13 +87,7 @@ class EditRoomViewController: UIViewController {
         roomTypePicker.dataSource = self
         selectedRoomType = RoomType.allCases.first
 
-        setupTapGesture()
-    }
-
-    private func setupTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addImage))
-        imageView.addGestureRecognizer(tapGesture)
-        imageView.isUserInteractionEnabled = true
+        imageView.tapDelegate = self
     }
 
     private func setButtonTitle() {
@@ -117,6 +110,12 @@ class EditRoomViewController: UIViewController {
         let newOrder = roomStore.rooms.count
         let newRoom = Room(name: name, order: newOrder, type: selectedRoomType)
         roomStore.addRoom(newRoom)
+    }
+}
+
+extension EditRoomViewController: ImageTappedDelegate {
+    func wasTapped() {
+        addImage()
     }
 }
 

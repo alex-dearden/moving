@@ -6,7 +6,13 @@
 import Foundation
 import UIKit
 
+protocol ImageTappedDelegate: class {
+    func wasTapped()
+}
+
 class ImageContainer: UIImageView {
+
+    weak var tapDelegate: ImageTappedDelegate?
 
     private let label = UILabel()
 
@@ -34,6 +40,7 @@ class ImageContainer: UIImageView {
         layer.borderWidth = 1
         contentMode = .scaleAspectFit
         setupLabel()
+        setupTapGesture()
     }
 
     private func setupLabel() {
@@ -47,6 +54,19 @@ class ImageContainer: UIImageView {
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Defaults.padding),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Defaults.padding),
         ])
+    }
+}
+
+// MARK: Tap gesture
+private extension ImageContainer {
+    func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(wasTapped))
+        addGestureRecognizer(tapGesture)
+        isUserInteractionEnabled = true
+    }
+
+    @objc func wasTapped() {
+        tapDelegate?.wasTapped()
     }
 }
 
