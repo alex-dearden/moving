@@ -29,6 +29,10 @@ class RoomsListViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+    }
+    
 }
 
 extension RoomsListViewController: UITableViewDataSource {
@@ -41,7 +45,7 @@ extension RoomsListViewController: UITableViewDataSource {
 
         let room = rooms[indexPath.row]
 
-        cell.configure(from: room)
+        cell.configure(for: room)
 
         return cell
     }
@@ -51,7 +55,7 @@ extension RoomsListViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let room = rooms[indexPath.row]
 
-        coordinator?.editRoom(room)
+        coordinator?.listItems(for: room)
     }
 }
 

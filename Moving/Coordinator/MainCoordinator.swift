@@ -26,4 +26,11 @@ class MainCoordinator: Coordinator {
         vc.room = room
         navigationController.pushViewController(vc, animated: false)
     }
+
+    func listItems(for room: Room) {
+        let vc = ItemsListViewController.instantiate()
+        vc.coordinator = self
+        vc.room = room
+        navigationController.pushViewController(vc, animated: false)
+    }
 }

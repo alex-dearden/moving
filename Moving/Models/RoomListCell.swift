@@ -26,7 +26,7 @@ class RoomListCell: UITableViewCell {
 
     }
 
-    func configure(from room: Room) {
+    func configure(for room: Room) {
         name.text = room.name
         roomType.text = room.type.name
     }
