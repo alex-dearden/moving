@@ -7,13 +7,18 @@ import Foundation
 import SwiftUI
 
 enum RoomType: CaseIterable {
-    case bedroom
     case livingRoom
+    case bedroom
     case kitchen
     case diningRoom
     case bathroom
     case office
     case other
+
+    static var all: [String] {
+        let sortedArray = RoomType.allCases.map { $0.name }.sorted()
+        return sortedArray
+    }
 
     var name: String {
         switch self {
