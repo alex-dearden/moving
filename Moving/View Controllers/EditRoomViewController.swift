@@ -153,6 +153,8 @@ extension EditRoomViewController: UIImagePickerControllerDelegate {
                 assertionFailure("No image found")
                 return
             }
+
+            image = validImage
         } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
             guard let validImage = info[.originalImage] as? UIImage else {
                 assertionFailure("Not a valid image")
