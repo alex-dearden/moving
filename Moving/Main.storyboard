@@ -198,10 +198,19 @@
                                     <action selector="addItemTapped:" destination="zUd-za-Y0u" eventType="touchUpInside" id="y66-pc-gJs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ0-mD-IeL">
+                                <rect key="frame" x="350" y="251" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="WQA-wt-Jk9" eventType="touchUpInside" id="zJT-Rz-tE5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="FDD-Au-aRn" firstAttribute="leading" secondItem="Dnp-2j-bUM" secondAttribute="leading" id="2J9-cL-yww"/>
+                            <constraint firstItem="aJ0-mD-IeL" firstAttribute="centerY" secondItem="FDD-Au-aRn" secondAttribute="centerY" id="G6d-sJ-5es"/>
+                            <constraint firstItem="aJ0-mD-IeL" firstAttribute="trailing" secondItem="1zY-Fb-maN" secondAttribute="trailing" id="MSo-pc-vA1"/>
                             <constraint firstItem="bOu-Ri-Olf" firstAttribute="top" secondItem="Fo6-Jq-tBT" secondAttribute="top" constant="24" id="OSS-Ny-fqp"/>
                             <constraint firstItem="1zY-Fb-maN" firstAttribute="trailing" secondItem="Dnp-2j-bUM" secondAttribute="trailing" id="Pys-Mr-hl2"/>
                             <constraint firstItem="1zY-Fb-maN" firstAttribute="top" secondItem="Dnp-2j-bUM" secondAttribute="bottom" constant="16" id="Sd2-Y0-mb3"/>
@@ -222,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydQ-vI-39h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="761"/>
+            <point key="canvasLocation" x="747.82608695652175" y="760.71428571428567"/>
         </scene>
         <!--Edit Item View Controller-->
         <scene sceneID="XwZ-Fr-aBh">
@@ -249,8 +258,8 @@
                                     <constraint firstAttribute="height" constant="80" id="DJB-fM-HJN"/>
                                 </constraints>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhE-RZ-Y5u">
-                                <rect key="frame" x="12" y="262" width="62" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhE-RZ-Y5u">
+                                <rect key="frame" x="16" y="259" width="62" height="30"/>
                                 <state key="normal" title="Add item"/>
                                 <connections>
                                     <action selector="addItemTapped:" destination="zUd-za-Y0u" eventType="touchUpInside" id="YCD-Ag-bkX"/>

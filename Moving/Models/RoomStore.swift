@@ -9,7 +9,7 @@ import Combine
 protocol Storable {
     var rooms: [Room] { get set }
     func addRoom(_ room: Room)
-    func deleteRoom(at offsets: IndexSet)
+    func deleteRoom(at index: Int)
     func moveRoom(from source: IndexSet, to destination: Int)
     func addItem(_ item: Item, in room: Room)
     func deleteItem(at offset: IndexSet, in room: Room)
@@ -34,8 +34,8 @@ class RoomStore: ObservableObject, Storable {
         persistRooms()
     }
 
-    func deleteRoom(at offsets: IndexSet) {
-        rooms.remove(atOffsets: offsets)
+    func deleteRoom(at index: Int) {
+        rooms.remove(at: index)
 
         persistRooms()
     }

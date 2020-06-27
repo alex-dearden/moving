@@ -32,7 +32,12 @@ class EditRoomViewController: UIViewController {
     }
 
     private func setupUI() {
+        nameTextField.becomeFirstResponder()
         editRoomButton.setTitle(Defaults.addRoom, for: .normal)
+    }
+
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        dismiss()
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {

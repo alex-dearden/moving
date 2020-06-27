@@ -58,6 +58,17 @@ extension RoomsListViewController: UITableViewDelegate {
 
         coordinator?.listItems(for: room, in: roomStore)
     }
-}
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            rooms.remove(at: indexPath.row) // TODO: We want a single source of truth: the roomStore.rooms, not our local rooms instance var!
+            tableview.deleteRows(at: [indexPath], with: .fade)
+            roomStore.deleteRoom(at: indexPath.row)
+        } else if editingStyle == .insert {
+
+        }
+    }
+
+    }
 
 extension RoomsListViewController: Storyboarded { }
