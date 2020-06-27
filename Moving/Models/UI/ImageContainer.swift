@@ -9,7 +9,6 @@ import UIKit
 class ImageContainer: UIImageView {
 
     private let label = UILabel()
-    private let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addImage))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,17 +27,13 @@ class ImageContainer: UIImageView {
         label.isHidden = true
     }
 
-    @objc private func addImage() {
-        debugPrint("Get access to camera and take picture")
-    }
 
     private func setup() {
         layer.cornerRadius = 7
         layer.borderColor = UIColor.gray.cgColor
         layer.borderWidth = 1
+        contentMode = .scaleAspectFit
         setupLabel()
-
-        [self, label].forEach { $0.addGestureRecognizer(tapGesture) }
     }
 
     private func setupLabel() {
@@ -49,8 +44,6 @@ class ImageContainer: UIImageView {
 
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-//            label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            label.heightAnchor.constraint(equalToConstant: 40),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Defaults.padding),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Defaults.padding),
         ])

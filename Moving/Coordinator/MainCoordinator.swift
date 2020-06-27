@@ -17,14 +17,14 @@ class MainCoordinator: Coordinator {
     func start() {
         let vc = RoomsListViewController.instantiate()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
     }
 
     func addRoom(_ roomStore: RoomStore) {
         let vc = EditRoomViewController.instantiate()
         vc.coordinator = self
         vc.roomStore = roomStore
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
     }
 
     func editRoom(room: Room, in roomStore: RoomStore) {
@@ -32,7 +32,7 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
         vc.roomStore = roomStore
         vc.room = room
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
     }
 
     func listItems(for room: Room, in roomStore: RoomStore) {
@@ -40,7 +40,7 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
         vc.room = room
         vc.roomStore = roomStore
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
     }
 
     func editItem(item: Item, in roomStore: RoomStore) {
@@ -48,6 +48,6 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
         vc.roomStore = roomStore
         vc.item = item
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
     }
 }

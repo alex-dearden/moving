@@ -55,6 +55,20 @@ class EditRoomViewController: UIViewController {
         dismiss()
     }
 
+    @objc private func addImage() {
+        debugPrint("Get access to camera and take picture")
+        let vc = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            vc.sourceType = .camera
+            vc.allowsEditing = true
+        } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            vc.sourceType = .savedPhotosAlbum
+            vc.allowsEditing = false
+        }
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+
     private func update() {
         guard let room = room else {
             return
@@ -73,6 +87,14 @@ class EditRoomViewController: UIViewController {
         roomTypePicker.delegate = self
         roomTypePicker.dataSource = self
         selectedRoomType = RoomType.allCases.first
+
+        setupTapGesture()
+    }
+
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addImage))
+        imageView.addGestureRecognizer(tapGesture)
+        imageView.isUserInteractionEnabled = true
     }
 
     private func setButtonTitle() {
@@ -116,6 +138,39 @@ extension EditRoomViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedRoomType = RoomType.allCases[row]
     }
+}
+
+extension EditRoomViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true)
+
+        var image: UIImage!
+
+        // NOTE: Necessary to be able to test with simulator
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            guard let image = info[.editedImage] as? UIImage else {
+                assertionFailure("No image found")
+                return
+            }
+        } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            guard let validImage = info[.originalImage] as? UIImage else {
+                assertionFailure("Not a valid image")
+                return
+            }
+
+            image = validImage
+        }
+
+        imageView.loadImage(image)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+}
+
+extension EditRoomViewController: UINavigationControllerDelegate {
+
 }
 
 private extension EditRoomViewController {
