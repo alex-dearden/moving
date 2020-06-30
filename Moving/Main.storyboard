@@ -49,10 +49,10 @@
                                             <constraints>
                                                 <constraint firstItem="4FQ-R6-dft" firstAttribute="centerY" secondItem="kuk-qa-0qY" secondAttribute="centerY" id="4Li-SK-7fD"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dxZ-5g-TRW" secondAttribute="trailing" constant="24" id="4Mp-MT-hFL"/>
+                                                <constraint firstItem="kuk-qa-0qY" firstAttribute="centerY" secondItem="pSe-iT-lhD" secondAttribute="centerY" id="Aam-cb-n8U"/>
                                                 <constraint firstItem="4FQ-R6-dft" firstAttribute="leading" secondItem="kuk-qa-0qY" secondAttribute="trailing" constant="7" id="NPJ-wC-xjH"/>
                                                 <constraint firstItem="kuk-qa-0qY" firstAttribute="leading" secondItem="pSe-iT-lhD" secondAttribute="leading" constant="8" id="qoV-UR-RYs"/>
                                                 <constraint firstItem="dxZ-5g-TRW" firstAttribute="centerY" secondItem="4FQ-R6-dft" secondAttribute="centerY" id="rFf-V6-tne"/>
-                                                <constraint firstItem="kuk-qa-0qY" firstAttribute="centerY" secondItem="pSe-iT-lhD" secondAttribute="centerY" id="uYM-1W-I2W"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
