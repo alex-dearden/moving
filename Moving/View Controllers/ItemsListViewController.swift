@@ -18,7 +18,7 @@ class ItemsListViewController: UIViewController {
 
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-
+        coordinator?.addItem(for: room, in: roomStore)
     }
     
 }

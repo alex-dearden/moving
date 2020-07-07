@@ -13,6 +13,7 @@ protocol Storable {
     func deleteRoom(at index: Int)
     func moveRoom(from source: IndexSet, to destination: Int)
     func addItem(_ item: Item, in room: Room)
+    func editItem(_ item: Item, in room: Room)
     func deleteItem(at offset: IndexSet, in room: Room)
 }
 
@@ -69,6 +70,18 @@ class RoomStore: ObservableObject, Storable {
         persistRooms()
     }
 
+    func editItem(_ item: Item, in room: Room) {
+        guard let roomIndex = try? findRoom(with: room.id),
+            let itemIndex = try? findItem(with: item.id, in: room) else {
+            return
+        }
+
+        rooms[roomIndex].items[itemIndex].name = item.name
+        rooms[roomIndex].items[itemIndex].type = item.type
+
+        persistRooms()
+    }
+
     func deleteItem(at offset: IndexSet, in room: Room) {
         guard var roomIndex = try? findRoom(with: room.id) else {
             return
@@ -92,6 +105,17 @@ private extension RoomStore {
         }
 
         return roomIndex
+    }
+
+    func findItem(with id: UUID, in room: Room) throws -> Int {
+        guard let itemIndex = (room.items.firstIndex { foundItem in
+            return foundItem.id == id
+        }) else {
+            assertionFailure("Item with id not found.")
+            throw StoreError.itemNotFoundById
+        }
+
+        return itemIndex
     }
 
     func persistRooms() {

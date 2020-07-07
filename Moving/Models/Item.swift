@@ -31,7 +31,7 @@ struct CodableImage: Codable {
     }
 }
 
-enum ItemType: CaseIterable {
+enum ItemType: String, CaseIterable {
     case ps4, ps4Controller, tv, microwave, pots, cutlery, glasses, plates, table, chair, bed, clothes, nightstand,
          bicycle, book, comic, keyboard, trackpad, mouse, tablet, ipad, iphone, sheets, other
 
