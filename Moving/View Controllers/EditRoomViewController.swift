@@ -10,49 +10,42 @@ import UIKit
 
 class EditRoomViewController: UIViewController {
 
-    // TODO: Create a single view for item and room and add them to their respective controllers
-    
-    @IBOutlet private weak var imageView: ImageContainer!
-    @IBOutlet private weak var newItemLabel: UILabel!
-    @IBOutlet private weak var nameTextField: UITextField!
-    @IBOutlet private weak var roomTypePicker: UIPickerView!
-    @IBOutlet weak var editRoomButton: UIButton!
-    
+    @IBOutlet weak var editObjectContainer: EditObjectView!
+
     weak var coordinator: MainCoordinator?
     var roomStore: RoomStore!
     var room: Room?
 
     private var selectedRoomType: RoomType!
-    private var isEdit = false {
-        didSet {
-            setButtonTitle()
-        }
-    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
-        update()
     }
 
-    @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        dismiss()
+    func update(room: Room) {
+
     }
-    
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-        // TODO: Error handling to show message saying room name cannot be empty
-        guard let newName =  nameTextField.text else {
-            return
-        }
 
-        if isEdit {
-            editRoom()
-        } else {
-            addRoom(name: newName)
-        }
+    private func setupUI() {
+        let editView = EditObjectView.init(typesArray: RoomType.all)
+        let bundle = Bundle.main
+        bundle.loadNibNamed("EditObjectView", owner: editView, options: nil)
 
-        dismiss()
+//        let container = EditObjectView.instantiate()
+//        editView.translatesAutoresizingMaskIntoConstraints = false
+//        editObjectContainer.addSubview(editView)
+
+//        NSLayoutConstraint.activate([
+//            editView.topAnchor.constraint(equalTo: editObjectContainer.topAnchor),
+//            editView.leadingAnchor.constraint(equalTo: editObjectContainer.leadingAnchor),
+//            editView.trailingAnchor.constraint(equalTo: editObjectContainer.trailingAnchor),
+//            editView.bottomAnchor.constraint(equalTo: editObjectContainer.bottomAnchor),
+//        ])
+
+        editView.update()
     }
 
     private func addImage() {
@@ -67,79 +60,30 @@ class EditRoomViewController: UIViewController {
         vc.delegate = self
         present(vc, animated: true)
     }
+}
 
-    private func update() {
-        guard let room = room else {
+extension EditRoomViewController: EditObjectViewDelegate {
+    func edit(newName: String, newTypeName: String) {
+        guard var room = room else {
             return
         }
 
-        isEdit = true
-
-        nameTextField.text = room.name
-        let roomTypeIndex = RoomType.allCases.firstIndex { $0.name == room.type.name } ?? 0
-        roomTypePicker.selectRow(roomTypeIndex, inComponent: 0, animated: false)
-    }
-
-    private func setupUI() {
-        nameTextField.becomeFirstResponder()
-        editRoomButton.setTitle(Defaults.addRoom, for: .normal)
-        roomTypePicker.delegate = self
-        roomTypePicker.dataSource = self
-        selectedRoomType = RoomType.allCases.first
-
-        imageView.tapDelegate = self
-    }
-
-    private func setButtonTitle() {
-        let title = isEdit ? Defaults.editRoom : Defaults.addRoom
-        editRoomButton.setTitle(title, for: .normal)
-    }
-
-    private func editRoom() {
-        // TODO: Error handling to show message saying room name cannot be empty
-        guard let validName = nameTextField.text,
-            var room = room else {
-            return
-        }
-        room.name = validName
-        room.type = selectedRoomType
+        room.name = newName
+        room.type = RoomType.init(rawValue: newTypeName)
         roomStore.editRoom(room)
     }
 
-    private func addRoom(name: String) {
+    func add(name: String, typeName: String) {
         let newOrder = roomStore.rooms.count
         let newRoom = Room(name: name, order: newOrder, type: selectedRoomType)
         roomStore.addRoom(newRoom)
     }
-}
 
-extension EditRoomViewController: ImageTappedDelegate {
-    func wasTapped() {
+    func imageViewTapped() {
         addImage()
     }
 }
 
-extension EditRoomViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return RoomType.all.count
-    }
-}
-
-extension EditRoomViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        RoomType.all[row]
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRoomType = RoomType.allCases[row]
-    }
-}
-
-// TODO: Create a separate object to deal with this so it can be reused
 extension EditRoomViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true)
@@ -163,7 +107,7 @@ extension EditRoomViewController: UIImagePickerControllerDelegate {
             image = validImage
         }
 
-        imageView.loadImage(image)
+        editObjectContainer.updateImage(image)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -173,12 +117,5 @@ extension EditRoomViewController: UIImagePickerControllerDelegate {
 
 // Necessary for accessing photos or camera
 extension EditRoomViewController: UINavigationControllerDelegate { }
-
-private extension EditRoomViewController {
-    enum Defaults {
-        static let editRoom = "Edit room"
-        static let addRoom = "Add room"
-    }
-}
 
 extension EditRoomViewController: Storyboarded { }

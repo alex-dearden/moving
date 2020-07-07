@@ -6,6 +6,22 @@
 import Foundation
 import SwiftUI
 
+struct Room: Identifiable, Codable, Listable {
+    let id: UUID = UUID()
+    var name: String
+    var order: Int
+    var type: RoomType
+    var items: [Item] = []
+
+    // In order to use this, we would need to delete the room from roomstore.rooms, modify it and readd it
+    // And that would fuck the order up, unless we preserve it
+/*
+    mutating func add(item: Item) {
+        items.append(item)
+    }
+*/
+}
+
 enum RoomType: CaseIterable {
     case livingRoom
     case bedroom
@@ -14,6 +30,25 @@ enum RoomType: CaseIterable {
     case bathroom
     case office
     case other
+
+    init(rawValue: String) {
+        switch rawValue {
+        case RoomType.livingRoom.name:
+            self = .livingRoom
+        case RoomType.bedroom.name:
+            self = .bedroom
+        case RoomType.kitchen.name:
+            self = .kitchen
+        case RoomType.diningRoom.name:
+            self = .diningRoom
+        case RoomType.bathroom.name:
+            self = .bathroom
+        case RoomType.office.name:
+            self = .office
+        default:
+            self = .other
+        }
+    }
 
     static var all: [String] {
         let sortedArray = RoomType.allCases.map { $0.name }.sorted()
@@ -98,26 +133,10 @@ extension RoomType: Decodable {
             throw DecodingError.dataCorrupted(
                 DecodingError.Context(
                     codingPath: container.codingPath,
-                    debugDescription: "Unabled to decode enum."
+                    debugDescription: "Unable to decode enum."
                 )
             )
         }
     }
 }
 
-
-struct Room: Identifiable, Codable {
-    let id: UUID = UUID()
-    var name: String
-    var order: Int
-    var type: RoomType
-    var items: [Item] = []
-
-    // In order to use this, we would need to delete the room from roomstore.rooms, modify it and readd it
-    // And that would fuck the order up, unless we preserve it
-/*
-    mutating func add(item: Item) {
-        items.append(item)
-    }
-*/
-}

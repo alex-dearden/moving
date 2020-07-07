@@ -173,71 +173,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dnp-2j-bUM">
-                                <rect key="frame" x="16" y="379.5" width="382" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zY-Fb-maN">
-                                <rect key="frame" x="16" y="429.5" width="382" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="bWp-lz-p46"/>
-                                </constraints>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOu-Ri-Olf">
-                                <rect key="frame" x="16" y="342.5" width="79" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ0-mD-IeL">
-                                <rect key="frame" x="16" y="525.5" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelButtonTapped:" destination="WQA-wt-Jk9" eventType="touchUpInside" id="zJT-Rz-tE5"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hoD-Yj-ofY" customClass="ImageContainer" customModule="Moving" customModuleProvider="target">
-                                <rect key="frame" x="24" y="52" width="366" height="274.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hoD-Yj-ofY" secondAttribute="height" multiplier="4:3" id="4Cf-UJ-wSi"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDD-Au-aRn">
-                                <rect key="frame" x="331" y="525.5" width="67" height="30"/>
-                                <state key="normal" title="Add room"/>
-                                <connections>
-                                    <action selector="addButtonTapped:" destination="WQA-wt-Jk9" eventType="touchUpInside" id="DWX-Sh-ohK"/>
-                                    <action selector="addItemTapped:" destination="zUd-za-Y0u" eventType="touchUpInside" id="y66-pc-gJs"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iE5-gC-M7K" customClass="EditObjectView" customModule="Moving" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="aJ0-mD-IeL" firstAttribute="leading" secondItem="1zY-Fb-maN" secondAttribute="leading" id="1yk-eK-wRB"/>
-                            <constraint firstItem="hoD-Yj-ofY" firstAttribute="leading" secondItem="Fo6-Jq-tBT" secondAttribute="leading" constant="24" id="BEn-Vt-ost"/>
-                            <constraint firstItem="aJ0-mD-IeL" firstAttribute="centerY" secondItem="FDD-Au-aRn" secondAttribute="centerY" id="G6d-sJ-5es"/>
-                            <constraint firstItem="hoD-Yj-ofY" firstAttribute="top" secondItem="Fo6-Jq-tBT" secondAttribute="top" constant="8" id="KwH-er-D7c"/>
-                            <constraint firstItem="FDD-Au-aRn" firstAttribute="trailing" secondItem="1zY-Fb-maN" secondAttribute="trailing" id="PPd-LT-5Zz"/>
-                            <constraint firstItem="1zY-Fb-maN" firstAttribute="trailing" secondItem="Dnp-2j-bUM" secondAttribute="trailing" id="Pys-Mr-hl2"/>
-                            <constraint firstItem="1zY-Fb-maN" firstAttribute="top" secondItem="Dnp-2j-bUM" secondAttribute="bottom" constant="16" id="Sd2-Y0-mb3"/>
-                            <constraint firstItem="Fo6-Jq-tBT" firstAttribute="trailing" secondItem="hoD-Yj-ofY" secondAttribute="trailing" constant="24" id="XnV-wB-eRo"/>
-                            <constraint firstItem="Fo6-Jq-tBT" firstAttribute="trailing" secondItem="Dnp-2j-bUM" secondAttribute="trailing" constant="16" id="Y18-K8-aEh"/>
-                            <constraint firstItem="Dnp-2j-bUM" firstAttribute="leading" secondItem="bOu-Ri-Olf" secondAttribute="leading" id="ZNQ-e1-LAW"/>
-                            <constraint firstItem="Dnp-2j-bUM" firstAttribute="top" secondItem="bOu-Ri-Olf" secondAttribute="bottom" constant="16" id="fCa-sE-it5"/>
-                            <constraint firstItem="1zY-Fb-maN" firstAttribute="leading" secondItem="Dnp-2j-bUM" secondAttribute="leading" id="fbz-mo-f7z"/>
-                            <constraint firstItem="bOu-Ri-Olf" firstAttribute="top" secondItem="hoD-Yj-ofY" secondAttribute="bottom" constant="16" id="q0Q-VB-NvN"/>
-                            <constraint firstItem="bOu-Ri-Olf" firstAttribute="leading" secondItem="Fo6-Jq-tBT" secondAttribute="leading" constant="16" id="sd0-i2-7SJ"/>
-                            <constraint firstItem="FDD-Au-aRn" firstAttribute="top" secondItem="1zY-Fb-maN" secondAttribute="bottom" constant="16" id="vXY-SG-Sc0"/>
+                            <constraint firstItem="iE5-gC-M7K" firstAttribute="leading" secondItem="Fo6-Jq-tBT" secondAttribute="leading" id="EMz-jv-8cg"/>
+                            <constraint firstItem="iE5-gC-M7K" firstAttribute="bottom" secondItem="Fo6-Jq-tBT" secondAttribute="bottom" id="NLt-FC-Peq"/>
+                            <constraint firstItem="iE5-gC-M7K" firstAttribute="trailing" secondItem="Fo6-Jq-tBT" secondAttribute="trailing" id="NN5-ND-pBe"/>
+                            <constraint firstItem="iE5-gC-M7K" firstAttribute="top" secondItem="Fo6-Jq-tBT" secondAttribute="top" id="Y9b-Jr-ws4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fo6-Jq-tBT"/>
                     </view>
                     <connections>
-                        <outlet property="editRoomButton" destination="FDD-Au-aRn" id="rwt-jO-jLj"/>
-                        <outlet property="imageView" destination="hoD-Yj-ofY" id="kCb-e3-zzu"/>
-                        <outlet property="nameTextField" destination="Dnp-2j-bUM" id="0iw-lK-nfH"/>
-                        <outlet property="newItemLabel" destination="bOu-Ri-Olf" id="a15-GQ-5vX"/>
-                        <outlet property="roomTypePicker" destination="1zY-Fb-maN" id="E2e-zR-wvh"/>
+                        <outlet property="editObjectContainer" destination="iE5-gC-M7K" id="4R4-gJ-GYS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydQ-vI-39h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
