@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditObjectView" customModule="Moving" customModuleProvider="target">
             <connections>
                 <outlet property="addOrEditButton" destination="x5i-Vg-jw1" id="uwD-PW-vrW"/>
+                <outlet property="containerView" destination="MHr-Gi-QpI" id="fBJ-fF-ebe"/>
                 <outlet property="imageView" destination="HFT-L7-nCh" id="RhQ-gY-EAV"/>
                 <outlet property="nameTextField" destination="FMy-hy-mcK" id="I4c-GS-zMQ"/>
                 <outlet property="newItemLabel" destination="A7u-3j-A5J" id="abI-Cb-CJH"/>

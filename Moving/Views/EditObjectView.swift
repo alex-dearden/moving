@@ -16,6 +16,8 @@ protocol EditObjectViewDelegate: class {
 }
 
 class EditObjectView: UIView, NibLoadableView {
+
+    @IBOutlet private weak var containerView: UIView!
     
     @IBOutlet private weak var imageView: ImageContainer!
     @IBOutlet private weak var newItemLabel: UILabel!
@@ -34,28 +36,44 @@ class EditObjectView: UIView, NibLoadableView {
     }
 
     // Used to edit existing object
-    init(name: String, currentTypeName: String, typesArray: [String]) {
-        super.init(frame: CGRect.zero)
+//    init(name: String, currentTypeName: String, typesArray: [String]) {
+//        super.init(frame: CGRect.zero)
+//
+//        isEdit = true
+//        nameTextField.text = name
+//        let selectedTypeRow = typesArray.firstIndex { $0 == currentTypeName } ?? 0
+//        typePicker.selectRow(selectedTypeRow, inComponent: 0, animated: false)
+//    }
+//
+//    // Used to add new object
+//    init(typesArray: [String]) {
+//        super.init(frame: CGRect.zero)
+//        pickerArray = typesArray
+//    }
 
-        isEdit = true
-        nameTextField.text = name
-        let selectedTypeRow = typesArray.firstIndex { $0 == currentTypeName } ?? 0
-        typePicker.selectRow(selectedTypeRow, inComponent: 0, animated: false)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        commonInit()
     }
 
-    // Used to add new object
-    init(typesArray: [String]) {
-        super.init(frame: CGRect.zero)
-        pickerArray = typesArray
-    }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        debugPrint("init(coder) called")
+
+        commonInit()
+    }
+
+    private func commonInit() {
+        Bundle.main.loadNibNamed("EditObjectView", owner: self)
+        addSubview(containerView)
+        containerView.frame = self.bounds
+        containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+
+        setupUI()
     }
 
     func update() {
-        setupUI()
+
     }
     
     func updateImage(_ image: UIImage) {
@@ -118,13 +136,14 @@ extension EditObjectView: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return RoomType.all.count
+        // TODO: We need this to be agnostic. Either Room or Item can populate it
+        return pickerArray.count
     }
 }
 
 extension EditObjectView: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        RoomType.all[row]
+        pickerArray[row]
     }
 
     // TODO: How to make this type agnostic?

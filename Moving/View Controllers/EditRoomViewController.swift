@@ -22,30 +22,11 @@ class EditRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUI()
+
     }
 
     func update(room: Room) {
 
-    }
-
-    private func setupUI() {
-        let editView = EditObjectView.init(typesArray: RoomType.all)
-        let bundle = Bundle.main
-        bundle.loadNibNamed("EditObjectView", owner: editView, options: nil)
-
-//        let container = EditObjectView.instantiate()
-//        editView.translatesAutoresizingMaskIntoConstraints = false
-//        editObjectContainer.addSubview(editView)
-
-//        NSLayoutConstraint.activate([
-//            editView.topAnchor.constraint(equalTo: editObjectContainer.topAnchor),
-//            editView.leadingAnchor.constraint(equalTo: editObjectContainer.leadingAnchor),
-//            editView.trailingAnchor.constraint(equalTo: editObjectContainer.trailingAnchor),
-//            editView.bottomAnchor.constraint(equalTo: editObjectContainer.bottomAnchor),
-//        ])
-
-        editView.update()
     }
 
     private func addImage() {
