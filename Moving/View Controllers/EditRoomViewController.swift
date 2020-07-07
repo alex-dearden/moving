@@ -16,18 +16,16 @@ class EditRoomViewController: UIViewController {
     var roomStore: RoomStore!
     var room: Room?
 
-    private var selectedRoomType: RoomType!
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        setupEditObjectContainter()
     }
 
-    func update(room: Room) {
-
-    }
+   private func setupEditObjectContainter() {
+       editObjectContainer.delegate = self
+       editObjectContainer.updatePicker(RoomType.all)
+   }
 
     private func addImage() {
         let vc = UIImagePickerController()
@@ -56,7 +54,8 @@ extension EditRoomViewController: EditObjectViewDelegate {
 
     func add(name: String, typeName: String) {
         let newOrder = roomStore.rooms.count
-        let newRoom = Room(name: name, order: newOrder, type: selectedRoomType)
+        let newType = RoomType.init(rawValue: typeName)
+        let newRoom = Room(name: name, order: newOrder, type: newType)
         roomStore.addRoom(newRoom)
     }
 

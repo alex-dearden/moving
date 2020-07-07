@@ -203,51 +203,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKo-45-sWj">
-                                <rect key="frame" x="16" y="76" width="72" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tkp-al-Q1y">
-                                <rect key="frame" x="16" y="113" width="382" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHt-5o-hAi">
-                                <rect key="frame" x="16" y="163" width="382" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="DJB-fM-HJN"/>
-                                </constraints>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhE-RZ-Y5u">
-                                <rect key="frame" x="16" y="259" width="62" height="30"/>
-                                <state key="normal" title="Add item"/>
-                                <connections>
-                                    <action selector="addItemTapped:" destination="zUd-za-Y0u" eventType="touchUpInside" id="YCD-Ag-bkX"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-1f-iyA" customClass="EditObjectView" customModule="Moving" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="AKo-45-sWj" firstAttribute="top" secondItem="5ZL-Se-yhM" secondAttribute="top" constant="32" id="7Hc-C7-kfV"/>
-                            <constraint firstItem="rHt-5o-hAi" firstAttribute="top" secondItem="tkp-al-Q1y" secondAttribute="bottom" constant="16" id="S49-TH-K4i"/>
-                            <constraint firstItem="VhE-RZ-Y5u" firstAttribute="top" secondItem="rHt-5o-hAi" secondAttribute="bottom" constant="16" id="T2u-qt-ldh"/>
-                            <constraint firstItem="tkp-al-Q1y" firstAttribute="leading" secondItem="AKo-45-sWj" secondAttribute="leading" id="eg3-XH-a3x"/>
-                            <constraint firstItem="rHt-5o-hAi" firstAttribute="leading" secondItem="tkp-al-Q1y" secondAttribute="leading" id="lTt-k2-Hef"/>
-                            <constraint firstItem="rHt-5o-hAi" firstAttribute="trailing" secondItem="tkp-al-Q1y" secondAttribute="trailing" id="meA-Wd-cAK"/>
-                            <constraint firstItem="VhE-RZ-Y5u" firstAttribute="leading" secondItem="tkp-al-Q1y" secondAttribute="leading" id="qAi-tX-SZf"/>
-                            <constraint firstItem="AKo-45-sWj" firstAttribute="leading" secondItem="5ZL-Se-yhM" secondAttribute="leading" constant="16" id="sF2-Hy-Nkf"/>
-                            <constraint firstItem="tkp-al-Q1y" firstAttribute="top" secondItem="AKo-45-sWj" secondAttribute="bottom" constant="16" id="sQy-ci-XiB"/>
-                            <constraint firstItem="5ZL-Se-yhM" firstAttribute="trailing" secondItem="tkp-al-Q1y" secondAttribute="trailing" constant="16" id="x5g-Cj-4ws"/>
+                            <constraint firstItem="Zfe-1f-iyA" firstAttribute="leading" secondItem="5ZL-Se-yhM" secondAttribute="leading" id="HlD-7Q-E2g"/>
+                            <constraint firstItem="Zfe-1f-iyA" firstAttribute="top" secondItem="5ZL-Se-yhM" secondAttribute="top" constant="-44" id="RfH-6J-kyd"/>
+                            <constraint firstItem="Zfe-1f-iyA" firstAttribute="trailing" secondItem="5ZL-Se-yhM" secondAttribute="trailing" id="Xdz-IT-xBz"/>
+                            <constraint firstItem="5ZL-Se-yhM" firstAttribute="bottom" secondItem="Zfe-1f-iyA" secondAttribute="bottom" id="otk-5g-Gnn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ZL-Se-yhM"/>
                     </view>
-                    <connections>
-                        <outlet property="addItemButton" destination="VhE-RZ-Y5u" id="T76-wn-HQU"/>
-                        <outlet property="itemTextField" destination="tkp-al-Q1y" id="66b-M3-Id3"/>
-                        <outlet property="itemTypePicker" destination="rHt-5o-hAi" id="pAe-6T-5l6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjR-ab-77t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

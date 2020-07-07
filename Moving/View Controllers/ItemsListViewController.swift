@@ -16,11 +16,6 @@ class ItemsListViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     var room: Room!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-
-    }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
 

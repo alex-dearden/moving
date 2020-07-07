@@ -72,8 +72,8 @@ class EditObjectView: UIView, NibLoadableView {
         setupUI()
     }
 
-    func update() {
-
+    func updatePicker(_ types: [String]) {
+        pickerArray = types
     }
     
     func updateImage(_ image: UIImage) {

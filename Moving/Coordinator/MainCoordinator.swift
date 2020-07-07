@@ -50,4 +50,11 @@ class MainCoordinator: Coordinator {
         vc.item = item
         navigationController.pushViewController(vc, animated: true)
     }
+
+    func addItem(_ roomStore: RoomStore) {
+        let vc = EditItemViewController.instantiate()
+        vc.coordinator = self
+        vc.roomStore = roomStore
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
