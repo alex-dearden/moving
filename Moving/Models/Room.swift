@@ -22,6 +22,16 @@ struct Room: Identifiable, Codable, Listable {
 */
 }
 
+extension Room: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    public static func ==(lhs: Room, rhs: Room) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 enum RoomType: CaseIterable {
     case livingRoom
     case bedroom

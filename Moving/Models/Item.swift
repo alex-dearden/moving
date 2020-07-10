@@ -31,6 +31,16 @@ struct CodableImage: Codable {
     }
 }
 
+extension Item: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    public static func ==(lhs: Item, rhs: Item) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 enum ItemType: String, CaseIterable {
     case ps4, ps4Controller, tv, microwave, pots, cutlery, glasses, plates, table, chair, bed, clothes, nightstand,
          bicycle, book, comic, keyboard, trackpad, mouse, tablet, ipad, iphone, sheets, other

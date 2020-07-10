@@ -48,7 +48,6 @@ extension ItemsListViewController: UITableViewDataSource {
         cell.configure(for: item)
 
         return cell
-
     }
 }
 
