@@ -56,7 +56,8 @@ class EditObjectView: UIView, NibLoadableView {
         setupUI()
     }
 
-    func update(objectTitle: String, types: [String]) {
+    func update(objectTitle: String, types: [String], hideImage: Bool = false) {
+        imageView.isHidden = hideImage
         newItemLabel.text = objectTitle
         pickerArray = types
     }

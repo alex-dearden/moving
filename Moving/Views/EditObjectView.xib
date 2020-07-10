@@ -22,61 +22,59 @@
             <rect key="frame" x="0.0" y="0.0" width="418" height="599"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMy-hy-mcK">
-                    <rect key="frame" x="16" y="382.5" width="386" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-MH-Vyq">
-                    <rect key="frame" x="16" y="432.5" width="386" height="80"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="c9P-ah-Sv3"/>
-                    </constraints>
-                </pickerView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-3j-A5J">
-                    <rect key="frame" x="16" y="345.5" width="79" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arN-r7-oj9">
-                    <rect key="frame" x="16" y="528.5" width="48" height="30"/>
-                    <state key="normal" title="Cancel"/>
-                    <connections>
-                        <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="x4e-Y6-jgr"/>
-                    </connections>
-                </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HFT-L7-nCh" customClass="ImageContainer" customModule="Moving" customModuleProvider="target">
-                    <rect key="frame" x="24" y="52" width="370" height="277.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="HFT-L7-nCh" secondAttribute="height" multiplier="4:3" id="ahg-0u-exH"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5i-Vg-jw1">
-                    <rect key="frame" x="335" y="528.5" width="67" height="30"/>
-                    <state key="normal" title="Add room"/>
-                    <connections>
-                        <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="zIU-Sy-oKj"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-3x-ncT">
+                    <rect key="frame" x="24" y="52" width="370" height="506"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HFT-L7-nCh" customClass="ImageContainer" customModule="Moving" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="370" height="277.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="HFT-L7-nCh" secondAttribute="height" multiplier="4:3" id="ahg-0u-exH"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-3j-A5J">
+                            <rect key="frame" x="0.0" y="293.5" width="370" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMy-hy-mcK">
+                            <rect key="frame" x="0.0" y="330" width="370" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-MH-Vyq">
+                            <rect key="frame" x="0.0" y="380" width="370" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="c9P-ah-Sv3"/>
+                            </constraints>
+                        </pickerView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="c6U-tb-JwK" userLabel="Button Stack View">
+                            <rect key="frame" x="0.0" y="476" width="370" height="30"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arN-r7-oj9">
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                    <state key="normal" title="Cancel"/>
+                                    <connections>
+                                        <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="x4e-Y6-jgr"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5i-Vg-jw1">
+                                    <rect key="frame" x="303" y="0.0" width="67" height="30"/>
+                                    <state key="normal" title="Add room"/>
+                                    <connections>
+                                        <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="zIU-Sy-oKj"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="HFT-L7-nCh" firstAttribute="top" secondItem="Wpy-fE-IIL" secondAttribute="top" constant="8" id="1Uh-hQ-vXC"/>
-                <constraint firstItem="A7u-3j-A5J" firstAttribute="top" secondItem="HFT-L7-nCh" secondAttribute="bottom" constant="16" id="866-gj-9D7"/>
-                <constraint firstItem="FMy-hy-mcK" firstAttribute="leading" secondItem="A7u-3j-A5J" secondAttribute="leading" id="BzW-HT-N1p"/>
-                <constraint firstItem="x5i-Vg-jw1" firstAttribute="top" secondItem="pz5-MH-Vyq" secondAttribute="bottom" constant="16" id="H0D-qR-8jJ"/>
-                <constraint firstItem="arN-r7-oj9" firstAttribute="leading" secondItem="pz5-MH-Vyq" secondAttribute="leading" id="I2a-Fy-LFa"/>
-                <constraint firstItem="pz5-MH-Vyq" firstAttribute="trailing" secondItem="FMy-hy-mcK" secondAttribute="trailing" id="QSw-gp-FXl"/>
-                <constraint firstItem="Wpy-fE-IIL" firstAttribute="trailing" secondItem="HFT-L7-nCh" secondAttribute="trailing" constant="24" id="Sjc-Gb-u4f"/>
-                <constraint firstItem="x5i-Vg-jw1" firstAttribute="trailing" secondItem="pz5-MH-Vyq" secondAttribute="trailing" id="b6o-g0-Vqu"/>
-                <constraint firstItem="FMy-hy-mcK" firstAttribute="top" secondItem="A7u-3j-A5J" secondAttribute="bottom" constant="16" id="cgW-EG-BwN"/>
-                <constraint firstItem="Wpy-fE-IIL" firstAttribute="trailing" secondItem="FMy-hy-mcK" secondAttribute="trailing" constant="16" id="n3Q-X6-OCT"/>
-                <constraint firstItem="A7u-3j-A5J" firstAttribute="leading" secondItem="Wpy-fE-IIL" secondAttribute="leading" constant="16" id="p3h-Rf-xfN"/>
-                <constraint firstItem="HFT-L7-nCh" firstAttribute="leading" secondItem="Wpy-fE-IIL" secondAttribute="leading" constant="24" id="pAe-pp-l2P"/>
-                <constraint firstItem="pz5-MH-Vyq" firstAttribute="leading" secondItem="FMy-hy-mcK" secondAttribute="leading" id="pcp-Nq-yob"/>
-                <constraint firstItem="arN-r7-oj9" firstAttribute="centerY" secondItem="x5i-Vg-jw1" secondAttribute="centerY" id="qLh-9m-J5Q"/>
-                <constraint firstItem="pz5-MH-Vyq" firstAttribute="top" secondItem="FMy-hy-mcK" secondAttribute="bottom" constant="16" id="yeU-Tp-IvC"/>
+                <constraint firstItem="Y0o-3x-ncT" firstAttribute="leading" secondItem="Wpy-fE-IIL" secondAttribute="leading" constant="24" id="B2B-Zl-vF3"/>
+                <constraint firstItem="Wpy-fE-IIL" firstAttribute="trailing" secondItem="Y0o-3x-ncT" secondAttribute="trailing" constant="24" id="Nhd-WL-pfC"/>
+                <constraint firstItem="Y0o-3x-ncT" firstAttribute="top" secondItem="Wpy-fE-IIL" secondAttribute="top" constant="8" id="eLU-Us-LeD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Wpy-fE-IIL"/>
