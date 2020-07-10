@@ -204,19 +204,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-1f-iyA" customClass="EditObjectView" customModule="Moving" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Zfe-1f-iyA" firstAttribute="leading" secondItem="5ZL-Se-yhM" secondAttribute="leading" id="HlD-7Q-E2g"/>
-                            <constraint firstItem="Zfe-1f-iyA" firstAttribute="top" secondItem="5ZL-Se-yhM" secondAttribute="top" constant="-44" id="RfH-6J-kyd"/>
+                            <constraint firstItem="Zfe-1f-iyA" firstAttribute="top" secondItem="5ZL-Se-yhM" secondAttribute="top" id="RfH-6J-kyd"/>
                             <constraint firstItem="Zfe-1f-iyA" firstAttribute="trailing" secondItem="5ZL-Se-yhM" secondAttribute="trailing" id="Xdz-IT-xBz"/>
                             <constraint firstItem="5ZL-Se-yhM" firstAttribute="bottom" secondItem="Zfe-1f-iyA" secondAttribute="bottom" id="otk-5g-Gnn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ZL-Se-yhM"/>
                     </view>
+                    <connections>
+                        <outlet property="editObjectContainer" destination="Zfe-1f-iyA" id="OQf-hD-piq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjR-ab-77t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

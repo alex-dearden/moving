@@ -19,10 +19,10 @@ class EditRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupEditObjectContainter()
+        setupEditObjectContainer()
     }
 
-   private func setupEditObjectContainter() {
+   private func setupEditObjectContainer() {
        editObjectContainer.delegate = self
        editObjectContainer.updatePicker(RoomType.all)
    }

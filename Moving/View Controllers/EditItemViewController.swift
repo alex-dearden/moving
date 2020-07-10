@@ -9,10 +9,8 @@
 import UIKit
 
 class EditItemViewController: UIViewController {
-    
-    @IBOutlet private weak var itemTextField: UITextField!
-    @IBOutlet private weak var itemTypePicker: UIPickerView!
-    @IBOutlet weak var addItemButton: UIButton!
+
+    @IBOutlet weak var editObjectContainer: EditObjectView!
 
     var room: Room?
     var roomStore: RoomStore!
@@ -23,6 +21,12 @@ class EditItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupEditObjectContainer()
+    }
+
+    private func setupEditObjectContainer() {
+        editObjectContainer.delegate = self
+        editObjectContainer.updatePicker(RoomType.all)
     }
 
 }
@@ -50,5 +54,40 @@ extension EditItemViewController: EditObjectViewDelegate {
 //        addImage()
     }
 }
+
+
+extension EditItemViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true)
+
+        var image: UIImage!
+
+        // NOTE: Necessary to be able to test with simulator
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            guard let validImage = info[.editedImage] as? UIImage else {
+                assertionFailure("No image found")
+                return
+            }
+
+            image = validImage
+        } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            guard let validImage = info[.originalImage] as? UIImage else {
+                assertionFailure("Not a valid image")
+                return
+            }
+
+            image = validImage
+        }
+
+        editObjectContainer.updateImage(image)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+}
+
+// Necessary for accessing photos or camera
+extension EditItemViewController: UINavigationControllerDelegate { }
 
 extension EditItemViewController: Storyboarded { }

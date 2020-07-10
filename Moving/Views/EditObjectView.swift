@@ -27,29 +27,13 @@ class EditObjectView: UIView, NibLoadableView {
 
     private var pickerArray: [String] = []
     weak var delegate: EditObjectViewDelegate?
-    private var selectedRoomType: RoomType?
+    private var selectedObjectType: String!
 
     private var isEdit = false {
         didSet {
             setButtonTitle()
         }
     }
-
-    // Used to edit existing object
-//    init(name: String, currentTypeName: String, typesArray: [String]) {
-//        super.init(frame: CGRect.zero)
-//
-//        isEdit = true
-//        nameTextField.text = name
-//        let selectedTypeRow = typesArray.firstIndex { $0 == currentTypeName } ?? 0
-//        typePicker.selectRow(selectedTypeRow, inComponent: 0, animated: false)
-//    }
-//
-//    // Used to add new object
-//    init(typesArray: [String]) {
-//        super.init(frame: CGRect.zero)
-//        pickerArray = typesArray
-//    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,7 +65,7 @@ class EditObjectView: UIView, NibLoadableView {
     }
 
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        // TODO: Handle via delegate or Combine
+        // TODO: Handle via Combine?
         delegate?.dismiss()
     }
 
@@ -89,15 +73,15 @@ class EditObjectView: UIView, NibLoadableView {
         // TODO: Error handling to show message saying room name cannot be empty
         guard let name = nameTextField.text,
             nameTextField.text != "",
-            let typeName = selectedRoomType?.name else {
+            let typeName = selectedObjectType else {
             return
         }
 
         if isEdit {
-            // TODO: Handle via delegate or Combine
+            // TODO: Handle via Combine?
             delegate?.add(name: name, typeName: typeName)
         } else {
-            // TODO: Handle via delegate or Combine
+            // TODO: Handle via Combine?
             delegate?.add(name: name, typeName: typeName)
         }
 
@@ -109,17 +93,16 @@ class EditObjectView: UIView, NibLoadableView {
 extension EditObjectView {
     private func setupUI() {
         nameTextField.becomeFirstResponder()
-        addOrEditButton.setTitle(Defaults.addRoom, for: .normal)
+        addOrEditButton.setTitle(Defaults.add, for: .normal)
         typePicker.delegate = self
         typePicker.dataSource = self
-        let firstType = pickerArray.first ?? "other"
-        selectedRoomType = RoomType.init(rawValue: firstType)
+        let firstType = pickerArray.first ?? Defaults.otherType
 
         imageView.tapDelegate = self
     }
 
     private func setButtonTitle() {
-        let title = isEdit ? Defaults.editRoom : Defaults.addRoom
+        let title = isEdit ? Defaults.edit : Defaults.add
         addOrEditButton.setTitle(title, for: .normal)
     }
 }
@@ -136,7 +119,6 @@ extension EditObjectView: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        // TODO: We need this to be agnostic. Either Room or Item can populate it
         return pickerArray.count
     }
 }
@@ -146,15 +128,15 @@ extension EditObjectView: UIPickerViewDelegate {
         pickerArray[row]
     }
 
-    // TODO: How to make this type agnostic?
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRoomType = RoomType.allCases[row]
+        selectedObjectType = pickerArray[row]
     }
 }
 
 private extension EditObjectView {
     enum Defaults {
-        static let editRoom = "Edit room"
-        static let addRoom = "Add room"
+        static let edit = "Edit"
+        static let add = "Add"
+        static let otherType = "other"
     }
 }
