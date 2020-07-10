@@ -24,7 +24,7 @@ class EditRoomViewController: UIViewController {
 
    private func setupEditObjectContainer() {
        editObjectContainer.delegate = self
-       editObjectContainer.updatePicker(RoomType.all)
+       editObjectContainer.update(objectTitle: "Room", types: RoomType.all)
    }
 
     private func addImage() {

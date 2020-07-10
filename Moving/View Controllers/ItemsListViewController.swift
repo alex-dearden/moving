@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 class ItemsListViewController: UIViewController {
 
@@ -16,11 +17,23 @@ class ItemsListViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     var room: Room!
 
-    
+    private var cancellable: AnyCancellable?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupItems()
+    }
+
+    private func setupItems() {
+        cancellable = roomStore.$itemsForRoom.sink { [weak self] rooms in
+            self?.tableview.reloadData()
+        }
+    }
+
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         coordinator?.addItem(for: room, in: roomStore)
     }
-    
 }
 
 extension ItemsListViewController: UITableViewDataSource {

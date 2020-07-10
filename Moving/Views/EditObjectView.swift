@@ -56,7 +56,8 @@ class EditObjectView: UIView, NibLoadableView {
         setupUI()
     }
 
-    func updatePicker(_ types: [String]) {
+    func update(objectTitle: String, types: [String]) {
+        newItemLabel.text = objectTitle
         pickerArray = types
     }
     

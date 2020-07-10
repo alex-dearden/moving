@@ -19,6 +19,7 @@ protocol Storable {
 
 class RoomStore: ObservableObject, Storable {
     @Published var rooms: [Room] = []
+    @Published var itemsForRoom: [Item] = []
 
     private let persistenceManager: Persistenceable = PersistenceManager()
 
@@ -68,6 +69,7 @@ class RoomStore: ObservableObject, Storable {
         rooms[roomIndex].items.append(item)
 
         persistRooms()
+        updateItemsArray(in: roomIndex)
     }
 
     func editItem(_ item: Item, in room: Room) {
@@ -80,6 +82,7 @@ class RoomStore: ObservableObject, Storable {
         rooms[roomIndex].items[itemIndex].type = item.type
 
         persistRooms()
+        updateItemsArray(in: roomIndex)
     }
 
     func deleteItem(at offset: IndexSet, in room: Room) {
@@ -90,6 +93,7 @@ class RoomStore: ObservableObject, Storable {
         rooms[roomIndex].items.remove(atOffsets: offset)
 
         persistRooms()
+        updateItemsArray(in: roomIndex)
     }
 }
 
@@ -120,6 +124,10 @@ private extension RoomStore {
 
     func persistRooms() {
         persistenceManager.storeRooms(rooms: rooms)
+    }
+
+    func updateItemsArray(in roomIndex: Int) {
+        itemsForRoom = rooms[roomIndex].items
     }
 }
 

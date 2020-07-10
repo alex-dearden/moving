@@ -26,8 +26,22 @@ class EditItemViewController: UIViewController {
 
     private func setupEditObjectContainer() {
         editObjectContainer.delegate = self
-        editObjectContainer.updatePicker(RoomType.all)
+        editObjectContainer.update(objectTitle: "Item", types: ItemType.all)
     }
+
+    private func addImage() {
+        let vc = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            vc.sourceType = .camera
+            vc.allowsEditing = true
+        } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            vc.sourceType = .savedPhotosAlbum
+            vc.allowsEditing = false
+        }
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+
 
 }
 
@@ -44,14 +58,18 @@ extension EditItemViewController: EditObjectViewDelegate {
     }
 
     func add(name: String, typeName: String) {
+        guard let room = room else {
+            assertionFailure("Error: There is no room to add an item to")
+            return
+        }
         let newOrder = roomStore.rooms.count
-        let newType = RoomType.init(rawValue: typeName)
-        let newRoom = Room(name: name, order: newOrder, type: newType)
-        roomStore.addRoom(newRoom)
+        let newType = ItemType.init(rawValue: typeName) ?? .other
+        let newItem = Item(name: name, order: newOrder, image: nil, type: newType)
+        roomStore.addItem(newItem, in: room)
     }
 
     func imageViewTapped() {
-//        addImage()
+        addImage()
     }
 }
 

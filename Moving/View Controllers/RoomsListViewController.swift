@@ -14,7 +14,6 @@ class RoomsListViewController: UIViewController {
     @IBOutlet private weak var tableview: UITableView!
 
     private var roomStore = RoomStore()
-
     private var cancellable: AnyCancellable?
 
     weak var coordinator: MainCoordinator?
@@ -22,11 +21,14 @@ class RoomsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupRooms()
+    }
+
+    private func setupRooms() {
         cancellable = roomStore.$rooms.sink { [weak self] rooms in
             self?.tableview.reloadData()
         }
     }
-    
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         coordinator?.addRoom(roomStore)
