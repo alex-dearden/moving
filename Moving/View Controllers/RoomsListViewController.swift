@@ -15,6 +15,7 @@ class RoomsListViewController: UIViewController {
 
     private var roomStore = RoomStore()
     private var cancellable: AnyCancellable?
+    private lazy var dataSource = setUpDataSource()
 
     weak var coordinator: MainCoordinator?
 
@@ -22,11 +23,12 @@ class RoomsListViewController: UIViewController {
         super.viewDidLoad()
 
         setupRooms()
+        tableview.dataSource = dataSource
     }
 
     private func setupRooms() {
         cancellable = roomStore.$rooms.sink { [weak self] rooms in
-            self?.tableview.reloadData()
+            self?.update(with: rooms)
         }
     }
     
@@ -36,19 +38,32 @@ class RoomsListViewController: UIViewController {
     
 }
 
-extension RoomsListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        roomStore.rooms.count
+
+// MARK: Diffable Data Source
+
+enum Section: CaseIterable {
+    case main
+}
+
+extension RoomsListViewController {
+    func setUpDataSource() -> UITableViewDiffableDataSource<Section, Room> {
+        return UITableViewDiffableDataSource(
+            tableView: tableview,
+            cellProvider: { tableView, indexPath, room in
+                let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.roomCell, for: indexPath) as! RoomListCell
+                cell.configure(for: room)
+
+                return cell
+            })
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell") as! RoomListCell
 
-        let room = roomStore.rooms[indexPath.row]
+    func update(with rooms: [Room], animate: Bool = true) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
+        snapshot.appendSections(Section.allCases)
 
-        cell.configure(for: room)
+        snapshot.appendItems(rooms, toSection: .main)
 
-        return cell
+        dataSource.apply(snapshot, animatingDifferences: animate)
     }
 }
 
@@ -80,7 +95,6 @@ extension RoomsListViewController: UITableViewDelegate {
 
         return UISwipeActionsConfiguration(actions: [delete, edit])
     }
-
 }
 
 extension RoomsListViewController: Storyboarded { }
