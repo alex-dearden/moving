@@ -15,15 +15,15 @@ class RoomsListViewController: UIViewController {
 
     private var roomStore = RoomStore()
     private var cancellable: AnyCancellable?
-    private lazy var dataSource = setUpDataSource()
+    private var dataSource: DataSource!
 
     weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUpDataSource()
         setupRooms()
-        tableview.dataSource = dataSource
     }
 
     private func setupRooms() {
@@ -45,16 +45,22 @@ enum Section: CaseIterable {
     case main
 }
 
+class DataSource: UITableViewDiffableDataSource<Section, Room> {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+}
+
 extension RoomsListViewController {
-    func setUpDataSource() -> UITableViewDiffableDataSource<Section, Room> {
-        return UITableViewDiffableDataSource(
-            tableView: tableview,
+    func setUpDataSource() {
+        dataSource = DataSource(tableView: tableview,
             cellProvider: { tableView, indexPath, room in
                 let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.roomCell, for: indexPath) as! ListCellView
                 cell.update(with: room.name, icon: room.type.icon)
 
                 return cell
             })
+        tableview.dataSource = dataSource
     }
 
     func update(with rooms: [Room], animate: Bool = true) {

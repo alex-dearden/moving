@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +14,6 @@
                 <outlet property="containerView" destination="MHr-Gi-QpI" id="fBJ-fF-ebe"/>
                 <outlet property="imageView" destination="HFT-L7-nCh" id="RhQ-gY-EAV"/>
                 <outlet property="nameTextField" destination="FMy-hy-mcK" id="I4c-GS-zMQ"/>
-                <outlet property="newItemLabel" destination="A7u-3j-A5J" id="abI-Cb-CJH"/>
                 <outlet property="typePicker" destination="pz5-MH-Vyq" id="c17-K2-Zx3"/>
             </connections>
         </placeholder>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-3x-ncT">
-                    <rect key="frame" x="24" y="52" width="370" height="506"/>
+                    <rect key="frame" x="24" y="52" width="370" height="469.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HFT-L7-nCh" customClass="ImageContainer" customModule="Moving" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="370" height="277.5"/>
@@ -31,25 +31,19 @@
                                 <constraint firstAttribute="width" secondItem="HFT-L7-nCh" secondAttribute="height" multiplier="4:3" id="ahg-0u-exH"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-3j-A5J">
-                            <rect key="frame" x="0.0" y="293.5" width="370" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMy-hy-mcK">
-                            <rect key="frame" x="0.0" y="330" width="370" height="34"/>
+                            <rect key="frame" x="0.0" y="293.5" width="370" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-MH-Vyq">
-                            <rect key="frame" x="0.0" y="380" width="370" height="80"/>
+                            <rect key="frame" x="0.0" y="343.5" width="370" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="c9P-ah-Sv3"/>
                             </constraints>
                         </pickerView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="c6U-tb-JwK" userLabel="Button Stack View">
-                            <rect key="frame" x="0.0" y="476" width="370" height="30"/>
+                            <rect key="frame" x="0.0" y="439.5" width="370" height="30"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arN-r7-oj9">
                                     <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
@@ -70,7 +64,7 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="0.26666666666666666" green="0.27058823529411763" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" name="TableBackground"/>
             <constraints>
                 <constraint firstItem="Y0o-3x-ncT" firstAttribute="leading" secondItem="Wpy-fE-IIL" secondAttribute="leading" constant="24" id="B2B-Zl-vF3"/>
                 <constraint firstItem="Wpy-fE-IIL" firstAttribute="trailing" secondItem="Y0o-3x-ncT" secondAttribute="trailing" constant="24" id="Nhd-WL-pfC"/>
@@ -81,4 +75,9 @@
             <point key="canvasLocation" x="137.68115942028987" y="258.14732142857144"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="TableBackground">
+            <color red="0.26666666666666666" green="0.27058823529411763" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

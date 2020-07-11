@@ -20,7 +20,6 @@ class EditObjectView: UIView, NibLoadableView {
     @IBOutlet private weak var containerView: UIView!
     
     @IBOutlet private weak var imageView: ImageContainer!
-    @IBOutlet private weak var newItemLabel: UILabel!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var typePicker: UIPickerView!
     @IBOutlet weak var addOrEditButton: UIButton!
@@ -58,7 +57,7 @@ class EditObjectView: UIView, NibLoadableView {
 
     func update(objectTitle: String, types: [String], hideImage: Bool = false) {
         imageView.isHidden = hideImage
-        newItemLabel.text = objectTitle
+        nameTextField.placeholder = objectTitle + Defaults.space + Defaults.name
         pickerArray = types
     }
     
@@ -137,6 +136,8 @@ extension EditObjectView: UIPickerViewDelegate {
 
 private extension EditObjectView {
     enum Defaults {
+        static let name = "name"
+        static let space = " "
         static let edit = "Edit"
         static let add = "Add"
         static let otherType = "other"

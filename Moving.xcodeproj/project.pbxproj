@@ -24,6 +24,10 @@
 		FD1737B224AB5C2E0051D7FD /* EditObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1737B124AB5C2E0051D7FD /* EditObjectView.swift */; };
 		FD4AFF7024B9BF05004B56C9 /* ListCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4AFF6F24B9BF05004B56C9 /* ListCellView.xib */; };
 		FD4AFF7224B9C1E2004B56C9 /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4AFF7124B9C1E2004B56C9 /* ListCellView.swift */; };
+		FD4AFF7824B9D0B9004B56C9 /* Courier New Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD4AFF7424B9D0B9004B56C9 /* Courier New Bold.ttf */; };
+		FD4AFF7924B9D0B9004B56C9 /* Courier New Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD4AFF7524B9D0B9004B56C9 /* Courier New Italic.ttf */; };
+		FD4AFF7A24B9D0B9004B56C9 /* Courier New Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD4AFF7624B9D0B9004B56C9 /* Courier New Bold Italic.ttf */; };
+		FD4AFF7B24B9D0B9004B56C9 /* Courier New.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD4AFF7724B9D0B9004B56C9 /* Courier New.ttf */; };
 		FDBB847824A33ECF00589F64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB847724A33ECF00589F64 /* AppDelegate.swift */; };
 		FDBB847E24A33ED000589F64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDBB847D24A33ED000589F64 /* Assets.xcassets */; };
 		FDBB848124A33ED000589F64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDBB848024A33ED000589F64 /* Preview Assets.xcassets */; };
@@ -65,6 +69,10 @@
 		FD1737B124AB5C2E0051D7FD /* EditObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditObjectView.swift; sourceTree = "<group>"; };
 		FD4AFF6F24B9BF05004B56C9 /* ListCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCellView.xib; sourceTree = "<group>"; };
 		FD4AFF7124B9C1E2004B56C9 /* ListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
+		FD4AFF7424B9D0B9004B56C9 /* Courier New Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Courier New Bold.ttf"; sourceTree = "<group>"; };
+		FD4AFF7524B9D0B9004B56C9 /* Courier New Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Courier New Italic.ttf"; sourceTree = "<group>"; };
+		FD4AFF7624B9D0B9004B56C9 /* Courier New Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Courier New Bold Italic.ttf"; sourceTree = "<group>"; };
+		FD4AFF7724B9D0B9004B56C9 /* Courier New.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Courier New.ttf"; sourceTree = "<group>"; };
 		FDBB847424A33ECF00589F64 /* Moving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDBB847724A33ECF00589F64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDBB847D24A33ED000589F64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +159,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD4AFF7324B9D06C004B56C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD4AFF7624B9D0B9004B56C9 /* Courier New Bold Italic.ttf */,
+				FD4AFF7424B9D0B9004B56C9 /* Courier New Bold.ttf */,
+				FD4AFF7524B9D0B9004B56C9 /* Courier New Italic.ttf */,
+				FD4AFF7724B9D0B9004B56C9 /* Courier New.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		FDBB846B24A33ECF00589F64 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +193,7 @@
 		FDBB847624A33ECF00589F64 /* Moving */ = {
 			isa = PBXGroup;
 			children = (
+				FD4AFF7324B9D06C004B56C9 /* Resources */,
 				FDBE727C24A64CBF0002AA5C /* Views */,
 				FDBB847724A33ECF00589F64 /* AppDelegate.swift */,
 				FDBB847D24A33ED000589F64 /* Assets.xcassets */,
@@ -316,9 +336,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD4AFF7824B9D0B9004B56C9 /* Courier New Bold.ttf in Resources */,
+				FD4AFF7A24B9D0B9004B56C9 /* Courier New Bold Italic.ttf in Resources */,
 				FDBB848424A33ED000589F64 /* LaunchScreen.storyboard in Resources */,
 				FDBB848124A33ED000589F64 /* Preview Assets.xcassets in Resources */,
+				FD4AFF7924B9D0B9004B56C9 /* Courier New Italic.ttf in Resources */,
 				FDBB847E24A33ED000589F64 /* Assets.xcassets in Resources */,
+				FD4AFF7B24B9D0B9004B56C9 /* Courier New.ttf in Resources */,
 				FD1737B024AB5BE50051D7FD /* EditObjectView.xib in Resources */,
 				FD4AFF7024B9BF05004B56C9 /* ListCellView.xib in Resources */,
 				FDBB84AC24A62B6900589F64 /* Main.storyboard in Resources */,
