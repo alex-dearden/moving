@@ -13,7 +13,6 @@
 		605226EB16C9AA11593C738C /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60522EAFCB605895411EFEEE /* ImageContainer.swift */; };
 		60522959FA29DB581B6F100A /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605226DA9BBFA14B6BC34A4B /* NibLoadableView.swift */; };
 		60522A85EE50E5A2F85C1F50 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605227EFE5AD7E301903D6AD /* Room.swift */; };
-		60522AA8632C71944DF791FB /* ItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60522E8E9C45060189F35037 /* ItemListCell.swift */; };
 		60522B736AC543C621D89FC4 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6052295884646E52B4F538D6 /* Identifiers.swift */; };
 		60522C120921CDB94428F04F /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605229B74E0ABC487E87D514 /* PersistenceManager.swift */; };
 		60522C7E81B9778DFBF97978 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60522E7EA5BA43168A1B6A19 /* Coordinator.swift */; };
@@ -34,7 +33,6 @@
 		FDBB84A824A49B0400589F64 /* StoreTests.swift in Resources */ = {isa = PBXBuildFile; fileRef = FDBB849524A4988D00589F64 /* StoreTests.swift */; };
 		FDBB84AC24A62B6900589F64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDBB84AB24A62B6900589F64 /* Main.storyboard */; };
 		FDBB84AE24A62BF800589F64 /* RoomsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB84AD24A62BF800589F64 /* RoomsListViewController.swift */; };
-		FDBB84B124A634BC00589F64 /* RoomListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB84B024A634BC00589F64 /* RoomListCell.swift */; };
 		FDE9F0EB24A747D500454492 /* ItemsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9F0EA24A747D500454492 /* ItemsListViewController.swift */; };
 		FDE9F0ED24A7545000454492 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE9F0EC24A7545000454492 /* EditItemViewController.swift */; };
 /* End PBXBuildFile section */
@@ -61,7 +59,6 @@
 		6052295884646E52B4F538D6 /* Identifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		605229B74E0ABC487E87D514 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		60522E7EA5BA43168A1B6A19 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		60522E8E9C45060189F35037 /* ItemListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListCell.swift; sourceTree = "<group>"; };
 		60522EAFCB605895411EFEEE /* ImageContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
 		FD004F7024A63D7400AAA6E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FD1737AF24AB5BE50051D7FD /* EditObjectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditObjectView.xib; sourceTree = "<group>"; };
@@ -81,7 +78,6 @@
 		FDBB84A224A49AE000589F64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDBB84AB24A62B6900589F64 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FDBB84AD24A62BF800589F64 /* RoomsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsListViewController.swift; sourceTree = "<group>"; };
-		FDBB84B024A634BC00589F64 /* RoomListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListCell.swift; sourceTree = "<group>"; };
 		FDE9F0EA24A747D500454492 /* ItemsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListViewController.swift; sourceTree = "<group>"; };
 		FDE9F0EC24A7545000454492 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,8 +119,6 @@
 				6052278B6E610439D3BCE2B0 /* Item.swift */,
 				605228058E9A483E17A958B1 /* RoomStore.swift */,
 				605229B74E0ABC487E87D514 /* PersistenceManager.swift */,
-				FDBB84B024A634BC00589F64 /* RoomListCell.swift */,
-				60522E8E9C45060189F35037 /* ItemListCell.swift */,
 				60522137AEB04EC1B9C5E709 /* UI */,
 			);
 			path = Models;
@@ -350,7 +344,6 @@
 				FDE9F0ED24A7545000454492 /* EditItemViewController.swift in Sources */,
 				FDBB847824A33ECF00589F64 /* AppDelegate.swift in Sources */,
 				FD1737B224AB5C2E0051D7FD /* EditObjectView.swift in Sources */,
-				FDBB84B124A634BC00589F64 /* RoomListCell.swift in Sources */,
 				60522A85EE50E5A2F85C1F50 /* Room.swift in Sources */,
 				FDBB84AE24A62BF800589F64 /* RoomsListViewController.swift in Sources */,
 				FDE9F0EB24A747D500454492 /* ItemsListViewController.swift in Sources */,
@@ -363,7 +356,6 @@
 				605224BADF22C6EB4EDA2696 /* MainCoordinator.swift in Sources */,
 				60522D693341B6B73D26674E /* Storyboarded.swift in Sources */,
 				60522CCC9E0F8FBE7665D382 /* EditRoomViewController.swift in Sources */,
-				60522AA8632C71944DF791FB /* ItemListCell.swift in Sources */,
 				605226EB16C9AA11593C738C /* ImageContainer.swift in Sources */,
 				60522959FA29DB581B6F100A /* NibLoadableView.swift in Sources */,
 				60522B736AC543C621D89FC4 /* Identifiers.swift in Sources */,
