@@ -32,6 +32,14 @@ class RoomStore: ObservableObject, Storable {
         rooms = persistenceManager.retrieveRooms()
     }
 
+    func update(for room: Room) {
+        guard let roomIndex = try? findRoom(with: room.id) else {
+            return
+        }
+
+        updateItemsArray(in: roomIndex)
+    }
+
     func addRoom(_ room: Room) {
         rooms.append(room)
         persistRooms()

@@ -28,6 +28,7 @@ class ItemsListViewController: UIViewController {
     }
 
     private func setupItems() {
+        roomStore.update(for: room)
         cancellable = roomStore.$itemsForRoom.sink { [weak self] items in
             self?.update(with: items)
         }
@@ -37,6 +38,8 @@ class ItemsListViewController: UIViewController {
         coordinator?.addItem(for: room, in: roomStore)
     }
 }
+
+// MARK: Diffable data source
 
 extension ItemsListViewController {
     func setUpDataSource() -> UITableViewDiffableDataSource<Section, Item> {
@@ -60,10 +63,39 @@ extension ItemsListViewController {
 }
 
 extension ItemsListViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = room.items[indexPath.row]
         debugPrint("Item: ", item, "was selected")
     }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, _, completion) in
+            guard let self = self else {
+                return
+            }
+            let indexSet: IndexSet = IndexSet(integer: indexPath.row)
+            self.roomStore.deleteItem(at: indexSet, in: self.room)
+            self.tableview.deleteRows(at: [indexPath], with: .fade)
+            completion(true)
+        }
+
+        let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
+            guard let self = self,
+                let room = self.room else {
+                assertionFailure("No valid room")
+                return
+            }
+
+            let item = self.room.items[indexPath.row]
+            self.coordinator?.editItem(item: item, in: room, for: self.roomStore)
+            completion(true)
+        }
+
+        edit.backgroundColor = .systemBlue
+
+        return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
+
 }
 
 extension ItemsListViewController: Storyboarded { }

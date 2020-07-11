@@ -48,7 +48,7 @@ class EditObjectView: UIView, NibLoadableView {
     }
 
     private func commonInit() {
-        Bundle.main.loadNibNamed("EditObjectView", owner: self)
+        Bundle.main.loadNibNamed(Identifiers.editObjectView, owner: self)
         addSubview(containerView)
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
