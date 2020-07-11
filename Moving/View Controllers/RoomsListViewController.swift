@@ -35,7 +35,30 @@ class RoomsListViewController: UIViewController {
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         coordinator?.addRoom(roomStore)
     }
-    
+
+    class DataSource: UITableViewDiffableDataSource<Section, Room> {
+        var parentClass: RoomsListViewController!
+
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+
+        override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                if let identifierToDelete = itemIdentifier(for: indexPath) {
+                    var snapshot = self.snapshot()
+                    snapshot.deleteItems([identifierToDelete])
+                    apply(snapshot)
+                    parentClass.roomStore.deleteRoom(at: indexPath.row)
+                }
+            }
+        }
+    }
+
 }
 
 
@@ -43,12 +66,6 @@ class RoomsListViewController: UIViewController {
 
 enum Section: CaseIterable {
     case main
-}
-
-class DataSource: UITableViewDiffableDataSource<Section, Room> {
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
 }
 
 extension RoomsListViewController {
@@ -60,6 +77,7 @@ extension RoomsListViewController {
 
                 return cell
             })
+        dataSource.parentClass = self
         tableview.dataSource = dataSource
     }
 
@@ -80,27 +98,27 @@ extension RoomsListViewController: UITableViewDelegate {
         coordinator?.listItems(for: room, in: roomStore)
     }
 
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, _, completion) in
-            self?.roomStore.deleteRoom(at: indexPath.row)
-            self?.tableview.deleteRows(at: [indexPath], with: .fade)
-            completion(true)
-        }
-
-        let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
-            guard let self = self else {
-                assertionFailure("No valid room")
-                return
-            }
-            let room = self.roomStore.rooms[indexPath.row]
-            self.coordinator?.editRoom(room: room, in: self.roomStore)
-            completion(true)
-        }
-
-        edit.backgroundColor = .systemBlue
-
-        return UISwipeActionsConfiguration(actions: [delete, edit])
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, _, completion) in
+//            self?.roomStore.deleteRoom(at: indexPath.row)
+//            self?.tableview.deleteRows(at: [indexPath], with: .fade)
+//            completion(true)
+//        }
+//
+//        let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
+//            guard let self = self else {
+//                assertionFailure("No valid room")
+//                return
+//            }
+//            let room = self.roomStore.rooms[indexPath.row]
+//            self.coordinator?.editRoom(room: room, in: self.roomStore)
+//            completion(true)
+//        }
+//
+//        edit.backgroundColor = .systemBlue
+//
+//        return UISwipeActionsConfiguration(actions: [delete, edit])
+//    }
 }
 
 extension RoomsListViewController: Storyboarded { }

@@ -97,7 +97,7 @@ extension EditObjectView {
         addOrEditButton.setTitle(Defaults.add, for: .normal)
         typePicker.delegate = self
         typePicker.dataSource = self
-        let firstType = pickerArray.first ?? Defaults.otherType
+        selectedObjectType = pickerArray.first ?? Defaults.otherType
 
         imageView.tapDelegate = self
     }
