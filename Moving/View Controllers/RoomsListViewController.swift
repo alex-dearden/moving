@@ -98,27 +98,31 @@ extension RoomsListViewController: UITableViewDelegate {
         coordinator?.listItems(for: room, in: roomStore)
     }
 
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, _, completion) in
-//            self?.roomStore.deleteRoom(at: indexPath.row)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, _, completion) in
+            guard let self = self else {
+                return
+            }
+            self.roomStore.deleteRoom(at: indexPath.row)
+            self.dataSource.tableView(self.tableview, commit: .delete, forRowAt: indexPath)
 //            self?.tableview.deleteRows(at: [indexPath], with: .fade)
-//            completion(true)
-//        }
-//
-//        let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
-//            guard let self = self else {
-//                assertionFailure("No valid room")
-//                return
-//            }
-//            let room = self.roomStore.rooms[indexPath.row]
-//            self.coordinator?.editRoom(room: room, in: self.roomStore)
-//            completion(true)
-//        }
-//
-//        edit.backgroundColor = .systemBlue
-//
-//        return UISwipeActionsConfiguration(actions: [delete, edit])
-//    }
+            completion(true)
+        }
+
+        let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
+            guard let self = self else {
+                assertionFailure("No valid room")
+                return
+            }
+            let room = self.roomStore.rooms[indexPath.row]
+            self.coordinator?.editRoom(room: room, in: self.roomStore)
+            completion(true)
+        }
+
+        edit.backgroundColor = .systemBlue
+
+        return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
 }
 
 extension RoomsListViewController: Storyboarded { }
