@@ -90,39 +90,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ej2-WQ-7vR">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ej2-WQ-7vR">
                                 <rect key="frame" x="0.0" y="8" width="414" height="800"/>
                                 <color key="backgroundColor" name="TableBackground"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" id="dRg-Tm-b66" customClass="ItemListCell" customModule="Moving" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" id="dRg-Tm-b66" customClass="ListCellView" customModule="Moving" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dRg-Tm-b66" id="Hiq-H9-fcG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c09-Sm-GeE">
-                                                    <rect key="frame" x="28" y="11.5" width="42" height="21"/>
+                                                    <rect key="frame" x="28" y="17.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="CancelButtonBackground"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-c1-frM">
-                                                    <rect key="frame" x="357" y="6.5" width="51" height="31"/>
-                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0ie-c1-frM" firstAttribute="centerY" secondItem="Hiq-H9-fcG" secondAttribute="centerY" id="EbB-G5-n06"/>
-                                                <constraint firstAttribute="trailing" secondItem="0ie-c1-frM" secondAttribute="trailing" constant="8" id="dPn-PP-QVT"/>
                                                 <constraint firstItem="c09-Sm-GeE" firstAttribute="centerY" secondItem="Hiq-H9-fcG" secondAttribute="centerY" id="gPN-q9-9YF"/>
                                                 <constraint firstItem="c09-Sm-GeE" firstAttribute="leading" secondItem="Hiq-H9-fcG" secondAttribute="leadingMargin" constant="8" id="pQW-Ai-mXs"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="CellBackground"/>
-                                        <connections>
-                                            <outlet property="name" destination="c09-Sm-GeE" id="gGq-xd-sFU"/>
-                                            <outlet property="toggleSwitch" destination="0ie-c1-frM" id="kxV-yj-nfL"/>
-                                        </connections>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -238,9 +229,6 @@
     <resources>
         <namedColor name="CancelButtonBackground">
             <color red="0.68235294117647061" green="0.69019607843137254" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="CellBackground">
-            <color red="0.23921568627450981" green="0.24313725490196078" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TableBackground">
             <color red="0.26666666666666666" green="0.27058823529411763" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

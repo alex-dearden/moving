@@ -46,8 +46,8 @@ extension ItemsListViewController {
         return UITableViewDiffableDataSource(
             tableView: tableview,
             cellProvider: { tableView, indexPath, item in
-                let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.itemCell, for: indexPath) as! ItemListCell
-                cell.configure(for: item)
+                let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.itemCell, for: indexPath) as! ListCellView
+                cell.update(with: item.name)
 
                 return cell
             })
