@@ -80,7 +80,7 @@ enum RoomType: CaseIterable {
         // TODO: Create images for the different room types
         switch self {
         default:
-            return UIImage(named: Identifiers.Images.roomPlaceholder2)
+            return UIImage(named: Identifiers.Image.roomPlaceholder2)
         }
     }
 }

@@ -11,8 +11,15 @@ enum Identifiers {
     static let editObjectView = "EditObjectView"
     static let listCellView = "ListCellView"
 
-    enum Images {
+    enum Image {
         static  let roomPlaceholder = "Room-placeholder"
         static  let roomPlaceholder2 = "Room-placeholder2"
+    }
+
+    enum Color {
+        static let cancelButtonBackground = "CancelButtonBackground"
+        static let cancelText = "CancelText"
+        static let buttonBackground = "ButtonBackground"
+        static let buttonText = "ButtonText"
     }
 }

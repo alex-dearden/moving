@@ -26,7 +26,12 @@ class EditItemViewController: UIViewController {
 
     private func setupEditObjectContainer() {
         editObjectContainer.delegate = self
-        editObjectContainer.update(objectTitle: "Item", types: ItemType.all, hideImage: true)
+        editObjectContainer.update(objectTitle: "Item", types: ItemType.all)
+
+        // Editing
+        if let item = item {
+            editObjectContainer.edit(objectName: item.name, type: item.type.name)
+        }
     }
 
     private func addImage() {

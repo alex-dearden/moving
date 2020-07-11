@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-3x-ncT">
-                    <rect key="frame" x="24" y="52" width="370" height="469.5"/>
+                    <rect key="frame" x="24" y="52" width="370" height="472.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HFT-L7-nCh" customClass="ImageContainer" customModule="Moving" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="370" height="277.5"/>
@@ -43,18 +43,20 @@
                             </constraints>
                         </pickerView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="c6U-tb-JwK" userLabel="Button Stack View">
-                            <rect key="frame" x="0.0" y="439.5" width="370" height="30"/>
+                            <rect key="frame" x="0.0" y="439.5" width="370" height="33"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arN-r7-oj9">
-                                    <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arN-r7-oj9" customClass="CancelButton" customModule="Moving" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="65" height="33"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="18"/>
                                     <state key="normal" title="Cancel"/>
                                     <connections>
                                         <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="x4e-Y6-jgr"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5i-Vg-jw1">
-                                    <rect key="frame" x="303" y="0.0" width="67" height="30"/>
-                                    <state key="normal" title="Add room"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5i-Vg-jw1" customClass="AddButton" customModule="Moving" customModuleProvider="target">
+                                    <rect key="frame" x="337" y="0.0" width="33" height="33"/>
+                                    <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="18"/>
+                                    <state key="normal" title="Add"/>
                                     <connections>
                                         <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="zIU-Sy-oKj"/>
                                     </connections>

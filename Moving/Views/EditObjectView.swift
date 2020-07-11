@@ -22,7 +22,7 @@ class EditObjectView: UIView, NibLoadableView {
     @IBOutlet private weak var imageView: ImageContainer!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var typePicker: UIPickerView!
-    @IBOutlet weak var addOrEditButton: UIButton!
+    @IBOutlet weak var addOrEditButton: AddButton!
 
     private var pickerArray: [String] = []
     weak var delegate: EditObjectViewDelegate?
@@ -59,6 +59,12 @@ class EditObjectView: UIView, NibLoadableView {
         imageView.isHidden = hideImage
         nameTextField.placeholder = objectTitle + Defaults.space + Defaults.name
         pickerArray = types
+    }
+
+    func edit(objectName: String, type: String) {
+        nameTextField.text = objectName
+        let typeIndex = pickerArray.firstIndex { $0 == type } ?? 0
+        typePicker.selectRow(typeIndex, inComponent: 0, animated: false)
     }
     
     func updateImage(_ image: UIImage) {

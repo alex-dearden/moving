@@ -11,6 +11,7 @@
 		605224BADF22C6EB4EDA2696 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605225CEC47B8A51D4957578 /* MainCoordinator.swift */; };
 		6052264E62255D3C2A34C6DC /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605226B8DAB4475BD0E643C2 /* Listable.swift */; };
 		605226EB16C9AA11593C738C /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60522EAFCB605895411EFEEE /* ImageContainer.swift */; };
+		605227CBFC3AC890D2E3FFD7 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6052266F0D4593F7956EA1E7 /* CustomButtons.swift */; };
 		60522959FA29DB581B6F100A /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605226DA9BBFA14B6BC34A4B /* NibLoadableView.swift */; };
 		60522A85EE50E5A2F85C1F50 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605227EFE5AD7E301903D6AD /* Room.swift */; };
 		60522B736AC543C621D89FC4 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6052295884646E52B4F538D6 /* Identifiers.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		60522020604B0230FE0F03AB /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
 		605225CEC47B8A51D4957578 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		6052266F0D4593F7956EA1E7 /* CustomButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		605226B8DAB4475BD0E643C2 /* Listable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = "<group>"; };
 		605226DA9BBFA14B6BC34A4B /* NibLoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadableView.swift; sourceTree = "<group>"; };
 		60522763BD5AEEAD7E4B7077 /* Storyboarded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				6052295884646E52B4F538D6 /* Identifiers.swift */,
 				FD4AFF6F24B9BF05004B56C9 /* ListCellView.xib */,
 				FD4AFF7124B9C1E2004B56C9 /* ListCellView.swift */,
+				6052266F0D4593F7956EA1E7 /* CustomButtons.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				605226EB16C9AA11593C738C /* ImageContainer.swift in Sources */,
 				60522959FA29DB581B6F100A /* NibLoadableView.swift in Sources */,
 				60522B736AC543C621D89FC4 /* Identifiers.swift in Sources */,
+				605227CBFC3AC890D2E3FFD7 /* CustomButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
