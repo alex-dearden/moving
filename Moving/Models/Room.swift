@@ -76,16 +76,11 @@ enum RoomType: CaseIterable {
         }
     }
 
-    var icon: UIImage {
+    var icon: UIImage? {
+        // TODO: Create images for the different room types
         switch self {
-        case .livingRoom:
-            return UIImage(imageLiteralResourceName: "film")
-        case .bedroom:
-            return UIImage(imageLiteralResourceName: "xmark.icloud")
-        case .kitchen:
-            return UIImage(imageLiteralResourceName: "gauge")
         default:
-            return UIImage(imageLiteralResourceName: "livephoto")
+            return UIImage(named: Identifiers.Images.roomPlaceholder2)
         }
     }
 }

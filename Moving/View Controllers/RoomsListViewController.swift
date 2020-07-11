@@ -50,8 +50,8 @@ extension RoomsListViewController {
         return UITableViewDiffableDataSource(
             tableView: tableview,
             cellProvider: { tableView, indexPath, room in
-                let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.roomCell, for: indexPath) as! RoomListCell
-                cell.configure(for: room)
+                let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.roomCell, for: indexPath) as! ListCellView
+                cell.update(with: room.name, icon: room.type.icon)
 
                 return cell
             })

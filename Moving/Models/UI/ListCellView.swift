@@ -43,7 +43,7 @@ class ListCellView: UITableViewCell {
         selectionStyle = .none
     }
 
-    func update(with title: String, icon: UIImage) {
+    func update(with title: String, icon: UIImage?) {
         titleLabel.text = title
         iconImageView.image = icon
         iconImageView.isHidden = false

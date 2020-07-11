@@ -10,4 +10,9 @@ enum Identifiers {
     static let itemCell = "itemCell"
     static let editObjectView = "EditObjectView"
     static let listCellView = "ListCellView"
+
+    enum Images {
+        static  let roomPlaceholder = "Room-placeholder"
+        static  let roomPlaceholder2 = "Room-placeholder2"
+    }
 }
