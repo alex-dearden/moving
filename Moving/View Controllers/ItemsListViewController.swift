@@ -93,33 +93,33 @@ extension ItemsListViewController: UITableViewDelegate {
         debugPrint("Item: ", item, "was selected")
     }
 
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, _, completion) in
-//            guard let self = self else {
-//                return
-//            }
-//            let indexSet: IndexSet = IndexSet(integer: indexPath.row)
-//            self.roomStore.deleteItem(at: indexSet, in: self.room)
-//            self.tableview.deleteRows(at: [indexPath], with: .fade)
-//            completion(true)
-//        }
-//
-//        let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
-//            guard let self = self,
-//                let room = self.room else {
-//                assertionFailure("No valid room")
-//                return
-//            }
-//
-//            let item = self.room.items[indexPath.row]
-//            self.coordinator?.editItem(item: item, in: room, for: self.roomStore)
-//            completion(true)
-//        }
-//
-//        edit.backgroundColor = .systemBlue
-//
-//        return UISwipeActionsConfiguration(actions: [delete, edit])
-//    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, _, completion) in
+            guard let self = self else {
+                return
+            }
+            let indexSet: IndexSet = IndexSet(integer: indexPath.row)
+            self.roomStore.deleteItem(at: indexSet, in: self.room)
+            self.dataSource.tableView(self.tableview, commit: .delete, forRowAt: indexPath)
+            completion(true)
+        }
+
+        let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
+            guard let self = self,
+                let room = self.room else {
+                assertionFailure("No valid room")
+                return
+            }
+
+            let item = self.room.items[indexPath.row]
+            self.coordinator?.editItem(item: item, in: room, for: self.roomStore)
+            completion(true)
+        }
+
+        edit.backgroundColor = .systemBlue
+
+        return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
 
 }
 

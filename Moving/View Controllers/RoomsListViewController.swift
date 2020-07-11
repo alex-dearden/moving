@@ -105,7 +105,6 @@ extension RoomsListViewController: UITableViewDelegate {
             }
             self.roomStore.deleteRoom(at: indexPath.row)
             self.dataSource.tableView(self.tableview, commit: .delete, forRowAt: indexPath)
-//            self?.tableview.deleteRows(at: [indexPath], with: .fade)
             completion(true)
         }
 
