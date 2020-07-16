@@ -52,6 +52,7 @@ class RoomStore: ObservableObject, Storable {
 
         rooms[roomIndex].name = room.name
         rooms[roomIndex].type = room.type
+        rooms[roomIndex].image = room.image
 
         persistRooms()
     }
@@ -88,6 +89,7 @@ class RoomStore: ObservableObject, Storable {
 
         rooms[roomIndex].items[itemIndex].name = item.name
         rooms[roomIndex].items[itemIndex].type = item.type
+        rooms[roomIndex].items[itemIndex].image = item.image
 
         persistRooms()
         updateItemsArray(in: roomIndex)

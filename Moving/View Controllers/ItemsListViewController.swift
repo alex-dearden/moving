@@ -28,6 +28,7 @@ class ItemsListViewController: UIViewController {
     }
 
     private func setupItems() {
+        title = "Items in " + room.name
         roomStore.update(for: room)
         cancellable = roomStore.$itemsForRoom.sink { [weak self] items in
             self?.update(with: items)
@@ -89,8 +90,11 @@ extension ItemsListViewController {
 
 extension ItemsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = room.items[indexPath.row]
-        debugPrint("Item: ", item, "was selected")
+        guard let item = room.items[safe: indexPath.row] else {
+            return
+        }
+        debugPrint("Toggle this item!")
+//        coordinator?.editItem(item: item, in: room, for: roomStore)
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

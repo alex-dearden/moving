@@ -27,6 +27,7 @@ class RoomsListViewController: UIViewController {
     }
 
     private func setupRooms() {
+        title = "Rooms"
         cancellable = roomStore.$rooms.sink { [weak self] rooms in
             self?.update(with: rooms)
         }

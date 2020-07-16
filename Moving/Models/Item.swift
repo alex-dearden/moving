@@ -10,8 +10,8 @@ struct Item: Identifiable, Codable, Listable {
     let id: UUID = UUID()
     var name: String
     var order: Int
-    var image: CodableImage?
     var type: ItemType
+    var image: CodableImage?
 }
 
 struct CodableImage: Codable {

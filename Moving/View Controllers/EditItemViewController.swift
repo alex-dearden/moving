@@ -12,6 +12,8 @@ class EditItemViewController: UIViewController {
 
     @IBOutlet weak var editObjectContainer: EditObjectView!
 
+    private var currentImage: UIImage?
+
     var room: Room?
     var roomStore: RoomStore!
     
@@ -30,7 +32,7 @@ class EditItemViewController: UIViewController {
 
         // Editing
         if let item = item {
-            editObjectContainer.edit(objectName: item.name, type: item.type.name)
+            editObjectContainer.edit(objectName: item.name, type: item.type.name, image: item.image?.getCodableImage())
         }
     }
 
@@ -59,6 +61,11 @@ extension EditItemViewController: EditObjectViewDelegate {
 
         item.name = newName
         item.type = ItemType.init(rawValue: newTypeName) ?? .other
+
+        if let _ = currentImage {
+            item.image = currentImage.codableImage()
+        }
+
         roomStore.editItem(item, in: room)
     }
 
@@ -69,7 +76,8 @@ extension EditItemViewController: EditObjectViewDelegate {
         }
         let newOrder = roomStore.rooms.count
         let newType = ItemType.init(rawValue: typeName) ?? .other
-        let newItem = Item(name: name, order: newOrder, image: nil, type: newType)
+        let codableImage = currentImage.codableImage()
+        let newItem = Item(name: name, order: newOrder, type: newType, image: codableImage)
         roomStore.addItem(newItem, in: room)
     }
 
@@ -83,8 +91,6 @@ extension EditItemViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true)
 
-        var image: UIImage!
-
         // NOTE: Necessary to be able to test with simulator
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             guard let validImage = info[.editedImage] as? UIImage else {
@@ -92,17 +98,17 @@ extension EditItemViewController: UIImagePickerControllerDelegate {
                 return
             }
 
-            image = validImage
+            currentImage = validImage
         } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
             guard let validImage = info[.originalImage] as? UIImage else {
                 assertionFailure("Not a valid image")
                 return
             }
 
-            image = validImage
+            currentImage = validImage
         }
 
-        editObjectContainer.updateImage(image)
+        editObjectContainer.updateImage(currentImage)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

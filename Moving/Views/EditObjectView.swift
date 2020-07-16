@@ -73,7 +73,7 @@ class EditObjectView: UIView, NibLoadableView {
         }
     }
     
-    func updateImage(_ image: UIImage) {
+    func updateImage(_ image: UIImage?) {
         imageView.loadImage(image)
     }
 
@@ -112,6 +112,7 @@ extension EditObjectView {
         typePicker.dataSource = self
         selectedObjectType = pickerArray.first ?? Defaults.otherType
         typePicker.setValue(UIColor(named: Identifiers.Color.buttonText), forKey: "textColor")
+        nameTextField.delegate = self
 
         imageView.tapDelegate = self
     }
@@ -145,6 +146,14 @@ extension EditObjectView: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedObjectType = pickerArray[row]
+    }
+}
+
+extension EditObjectView: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+
+        return true
     }
 }
 
