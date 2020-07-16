@@ -106,12 +106,12 @@ extension ItemsListViewController: UITableViewDelegate {
 
         let edit = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, _, completion) in
             guard let self = self,
-                let room = self.room else {
-                assertionFailure("No valid room")
+              let room = self.room,
+              let item = self.room.items[safe: indexPath.row] else {
+                assertionFailure("No valid room or item")
                 return
             }
 
-            let item = self.room.items[indexPath.row]
             self.coordinator?.editItem(item: item, in: room, for: self.roomStore)
             completion(true)
         }

@@ -22,28 +22,40 @@
             <rect key="frame" x="0.0" y="0.0" width="418" height="599"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-3x-ncT">
-                    <rect key="frame" x="24" y="52" width="370" height="472.5"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVV-OC-obg" userLabel="Image Background View">
+                    <rect key="frame" x="0.0" y="44" width="418" height="293.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HFT-L7-nCh" customClass="ImageContainer" customModule="Moving" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="370" height="277.5"/>
+                            <rect key="frame" x="24" y="8" width="370" height="277.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="HFT-L7-nCh" secondAttribute="height" multiplier="4:3" id="ahg-0u-exH"/>
                             </constraints>
                         </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96470588235294119" green="0.92549019607843142" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="HFT-L7-nCh" firstAttribute="leading" secondItem="CVV-OC-obg" secondAttribute="leading" constant="24" id="epd-Fe-v7g"/>
+                        <constraint firstAttribute="bottom" secondItem="HFT-L7-nCh" secondAttribute="bottom" constant="8" id="gRr-W2-y4V"/>
+                        <constraint firstItem="HFT-L7-nCh" firstAttribute="top" secondItem="CVV-OC-obg" secondAttribute="top" constant="8" id="j0P-fJ-tkO"/>
+                        <constraint firstAttribute="trailing" secondItem="HFT-L7-nCh" secondAttribute="trailing" constant="24" id="swi-5C-uvG"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-3x-ncT">
+                    <rect key="frame" x="24" y="358" width="370" height="179"/>
+                    <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMy-hy-mcK">
-                            <rect key="frame" x="0.0" y="293.5" width="370" height="34"/>
+                            <rect key="frame" x="0.0" y="0.0" width="370" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-MH-Vyq">
-                            <rect key="frame" x="0.0" y="343.5" width="370" height="80"/>
+                            <rect key="frame" x="0.0" y="50" width="370" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="c9P-ah-Sv3"/>
                             </constraints>
                         </pickerView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="c6U-tb-JwK" userLabel="Button Stack View">
-                            <rect key="frame" x="0.0" y="439.5" width="370" height="33"/>
+                            <rect key="frame" x="0.0" y="146" width="370" height="33"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arN-r7-oj9" customClass="CancelButton" customModule="Moving" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="65" height="33"/>
@@ -68,9 +80,12 @@
             </subviews>
             <color key="backgroundColor" name="TableBackground"/>
             <constraints>
-                <constraint firstItem="Y0o-3x-ncT" firstAttribute="leading" secondItem="Wpy-fE-IIL" secondAttribute="leading" constant="24" id="B2B-Zl-vF3"/>
-                <constraint firstItem="Wpy-fE-IIL" firstAttribute="trailing" secondItem="Y0o-3x-ncT" secondAttribute="trailing" constant="24" id="Nhd-WL-pfC"/>
-                <constraint firstItem="Y0o-3x-ncT" firstAttribute="top" secondItem="Wpy-fE-IIL" secondAttribute="top" constant="8" id="eLU-Us-LeD"/>
+                <constraint firstItem="CVV-OC-obg" firstAttribute="leading" secondItem="Wpy-fE-IIL" secondAttribute="leading" id="4s0-aZ-NmM"/>
+                <constraint firstItem="Y0o-3x-ncT" firstAttribute="top" secondItem="CVV-OC-obg" secondAttribute="bottom" constant="20.5" id="6Fk-kx-GgN"/>
+                <constraint firstItem="Wpy-fE-IIL" firstAttribute="trailing" secondItem="CVV-OC-obg" secondAttribute="trailing" id="DBN-LS-tSM"/>
+                <constraint firstItem="Wpy-fE-IIL" firstAttribute="trailing" secondItem="Y0o-3x-ncT" secondAttribute="trailing" constant="24" id="Rw9-ZJ-LX7"/>
+                <constraint firstItem="Y0o-3x-ncT" firstAttribute="leading" secondItem="Wpy-fE-IIL" secondAttribute="leading" constant="24" id="W0H-Ot-Fgg"/>
+                <constraint firstItem="CVV-OC-obg" firstAttribute="top" secondItem="Wpy-fE-IIL" secondAttribute="top" id="adk-zK-vJy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Wpy-fE-IIL"/>
