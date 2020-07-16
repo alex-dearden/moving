@@ -4,9 +4,20 @@
 //
 
 import Foundation
+import UIKit
 
 extension Array {
     subscript (safe index: Int) -> Element? {
         return Int(index) < count ? self[Int(index)] : nil
+    }
+}
+
+extension Optional where Wrapped == UIImage {
+    func codableImage() -> CodableImage? {
+        guard let currentImage = self else {
+            return nil
+        }
+
+        return CodableImage(withImage: currentImage)
     }
 }

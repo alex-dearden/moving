@@ -29,6 +29,7 @@ class ImageContainer: UIImageView {
     }
 
     func loadImage(_ image: UIImage) {
+        layer.borderWidth = 0
         self.image = image
         label.isHidden = true
     }

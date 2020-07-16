@@ -21,7 +21,7 @@ struct CodableImage: Codable {
         self.imageData = image.pngData()
     }
 
-    func getImage() -> UIImage? {
+    func getCodableImage() -> UIImage? {
         guard let imageData = self.imageData else {
             return nil
         }

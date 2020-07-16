@@ -11,6 +11,7 @@ struct Room: Identifiable, Codable, Listable {
     var name: String
     var order: Int
     var type: RoomType
+    var image: CodableImage?
     var items: [Item] = []
 
     // In order to use this, we would need to delete the room from roomstore.rooms, modify it and readd it

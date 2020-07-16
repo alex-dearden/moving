@@ -55,16 +55,22 @@ class EditObjectView: UIView, NibLoadableView {
         setupUI()
     }
 
-    func update(objectTitle: String, types: [String], hideImage: Bool = false) {
-        imageView.isHidden = hideImage
+    func update(objectTitle: String, types: [String]) {
         nameTextField.placeholder = objectTitle + Defaults.space + Defaults.name
         pickerArray = types
     }
 
-    func edit(objectName: String, type: String) {
+    func edit(objectName: String, type: String, image: UIImage? = nil) {
+        isEdit = true
         nameTextField.text = objectName
         let typeIndex = pickerArray.firstIndex { $0 == type } ?? 0
         typePicker.selectRow(typeIndex, inComponent: 0, animated: false)
+        // TODO: Do we really need selectedObjectType?
+        selectedObjectType = type
+
+        if let image = image {
+            imageView.loadImage(image)
+        }
     }
     
     func updateImage(_ image: UIImage) {
@@ -86,7 +92,8 @@ class EditObjectView: UIView, NibLoadableView {
 
         if isEdit {
             // TODO: Handle via Combine?
-            delegate?.add(name: name, typeName: typeName)
+            // TODO: Add ability to change image
+            delegate?.edit(newName: name, newTypeName: typeName)
         } else {
             // TODO: Handle via Combine?
             delegate?.add(name: name, typeName: typeName)
@@ -104,6 +111,7 @@ extension EditObjectView {
         typePicker.delegate = self
         typePicker.dataSource = self
         selectedObjectType = pickerArray.first ?? Defaults.otherType
+        typePicker.setValue(UIColor(named: Identifiers.Color.buttonText), forKey: "textColor")
 
         imageView.tapDelegate = self
     }
@@ -144,7 +152,7 @@ private extension EditObjectView {
     enum Defaults {
         static let name = "name"
         static let space = " "
-        static let edit = "Edit"
+        static let edit = "Save"
         static let add = "Add"
         static let otherType = "other"
     }

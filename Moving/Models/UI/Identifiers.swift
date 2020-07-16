@@ -21,5 +21,6 @@ enum Identifiers {
         static let cancelText = "CancelText"
         static let buttonBackground = "ButtonBackground"
         static let buttonText = "ButtonText"
+        static let imageBackground = "ImageBackground"
     }
 }
