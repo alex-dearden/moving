@@ -8,12 +8,48 @@
 
 import UIKit
 
+enum CellState {
+    case checked, unchecked
+
+    init(on: Bool) {
+        self = on ? .checked : .unchecked
+    }
+
+    var textColor: UIColor? {
+        switch self {
+        case .checked:
+            return UIColor(named: Identifiers.Color.cellCheckedText)
+        case .unchecked:
+            return UIColor(named: Identifiers.Color.buttonText)
+        }
+    }
+
+    var backgroundColor: UIColor? {
+        switch self {
+        case .checked:
+            return UIColor(named: Identifiers.Color.cellChecked)
+        case .unchecked:
+            return UIColor(named: Identifiers.Color.cellBackground)
+        }
+    }
+
+    var image: UIImage? {
+        switch self {
+        case .checked:
+            return UIImage(named: Identifiers.Image.switchOn)
+        case .unchecked:
+            return UIImage(named: Identifiers.Image.switchOff)
+        }
+    }
+}
+
 class ListCellView: UITableViewCell {
-    
+
     @IBOutlet var containerView: UIView!
-    @IBOutlet private weak var background: UIView!
+    @IBOutlet private weak var roundedBackgroundView: UIView!
     @IBOutlet private weak var switchImageView: SwitchImageView!
     @IBOutlet private weak var iconImageView: UIImageView!
+
     @IBOutlet private weak var titleLabel: UILabel!
 
     override func awakeFromNib() {
@@ -51,12 +87,20 @@ class ListCellView: UITableViewCell {
     }
 
     func update(with title: String, checked: Bool) {
-        switchImageView.setImage(on: checked)
+        handleState(for: checked)
         titleLabel.text = title
     }
 
+    private func handleState(for on: Bool) {
+        let state = CellState.init(on: on)
+        switchImageView.setState(state: state)
+        titleLabel.textColor = state.textColor
+        roundedBackgroundView.backgroundColor = state.backgroundColor
+    }
+
     private func setup() {
-        background.layer.cornerRadius = Defaults.cornerRadius
+        roundedBackgroundView.layer.cornerRadius = Defaults.cornerRadius
+        roundedBackgroundView.backgroundColor = CellState.unchecked.backgroundColor
     }
 
 }

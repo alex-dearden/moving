@@ -24,5 +24,8 @@ enum Identifiers {
         static let buttonBackground = "ButtonBackground"
         static let buttonText = "ButtonText"
         static let imageBackground = "ImageBackground"
+        static let cellBackground = "CellBackground"
+        static let cellChecked = "CellChecked"
+        static let cellCheckedText = "CellCheckedText"
     }
 }

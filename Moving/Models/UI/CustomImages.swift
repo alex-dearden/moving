@@ -19,8 +19,8 @@ class SwitchImageView: UIImageView {
         commonInit()
     }
 
-    func setImage(on: Bool) {
-        image = on ? Defaults.onImage : Defaults.offImage
+    func setState(state: CellState) {
+        image = state.image
         debugPrint("image should be:", image)
     }
 
