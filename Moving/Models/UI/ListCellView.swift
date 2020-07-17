@@ -36,7 +36,7 @@ enum CellState {
     var image: UIImage? {
         switch self {
         case .checked:
-            return UIImage(named: Identifiers.Image.switchOn)
+            return UIImage(named: Identifiers.Image.switchOnNoTick)
         case .unchecked:
             return UIImage(named: Identifiers.Image.switchOff)
         }

@@ -21,15 +21,9 @@ class SwitchImageView: UIImageView {
 
     func setState(state: CellState) {
         image = state.image
-        debugPrint("image should be:", image)
     }
 
     private func commonInit() {
-        image = Defaults.offImage
-    }
-
-    private enum Defaults {
-        static let onImage = UIImage(named: Identifiers.Image.switchOn)
-        static let offImage = UIImage(named: Identifiers.Image.switchOff)
+        image = CellState.unchecked.image
     }
 }

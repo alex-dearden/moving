@@ -14,6 +14,7 @@ enum Identifiers {
     enum Image {
         static let switchOff = "Switch-off"
         static let switchOn = "Switch-on"
+        static let switchOnNoTick = "Switch-on-no-tick"
         static  let roomPlaceholder = "Room-placeholder"
         static  let roomPlaceholder2 = "Room-placeholder2"
     }
