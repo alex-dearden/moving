@@ -12,6 +12,7 @@ struct Item: Identifiable, Codable, Listable {
     var order: Int
     var type: ItemType
     var image: CodableImage?
+    var checked: Bool = false
 }
 
 struct CodableImage: Codable {

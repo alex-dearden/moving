@@ -66,12 +66,12 @@ class ItemsListViewController: UIViewController {
 
 // MARK: Diffable data source
 
-extension ItemsListViewController {
+private extension ItemsListViewController {
     func setUpDataSource()  {
         dataSource = DataSource(tableView: tableview,
             cellProvider: { tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.itemCell, for: indexPath) as! ListCellView
-                cell.update(with: item.name)
+                cell.update(with: item.name, checked: item.checked)
 
                 return cell
             })
@@ -85,6 +85,8 @@ extension ItemsListViewController {
 
         snapshot.appendItems(items, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: animate)
+        // TODO: This shouldn't be necessary. Docs say not to call the old UITableView APIs but I can't get the cell to update with the toggle without it
+        tableview.reloadData()
     }
 }
 
@@ -93,8 +95,7 @@ extension ItemsListViewController: UITableViewDelegate {
         guard let item = room.items[safe: indexPath.row] else {
             return
         }
-        debugPrint("Toggle this item!")
-//        coordinator?.editItem(item: item, in: room, for: roomStore)
+        roomStore.toggleItem(item, in: room)
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

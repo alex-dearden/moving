@@ -12,6 +12,8 @@ enum Identifiers {
     static let listCellView = "ListCellView"
 
     enum Image {
+        static let switchOff = "Switch-off"
+        static let switchOn = "Switch-on"
         static  let roomPlaceholder = "Room-placeholder"
         static  let roomPlaceholder2 = "Room-placeholder2"
     }

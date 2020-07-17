@@ -14,12 +14,18 @@ protocol Storable {
     func moveRoom(from source: IndexSet, to destination: Int)
     func addItem(_ item: Item, in room: Room)
     func editItem(_ item: Item, in room: Room)
+    func toggleItem(_ item: Item, in room: Room)
     func deleteItem(at offset: IndexSet, in room: Room)
 }
 
 class RoomStore: ObservableObject, Storable {
     @Published var rooms: [Room] = []
-    @Published var itemsForRoom: [Item] = []
+    let objectWillChange = ObservableObjectPublisher()
+    @Published var itemsForRoom: [Item] = [] {
+        willSet {
+            objectWillChange.send()
+        }
+    }
 
     private let persistenceManager: Persistenceable = PersistenceManager()
 
@@ -90,6 +96,20 @@ class RoomStore: ObservableObject, Storable {
         rooms[roomIndex].items[itemIndex].name = item.name
         rooms[roomIndex].items[itemIndex].type = item.type
         rooms[roomIndex].items[itemIndex].image = item.image
+
+        persistRooms()
+        updateItemsArray(in: roomIndex)
+    }
+
+    func toggleItem(_ item: Item, in room: Room) {
+        guard let roomIndex = try? findRoom(with: room.id),
+              let itemIndex = try? findItem(with: item.id, in: room) else {
+            return
+        }
+        let newChecked = !(rooms[roomIndex].items[itemIndex].checked)
+        rooms[roomIndex].items[itemIndex].checked = newChecked
+
+        debugPrint("item checked status:", newChecked)
 
         persistRooms()
         updateItemsArray(in: roomIndex)

@@ -12,7 +12,7 @@ class ListCellView: UITableViewCell {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet private weak var background: UIView!
-    @IBOutlet private weak var switchImageView: UIImageView!
+    @IBOutlet private weak var switchImageView: SwitchImageView!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
 
@@ -50,7 +50,8 @@ class ListCellView: UITableViewCell {
         switchImageView.isHidden = true
     }
 
-    func update(with title: String) {
+    func update(with title: String, checked: Bool) {
+        switchImageView.setImage(on: checked)
         titleLabel.text = title
     }
 
