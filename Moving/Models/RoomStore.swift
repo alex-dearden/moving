@@ -109,8 +109,6 @@ class RoomStore: ObservableObject, Storable {
         let newChecked = !(rooms[roomIndex].items[itemIndex].checked)
         rooms[roomIndex].items[itemIndex].checked = newChecked
 
-        debugPrint("item checked status:", newChecked)
-
         persistRooms()
         updateItemsArray(in: roomIndex)
     }

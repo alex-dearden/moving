@@ -52,7 +52,8 @@ class ImageContainer: UIImageView {
         addSubview(label)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tap to add image"
+        label.text = Defaults.labelText
+        label.textColor = UIColor(named: Identifiers.Color.cellBackground) // TODO: Change this Identifier returns UIColor, UIImage, etc
 
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
@@ -78,5 +79,6 @@ private extension ImageContainer {
 private extension ImageContainer {
     enum Defaults {
         static let padding: CGFloat = 24
+        static let labelText = "Tap to add image"
     }
 }
