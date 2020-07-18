@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListCellView" customModule="Moving" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="aEp-Yh-xiC"/>
-                <outlet property="iconImageView" destination="SBn-KR-vet" id="e38-mc-iIz"/>
                 <outlet property="roundedBackgroundView" destination="1mg-9s-bQr" id="eNl-z9-aEn"/>
                 <outlet property="switchImageView" destination="xHo-iy-yW1" id="TJu-WT-Adc"/>
                 <outlet property="titleLabel" destination="sUG-8I-Y9B" id="QsX-rT-ZJj"/>
@@ -31,13 +30,6 @@
                                 <constraint firstAttribute="width" secondItem="xHo-iy-yW1" secondAttribute="height" multiplier="1:1" id="f5y-ZL-M6P"/>
                             </constraints>
                         </imageView>
-                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SBn-KR-vet" userLabel="Icon">
-                            <rect key="frame" x="16" y="14.5" width="18" height="17.5"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="18" id="Z8G-Ch-RAf"/>
-                                <constraint firstAttribute="width" secondItem="SBn-KR-vet" secondAttribute="height" multiplier="1:1" id="ce7-bt-3yL"/>
-                            </constraints>
-                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUG-8I-Y9B">
                             <rect key="frame" x="42" y="14" width="54.5" height="20"/>
                             <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="18"/>
@@ -48,12 +40,10 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="xHo-iy-yW1" firstAttribute="leading" secondItem="1mg-9s-bQr" secondAttribute="leading" constant="16" id="5io-ck-MNX"/>
-                        <constraint firstItem="SBn-KR-vet" firstAttribute="centerX" secondItem="xHo-iy-yW1" secondAttribute="centerX" id="5vU-um-5Fg"/>
                         <constraint firstAttribute="height" constant="48" id="8qb-9K-EvD"/>
                         <constraint firstItem="sUG-8I-Y9B" firstAttribute="centerY" secondItem="xHo-iy-yW1" secondAttribute="centerY" id="Wlf-Jk-tRL"/>
                         <constraint firstItem="xHo-iy-yW1" firstAttribute="centerY" secondItem="1mg-9s-bQr" secondAttribute="centerY" id="e9S-Qp-UaE"/>
                         <constraint firstItem="sUG-8I-Y9B" firstAttribute="leading" secondItem="xHo-iy-yW1" secondAttribute="trailing" constant="8" id="nbV-mh-YUz"/>
-                        <constraint firstItem="SBn-KR-vet" firstAttribute="centerY" secondItem="xHo-iy-yW1" secondAttribute="centerY" id="wja-wl-CqY"/>
                     </constraints>
                 </view>
             </subviews>
@@ -71,7 +61,4 @@
             <point key="canvasLocation" x="181.8840579710145" y="-128.57142857142856"/>
         </view>
     </objects>
-    <resources>
-        <image name="house" catalog="system" width="128" height="110"/>
-    </resources>
 </document>

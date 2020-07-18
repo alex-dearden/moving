@@ -77,7 +77,7 @@ extension EditItemViewController: EditObjectViewDelegate {
         let newOrder = roomStore.rooms.count
         let newType = ItemType.init(rawValue: typeName) ?? .other
         let codableImage = currentImage.codableImage()
-        let newItem = Item(name: name, order: newOrder, type: newType, image: codableImage)
+        let newItem = Item(name: name, order: newOrder, type: newType, image: codableImage, checked: false)
         roomStore.addItem(newItem, in: room)
     }
 

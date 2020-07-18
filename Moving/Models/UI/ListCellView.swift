@@ -48,7 +48,6 @@ class ListCellView: UITableViewCell {
     @IBOutlet var containerView: UIView!
     @IBOutlet private weak var roundedBackgroundView: UIView!
     @IBOutlet private weak var switchImageView: SwitchImageView!
-    @IBOutlet private weak var iconImageView: UIImageView!
 
     @IBOutlet private weak var titleLabel: UILabel!
 
@@ -79,16 +78,32 @@ class ListCellView: UITableViewCell {
         selectionStyle = .none
     }
 
-    func update(with title: String, icon: UIImage?) {
+    func update(with title: String, percentage: Int) {
         titleLabel.text = title
-        iconImageView.image = icon
-        iconImageView.isHidden = false
-        switchImageView.isHidden = true
+        setupPercentLabel(with: percentage)
     }
 
     func update(with title: String, checked: Bool) {
         handleState(for: checked)
         titleLabel.text = title
+    }
+
+    private func setupPercentLabel(with percent: Int) {
+        guard percent > 0 else {
+            return
+        }
+
+        let percentLabel = UILabel()
+        percentLabel.text = String(describing: percent) + "%"
+        percentLabel.textColor = UIColor(named: Identifiers.Color.buttonText)
+        percentLabel.font = UIFont.tiny
+        percentLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(percentLabel)
+
+        NSLayoutConstraint.activate([
+            percentLabel.centerXAnchor.constraint(equalTo: switchImageView.centerXAnchor),
+            percentLabel.centerYAnchor.constraint(equalTo: switchImageView.centerYAnchor),
+        ])
     }
 
     private func handleState(for on: Bool) {
@@ -108,5 +123,6 @@ class ListCellView: UITableViewCell {
 private extension ListCellView {
     enum Defaults {
         static let cornerRadius: CGFloat = 12
+        static let percentagePadding: CGFloat = 5
     }
 }

@@ -21,3 +21,18 @@ extension Optional where Wrapped == UIImage {
         return CodableImage(withImage: currentImage)
     }
 }
+
+extension UIFont {
+    static var small: UIFont? {
+        return UIFont(name: "CourierNewPS-BoldMT", size: 10)
+    }
+
+    static var tiny: UIFont? {
+        return UIFont(name: "CourierNewPS-BoldMT", size: 8)
+    }
+
+    static var title: UIFont? {
+        return UIFont(name: "CourierNewPS-BoldMT", size: 18)
+    }
+
+}
