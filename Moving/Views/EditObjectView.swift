@@ -26,7 +26,12 @@ class EditObjectView: UIView, NibLoadableView {
 
     private var pickerArray: [String] = []
     weak var delegate: EditObjectViewDelegate?
-    private var selectedObjectType: String!
+
+    private var selectedObjectType: String! {
+        didSet {
+            nameTextField.text = selectedObjectType
+        }
+    }
 
     private var isEdit = false {
         didSet {
@@ -52,7 +57,14 @@ class EditObjectView: UIView, NibLoadableView {
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
+        setupKeyboardObservers()
+
         setupUI()
+    }
+
+    private func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     func update(objectTitle: String, types: [String]) {
@@ -92,7 +104,6 @@ class EditObjectView: UIView, NibLoadableView {
 
         if isEdit {
             // TODO: Handle via Combine?
-            // TODO: Add ability to change image
             delegate?.edit(newName: name, newTypeName: typeName)
         } else {
             // TODO: Handle via Combine?
@@ -101,12 +112,31 @@ class EditObjectView: UIView, NibLoadableView {
 
         delegate?.dismiss()
     }
-    
 }
 
+// MARK: Handle keyboard show
+
+extension EditObjectView {
+    @objc func keyboardWillShow(notification: NSNotification) {
+
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            // if keyboard size is not available for some reason, dont do anything
+            return
+        }
+
+        let scrollHeight = (frame.height / 2) - keyboardSize.height
+
+        frame.origin.y = 0 - scrollHeight
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        frame.origin.y = 0
+    }
+}
+
+// MARK: Setup UI
 extension EditObjectView {
     private func setupUI() {
-        nameTextField.becomeFirstResponder()
         addOrEditButton.setTitle(Defaults.add, for: .normal)
         typePicker.delegate = self
         typePicker.dataSource = self
@@ -141,11 +171,16 @@ extension EditObjectView: UIPickerViewDataSource {
 
 extension EditObjectView: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        pickerArray[row]
+        let pickerSelection = pickerArray[row]
+        selectedObjectType = pickerSelection
+        return pickerSelection
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedObjectType = pickerArray[row]
+        nameTextField.resignFirstResponder()
+
+        let pickerSelection = pickerArray[row]
+        selectedObjectType = pickerSelection
     }
 }
 
