@@ -23,6 +23,7 @@ class ItemsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupLongPress()
         setUpDataSource()
         setupItems()
     }
@@ -125,7 +126,29 @@ extension ItemsListViewController: UITableViewDelegate {
 
         return UISwipeActionsConfiguration(actions: [delete, edit])
     }
+}
 
+// MARK: Long press
+
+extension ItemsListViewController {
+    private func setupLongPress() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPress.minimumPressDuration = 1.0
+        tableview.addGestureRecognizer(longPress)
+    }
+
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableview)
+            if let indexPath = tableview.indexPathForRow(at: touchPoint) {
+                guard let item = room.items[safe: indexPath.row] else {
+                    return
+                }
+
+                coordinator?.editItem(item: item, in: room, for: roomStore)
+            }
+        }
+    }
 }
 
 extension ItemsListViewController: Storyboarded { }

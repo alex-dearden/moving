@@ -47,25 +47,6 @@ class RoomsListViewController: UIViewController {
         return percent
     }
 
-    private func setupLongPress() {
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        longPress.minimumPressDuration = 1.0
-        tableview.addGestureRecognizer(longPress)
-    }
-
-    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
-            let touchPoint = sender.location(in: tableview)
-            if let indexPath = tableview.indexPathForRow(at: touchPoint) {
-                guard let room = roomStore.rooms[safe: indexPath.row] else {
-                    return
-                }
-
-                coordinator?.editRoom(room: room, in: roomStore)
-            }
-        }
-    }
-
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         coordinator?.addRoom(roomStore)
     }
@@ -156,6 +137,28 @@ extension RoomsListViewController: UITableViewDelegate {
         edit.backgroundColor = .systemBlue
 
         return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
+}
+
+// MARK: Long press recogniser
+extension RoomsListViewController {
+    private func setupLongPress() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPress.minimumPressDuration = 1.0
+        tableview.addGestureRecognizer(longPress)
+    }
+
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableview)
+            if let indexPath = tableview.indexPathForRow(at: touchPoint) {
+                guard let room = roomStore.rooms[safe: indexPath.row] else {
+                    return
+                }
+
+                coordinator?.editRoom(room: room, in: roomStore)
+            }
+        }
     }
 }
 
