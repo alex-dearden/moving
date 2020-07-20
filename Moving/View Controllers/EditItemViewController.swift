@@ -28,7 +28,7 @@ class EditItemViewController: UIViewController {
 
     private func setupEditObjectContainer() {
         editObjectContainer.delegate = self
-        editObjectContainer.update(objectTitle: "Item", types: ItemType.all)
+        editObjectContainer.update(objectTitle: "Item")
 
         // Editing
         if let item = item {

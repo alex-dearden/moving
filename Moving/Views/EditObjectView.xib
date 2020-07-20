@@ -41,21 +41,21 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-3x-ncT">
-                    <rect key="frame" x="24" y="358" width="370" height="179"/>
+                    <rect key="frame" x="24" y="358" width="370" height="83"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMy-hy-mcK">
                             <rect key="frame" x="0.0" y="0.0" width="370" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                         </textField>
-                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-MH-Vyq">
-                            <rect key="frame" x="0.0" y="50" width="370" height="80"/>
+                        <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-MH-Vyq">
+                            <rect key="frame" x="0.0" y="42" width="370" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="c9P-ah-Sv3"/>
                             </constraints>
                         </pickerView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="c6U-tb-JwK" userLabel="Button Stack View">
-                            <rect key="frame" x="0.0" y="146" width="370" height="33"/>
+                            <rect key="frame" x="0.0" y="50" width="370" height="33"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arN-r7-oj9" customClass="CancelButton" customModule="Moving" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="65" height="33"/>

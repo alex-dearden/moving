@@ -24,14 +24,19 @@ class EditObjectView: UIView, NibLoadableView {
     @IBOutlet private weak var typePicker: UIPickerView!
     @IBOutlet weak var addOrEditButton: AddButton!
 
-    private var pickerArray: [String] = []
-    weak var delegate: EditObjectViewDelegate?
-
-    private var selectedObjectType: String! {
+    private var pickerArray: [String] = [] {
         didSet {
-            nameTextField.text = selectedObjectType
+            guard pickerArray.count > 0 else {
+                nameTextField.becomeFirstResponder()
+                return
+            }
+            typePicker.isHidden = false
         }
     }
+
+    weak var delegate: EditObjectViewDelegate?
+
+    private var selectedObjectType: String!
 
     private var isEdit = false {
         didSet {
@@ -67,8 +72,13 @@ class EditObjectView: UIView, NibLoadableView {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    func update(objectTitle: String, types: [String]) {
+    func update(objectTitle: String, types: [String]? = []) {
         nameTextField.placeholder = objectTitle + Defaults.space + Defaults.name
+
+        guard let types = types else {
+            typePicker.isHidden = true
+            return
+        }
         pickerArray = types
     }
 
@@ -140,8 +150,8 @@ extension EditObjectView {
         addOrEditButton.setTitle(Defaults.add, for: .normal)
         typePicker.delegate = self
         typePicker.dataSource = self
-        selectedObjectType = pickerArray.first ?? Defaults.otherType
         typePicker.setValue(UIColor(named: Identifiers.Color.buttonText), forKey: "textColor")
+        selectedObjectType = pickerArray.first ?? Defaults.otherType
         nameTextField.delegate = self
 
         imageView.tapDelegate = self
@@ -173,6 +183,7 @@ extension EditObjectView: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let pickerSelection = pickerArray[row]
         selectedObjectType = pickerSelection
+
         return pickerSelection
     }
 
@@ -181,6 +192,7 @@ extension EditObjectView: UIPickerViewDelegate {
 
         let pickerSelection = pickerArray[row]
         selectedObjectType = pickerSelection
+        nameTextField.text = selectedObjectType
     }
 }
 
