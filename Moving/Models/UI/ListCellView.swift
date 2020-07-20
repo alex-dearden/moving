@@ -80,7 +80,18 @@ class ListCellView: UITableViewCell {
 
     func update(with title: String, percentage: Int) {
         titleLabel.text = title
-        setupPercentLabel(with: percentage)
+        setupPercent(with: percentage)
+    }
+
+    func update(with title: String, smallText: String) {
+        titleLabel.text = title
+        setupSmallLabel(with: smallText)
+    }
+
+    func update(with title: String, percentage: Int, and smallText: String) {
+        titleLabel.text = title
+        setupPercent(with: percentage)
+        setupSmallLabel(with: smallText)
     }
 
     func update(with title: String, checked: Bool) {
@@ -88,21 +99,26 @@ class ListCellView: UITableViewCell {
         titleLabel.text = title
     }
 
-    private func setupPercentLabel(with percent: Int) {
+    private func setupPercent(with percent: Int) {
         guard percent > 0 else {
             return
         }
 
-        let percentLabel = UILabel()
-        percentLabel.text = String(describing: percent) + "%"
-        percentLabel.textColor = UIColor(named: Identifiers.Color.buttonText)
-        percentLabel.font = UIFont.tiny
-        percentLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(percentLabel)
+        let percentageText = String(describing: percent) + "%"
+        setupSmallLabel(with: percentageText)
+    }
+
+    private func setupSmallLabel(with text: String) {
+        let smallLabel = UILabel()
+        smallLabel.text = text
+        smallLabel.textColor = UIColor(named: Identifiers.Color.buttonText)
+        smallLabel.font = UIFont.tiny
+        smallLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(smallLabel)
 
         NSLayoutConstraint.activate([
-            percentLabel.centerXAnchor.constraint(equalTo: switchImageView.centerXAnchor),
-            percentLabel.centerYAnchor.constraint(equalTo: switchImageView.centerYAnchor),
+            smallLabel.centerXAnchor.constraint(equalTo: switchImageView.centerXAnchor),
+            smallLabel.centerYAnchor.constraint(equalTo: switchImageView.centerYAnchor),
         ])
     }
 
