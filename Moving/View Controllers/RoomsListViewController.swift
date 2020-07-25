@@ -34,7 +34,7 @@ class RoomsListViewController: UIViewController {
         }
     }
 
-    private func percentage(for room: Room) -> Int {
+    private func percentage(for room: Room) -> Double {
         let totalItems = Double(room.items.count)
         let checkedItems = Double(room.items.filter { $0.checked == true }.count ?? 0)
 
@@ -43,7 +43,7 @@ class RoomsListViewController: UIViewController {
             return 0
         }
 
-        let percent = Int((checkedItems / totalItems) * 100)
+        let percent = checkedItems / totalItems
         return percent
     }
 

@@ -70,7 +70,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ej2-WQ-7vR">
-                                <rect key="frame" x="0.0" y="8" width="414" height="800"/>
+                                <rect key="frame" x="0.0" y="16" width="414" height="792"/>
                                 <color key="backgroundColor" name="TableBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" id="dRg-Tm-b66" customClass="ListCellView" customModule="Moving" customModuleProvider="target">
@@ -100,13 +100,32 @@
                                     <outlet property="delegate" destination="zUj-Cn-4wb" id="QYz-jn-EPF"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9WX-WX-VbX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="92X-Ts-g3M" customClass="Slider" customModule="Moving" customModuleProvider="target">
+                                        <rect key="frame" x="6" y="-7" width="402" height="31"/>
+                                        <color key="minimumTrackTintColor" name="Green"/>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" name="TableBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="92X-Ts-g3M" secondAttribute="trailing" constant="8" id="2rz-i6-Qok"/>
+                                    <constraint firstAttribute="height" constant="16" id="7qi-3E-lHh"/>
+                                    <constraint firstItem="92X-Ts-g3M" firstAttribute="centerY" secondItem="9WX-WX-VbX" secondAttribute="centerY" id="NpH-ak-Qjd"/>
+                                    <constraint firstItem="92X-Ts-g3M" firstAttribute="leading" secondItem="9WX-WX-VbX" secondAttribute="leading" constant="8" id="xc8-88-HgM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Ej2-WQ-7vR" secondAttribute="bottom" id="NgT-hu-ZwG"/>
-                            <constraint firstItem="Ej2-WQ-7vR" firstAttribute="top" secondItem="F9P-5Y-3zS" secondAttribute="top" constant="8" id="gdE-sg-NwS"/>
+                            <constraint firstItem="9WX-WX-VbX" firstAttribute="trailing" secondItem="F9P-5Y-3zS" secondAttribute="trailing" id="W8Y-J5-yLL"/>
+                            <constraint firstItem="9WX-WX-VbX" firstAttribute="top" secondItem="F9P-5Y-3zS" secondAttribute="top" id="c5q-GU-vIR"/>
                             <constraint firstItem="Ej2-WQ-7vR" firstAttribute="leading" secondItem="F9P-5Y-3zS" secondAttribute="leading" id="l59-T0-YO6"/>
                             <constraint firstItem="Ej2-WQ-7vR" firstAttribute="trailing" secondItem="F9P-5Y-3zS" secondAttribute="trailing" id="oha-rJ-6lb"/>
+                            <constraint firstItem="9WX-WX-VbX" firstAttribute="leading" secondItem="afU-BP-tla" secondAttribute="leading" id="pzX-ky-tgL"/>
+                            <constraint firstItem="Ej2-WQ-7vR" firstAttribute="top" secondItem="9WX-WX-VbX" secondAttribute="bottom" id="ugW-Vx-HmP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F9P-5Y-3zS"/>
                     </view>
@@ -118,6 +137,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="slider" destination="92X-Ts-g3M" id="xaF-f2-gaq"/>
                         <outlet property="tableview" destination="Ej2-WQ-7vR" id="hy0-DW-ORW"/>
                     </connections>
                 </viewController>
@@ -208,6 +228,9 @@
     <resources>
         <namedColor name="CancelButtonBackground">
             <color red="0.68235294117647061" green="0.69019607843137254" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Green">
+            <color red="0.23529411764705882" green="0.45882352941176469" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TableBackground">
             <color red="0.26666666666666666" green="0.27058823529411763" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

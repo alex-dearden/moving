@@ -24,12 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // tell the coordinator to take over control
         coordinator?.start()
 
+        setNavBarColor()
+
         // create a basic UIWindow and activate it
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
 
         return true
+    }
+
+    private func setNavBarColor() {
+        let backgroundColor = UIColor(named: Identifiers.Color.cellBackground)
+        let textColor = UIColor(named: Identifiers.Color.buttonText)
+        UINavigationBar.appearance().barTintColor = backgroundColor
+        UINavigationBar.appearance().tintColor = textColor
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: textColor]
     }
 
 }

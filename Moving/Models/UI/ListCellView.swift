@@ -78,7 +78,7 @@ class ListCellView: UITableViewCell {
         selectionStyle = .none
     }
 
-    func update(with title: String, percentage: Int) {
+    func update(with title: String, percentage: Double) {
         titleLabel.text = title
         setupPercent(with: percentage)
     }
@@ -88,7 +88,7 @@ class ListCellView: UITableViewCell {
         setupSmallLabel(with: smallText)
     }
 
-    func update(with title: String, percentage: Int, and smallText: String) {
+    func update(with title: String, percentage: Double, and smallText: String) {
         titleLabel.text = title
         setupPercent(with: percentage)
         setupSmallLabel(with: smallText)
@@ -99,13 +99,23 @@ class ListCellView: UITableViewCell {
         titleLabel.text = title
     }
 
-    private func setupPercent(with percent: Int) {
+    private func setupPercent(with percent: Double) {
         guard percent > 0 else {
             return
         }
 
-        let percentageText = String(describing: percent) + "%"
-        setupSmallLabel(with: percentageText)
+        switchImageView.image = nil
+        let graphCircle = GraphCircle()
+        graphCircle.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(graphCircle)
+
+        NSLayoutConstraint.activate([
+            graphCircle.centerXAnchor.constraint(equalTo: switchImageView.centerXAnchor),
+            graphCircle.centerYAnchor.constraint(equalTo: switchImageView.centerYAnchor),
+        ])
+
+        let circleFrame = CGRect(x: 0, y: 0, width: switchImageView.bounds.width, height: switchImageView.bounds.height)
+//        graphCircle.update(for: 0.3, in: circleFrame)
     }
 
     private func setupSmallLabel(with text: String) {

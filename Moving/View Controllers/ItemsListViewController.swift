@@ -12,7 +12,8 @@ import Combine
 class ItemsListViewController: UIViewController {
 
     @IBOutlet private weak var tableview: UITableView!
-
+    @IBOutlet private weak var slider: Slider!
+    
     var roomStore: RoomStore!
     weak var coordinator: MainCoordinator?
     var room: Room!

@@ -28,5 +28,7 @@ enum Identifiers {
         static let cellBackground = "CellBackground"
         static let cellChecked = "CellChecked"
         static let cellCheckedText = "CellCheckedText"
+        static let tableBackground = "TableBackground"
+        static let green = "Green"
     }
 }
