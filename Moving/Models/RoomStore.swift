@@ -19,8 +19,9 @@ protocol Storable {
 }
 
 class RoomStore: ObservableObject, Storable {
-    @Published var rooms: [Room] = []
     let objectWillChange = ObservableObjectPublisher()
+
+    @Published var rooms: [Room] = []
     @Published var itemsForRoom: [Item] = [] {
         willSet {
             objectWillChange.send()
@@ -72,7 +73,7 @@ class RoomStore: ObservableObject, Storable {
     func moveRoom(from source: IndexSet, to destination: Int) {
         // TODO: We need to implement this on this class' array
 //        rooms.move(fromOffsets: source, toOffset: destination)
-
+        assertionFailure("Method Not implemented")
         persistRooms()
     }
 
@@ -125,7 +126,7 @@ class RoomStore: ObservableObject, Storable {
     }
 }
 
-// MARK: Private methods
+// MARK: Private Helper methods
 
 private extension RoomStore {
     func findRoom(with id: UUID) throws -> Int {
@@ -155,6 +156,7 @@ private extension RoomStore {
     }
 
     func updateItemsArray(in roomIndex: Int) {
+        // TODO: Do we need to update room as well so it calculates the completed percentage?
         itemsForRoom = rooms[roomIndex].items
     }
 }

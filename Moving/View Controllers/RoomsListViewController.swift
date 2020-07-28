@@ -34,19 +34,6 @@ class RoomsListViewController: UIViewController {
         }
     }
 
-    private func percentage(for room: Room) -> Double {
-        let totalItems = Double(room.items.count)
-        let checkedItems = Double(room.items.filter { $0.checked == true }.count ?? 0)
-
-        guard totalItems > 0,
-              checkedItems > 0 else {
-            return 0
-        }
-
-        let percent = checkedItems / totalItems
-        return percent
-    }
-
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         coordinator?.addRoom(roomStore)
     }
@@ -88,7 +75,7 @@ extension RoomsListViewController {
         dataSource = DataSource(tableView: tableview,
             cellProvider: { tableView, indexPath, room in
                 let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.roomCell, for: indexPath) as! ListCellView
-                let percentage = self.percentage(for: room)
+                let percentage = room.percentage()
                 cell.update(with: room.name, percentage: percentage)
 
                 return cell

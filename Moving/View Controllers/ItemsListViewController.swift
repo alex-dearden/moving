@@ -87,8 +87,16 @@ private extension ItemsListViewController {
 
         snapshot.appendItems(items, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: animate)
+        setSliderValueFromPercentage()
+
         // TODO: This shouldn't be necessary. Docs say not to call the old UITableView APIs but I can't get the cell to update with the toggle without it
         tableview.reloadData()
+    }
+
+    private func setSliderValueFromPercentage() {
+        let sliderValue = Float(room.percentage())
+        debugPrint("Set slider value to", sliderValue, "percent")
+        slider.setValue(sliderValue, animated: true)
     }
 }
 
@@ -98,6 +106,8 @@ extension ItemsListViewController: UITableViewDelegate {
             return
         }
         roomStore.toggleItem(item, in: room)
+//        setSliderValueFromPercentage()
+//        tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
