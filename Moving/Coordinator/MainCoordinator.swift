@@ -59,4 +59,12 @@ class MainCoordinator: Coordinator {
         vc.room = room
         navigationController.pushViewController(vc, animated: true)
     }
+
+    func search(for searchString: String, in roomStore: RoomStore) {
+        let vc = SearchViewController.instantiate()
+        vc.searchString = searchString
+        vc.coordinator = self
+        vc.roomStore = roomStore
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

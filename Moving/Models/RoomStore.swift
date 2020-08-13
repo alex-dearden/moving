@@ -124,6 +124,12 @@ class RoomStore: ObservableObject, Storable {
         persistRooms()
         updateItemsArray(in: roomIndex)
     }
+
+    func findItems(with searchString: String) -> [Item] {
+        let allItems: [Item] = rooms.flatMap { $0.items }
+        let foundItems: [Item] = allItems.filter { $0.name.range(of: searchString, options: .caseInsensitive) != nil }
+        return foundItems
+    }
 }
 
 // MARK: Private Helper methods

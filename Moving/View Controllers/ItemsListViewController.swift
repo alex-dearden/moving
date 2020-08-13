@@ -94,7 +94,7 @@ private extension ItemsListViewController {
     }
 
     private func setSliderValueFromPercentage() {
-        let sliderValue = Float(room.percentage())
+        let sliderValue = Float(room.percentage)
         debugPrint("Set slider value to", sliderValue, "percent")
         slider.setValue(sliderValue, animated: true)
     }
@@ -106,8 +106,9 @@ extension ItemsListViewController: UITableViewDelegate {
             return
         }
         roomStore.toggleItem(item, in: room)
-//        setSliderValueFromPercentage()
-//        tableView.reloadData()
+        room.updatePercentage()
+        setSliderValueFromPercentage()
+        tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

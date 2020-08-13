@@ -75,7 +75,7 @@ extension RoomsListViewController {
         dataSource = DataSource(tableView: tableview,
             cellProvider: { tableView, indexPath, room in
                 let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.roomCell, for: indexPath) as! ListCellView
-                let percentage = room.percentage()
+                let percentage = room.percentage
                 cell.update(with: room.name, percentage: percentage)
 
                 return cell

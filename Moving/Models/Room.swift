@@ -14,18 +14,20 @@ struct Room: Identifiable, Codable, Listable {
     var image: CodableImage?
     var items: [Item] = []
 
+    var percentage: Double = 0
+
     // TODO: This really belongs in a view model
-    func percentage() -> Double {
+    mutating func updatePercentage()  {
         let totalItems = Double(self.items.count)
         let checkedItems = Double(self.items.filter { $0.checked == true }.count ?? 0)
 
         guard totalItems > 0,
               checkedItems > 0 else {
-            return 0
+            return
         }
 
         let percent = checkedItems / totalItems
-        return percent
+        percentage = percent
     }
 
     // In order to use this, we would need to delete the room from roomstore.rooms, modify it and readd it
