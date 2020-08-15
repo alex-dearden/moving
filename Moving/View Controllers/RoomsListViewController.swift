@@ -16,6 +16,11 @@ class RoomsListViewController: UIViewController {
     private var roomStore = RoomStore()
     private var cancellable: AnyCancellable?
     private var dataSource: DataSource!
+    private var searchViewController = SearchViewController.instantiate()
+    private var searchController: UISearchController!
+    private var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
 
     weak var coordinator: MainCoordinator?
 
@@ -25,6 +30,7 @@ class RoomsListViewController: UIViewController {
         setupLongPress()
         setUpDataSource()
         setupRooms()
+        setupSearchResultsController()
     }
 
     private func setupRooms() {
@@ -124,6 +130,19 @@ extension RoomsListViewController: UITableViewDelegate {
         edit.backgroundColor = .systemBlue
 
         return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
+}
+
+// MARK: Search Controller
+extension RoomsListViewController {
+    private func setupSearchResultsController() {
+        searchViewController.roomStore = roomStore
+        searchController = UISearchController(searchResultsController: searchViewController)
+        searchController.searchResultsUpdater = searchViewController
+        searchController.obscuresBackgroundDuringPresentation = true // will obscure this controller's view since we're using a different view for the results
+        searchController.searchBar.placeholder = "Search for items"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 }
 

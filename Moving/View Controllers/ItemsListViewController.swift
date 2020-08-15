@@ -95,7 +95,7 @@ private extension ItemsListViewController {
 
     private func setSliderValueFromPercentage() {
         let sliderValue = Float(room.percentage)
-        debugPrint("Set slider value to", sliderValue, "percent")
+//        debugPrint("Set slider value to", sliderValue, "percent")
         slider.setValue(sliderValue, animated: true)
     }
 }
