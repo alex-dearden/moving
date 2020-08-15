@@ -137,6 +137,7 @@ extension RoomsListViewController: UITableViewDelegate {
 extension RoomsListViewController {
     private func setupSearchResultsController() {
         searchViewController.roomStore = roomStore
+        searchViewController.coordinator = coordinator
         searchController = UISearchController(searchResultsController: searchViewController)
         searchController.searchResultsUpdater = searchViewController
         searchController.obscuresBackgroundDuringPresentation = true // will obscure this controller's view since we're using a different view for the results

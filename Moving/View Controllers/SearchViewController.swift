@@ -20,11 +20,6 @@ class SearchViewController: UIViewController {
         }
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
     private func searchItems(for searchString: String?) {
         guard let searchString = searchString,
             searchString != "" else {
@@ -55,6 +50,19 @@ extension SearchViewController: UITableViewDataSource {
         let item = itemsFound[indexPath.row]
         cell.update(with: item.name, checked: item.checked)
         return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = itemsFound[indexPath.row]
+        guard let roomForItem = (roomStore.rooms.first { $0.items.contains(item) }) else {
+            return
+        }
+
+        debugPrint("roomForItem", item.name, "is", roomForItem.name)
+
+        coordinator?.listItems(for: roomForItem, in: roomStore)
     }
 }
 
