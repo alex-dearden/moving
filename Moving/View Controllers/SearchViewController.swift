@@ -11,6 +11,8 @@ class SearchViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     var roomStore: RoomStore!
 
+    @IBOutlet private var tableview: UITableView!
+
     private var itemsFound: [Item] = [] {
         didSet {
             debugPrint("Found:", itemsFound.count, "items")
@@ -30,6 +32,7 @@ class SearchViewController: UIViewController {
         }
 
         itemsFound = roomStore.findItems(with: searchString)
+        tableview.reloadData()
     }
 
 }
@@ -48,7 +51,7 @@ extension SearchViewController: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.roomCell, for: indexPath) as! ListCellView
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.searchResultsCell, for: indexPath) as! ListCellView
         let item = itemsFound[indexPath.row]
         cell.update(with: item.name, checked: item.checked)
         return cell

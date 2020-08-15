@@ -8,6 +8,7 @@ import Foundation
 enum Identifiers {
     static let roomCell = "roomCell"
     static let itemCell = "itemCell"
+    static let searchResultsCell = "searchResultsCell"
     static let editObjectView = "EditObjectView"
     static let listCellView = "ListCellView"
 
